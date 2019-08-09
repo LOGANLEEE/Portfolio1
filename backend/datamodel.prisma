@@ -1,0 +1,68 @@
+scalar DateTime
+
+type Post {
+    id: ID! @id
+    title: String!
+    author: String
+    registeredAt: String
+    hitCount: Int
+    link: String!
+    from: String!
+    createdAt: DateTime! @createdAt
+}
+
+type Bobae {
+    id: ID! @id
+    title: String!
+    author: String
+    registeredAt: String
+    hitCount: Int
+    link: String!
+    from: String!
+    createdAt: DateTime! @createdAt
+}
+
+type Clien {
+    id: ID! @id
+    title: String!
+    author: String
+    registeredAt: String
+    hitCount: Int
+    link: String!
+    from: String!
+    createdAt: DateTime! @createdAt
+}
+
+type Ilbe {
+    id: ID! @id
+    title: String!
+    author: String
+    registeredAt: String
+    hitCount: Int
+    link: String!
+    from: String!
+    createdAt: DateTime! @createdAt
+}
+
+type Bullpen {
+    id: ID! @id
+    title: String!
+    author: String
+    registeredAt: String
+    hitCount: Int
+    link: String!
+    from: String!
+    createdAt: DateTime! @createdAt
+}
+
+type Etoland {
+    id: ID! @id
+    title: String!
+    author: String
+    registeredAt: String
+    hitCount: Int
+    link: String!
+    from: String!
+    createdAt: DateTime! @createdAt
+}
+
