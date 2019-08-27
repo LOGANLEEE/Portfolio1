@@ -27,6 +27,22 @@ var models = [
   {
     name: "Etoland",
     embedded: false
+  },
+  {
+    name: "SLRClub",
+    embedded: false
+  },
+  {
+    name: "TodayHumor",
+    embedded: false
+  },
+  {
+    name: "Cook",
+    embedded: false
+  },
+  {
+    name: "Gasengi",
+    embedded: false
   }
 ];
 exports.Prisma = prisma_lib_1.makePrismaClientClass({

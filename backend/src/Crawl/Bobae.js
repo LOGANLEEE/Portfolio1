@@ -14,7 +14,6 @@ function fetching() {
 
     axios.get(url, { httpsAgent: agent }).then((res) => {
         if (res.status === 200) {
-            info("£££ data", res.data);
             Processor(res.data);
         }
     }).catch((err) => info(err));
@@ -41,6 +40,7 @@ function fetching() {
             await prisma.createPost(data);
             await prisma.createBobae(data);
         }
+        info("£££ BOBAE Done");
     }
 }
 

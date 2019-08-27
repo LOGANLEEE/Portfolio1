@@ -15,7 +15,15 @@ type AggregateClien {
   count: Int!
 }
 
+type AggregateCook {
+  count: Int!
+}
+
 type AggregateEtoland {
+  count: Int!
+}
+
+type AggregateGasengi {
   count: Int!
 }
 
@@ -24,6 +32,14 @@ type AggregateIlbe {
 }
 
 type AggregatePost {
+  count: Int!
+}
+
+type AggregateSLRClub {
+  count: Int!
+}
+
+type AggregateTodayHumor {
   count: Int!
 }
 
@@ -655,6 +671,214 @@ input ClienWhereUniqueInput {
   id: ID
 }
 
+type Cook {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type CookConnection {
+  pageInfo: PageInfo!
+  edges: [CookEdge]!
+  aggregate: AggregateCook!
+}
+
+input CookCreateInput {
+  id: ID
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+}
+
+type CookEdge {
+  node: Cook!
+  cursor: String!
+}
+
+enum CookOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  author_ASC
+  author_DESC
+  registeredAt_ASC
+  registeredAt_DESC
+  hitCount_ASC
+  hitCount_DESC
+  link_ASC
+  link_DESC
+  from_ASC
+  from_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type CookPreviousValues {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type CookSubscriptionPayload {
+  mutation: MutationType!
+  node: Cook
+  updatedFields: [String!]
+  previousValues: CookPreviousValues
+}
+
+input CookSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CookWhereInput
+  AND: [CookSubscriptionWhereInput!]
+  OR: [CookSubscriptionWhereInput!]
+  NOT: [CookSubscriptionWhereInput!]
+}
+
+input CookUpdateInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input CookUpdateManyMutationInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input CookWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  author: String
+  author_not: String
+  author_in: [String!]
+  author_not_in: [String!]
+  author_lt: String
+  author_lte: String
+  author_gt: String
+  author_gte: String
+  author_contains: String
+  author_not_contains: String
+  author_starts_with: String
+  author_not_starts_with: String
+  author_ends_with: String
+  author_not_ends_with: String
+  registeredAt: String
+  registeredAt_not: String
+  registeredAt_in: [String!]
+  registeredAt_not_in: [String!]
+  registeredAt_lt: String
+  registeredAt_lte: String
+  registeredAt_gt: String
+  registeredAt_gte: String
+  registeredAt_contains: String
+  registeredAt_not_contains: String
+  registeredAt_starts_with: String
+  registeredAt_not_starts_with: String
+  registeredAt_ends_with: String
+  registeredAt_not_ends_with: String
+  hitCount: Int
+  hitCount_not: Int
+  hitCount_in: [Int!]
+  hitCount_not_in: [Int!]
+  hitCount_lt: Int
+  hitCount_lte: Int
+  hitCount_gt: Int
+  hitCount_gte: Int
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [CookWhereInput!]
+  OR: [CookWhereInput!]
+  NOT: [CookWhereInput!]
+}
+
+input CookWhereUniqueInput {
+  id: ID
+}
+
 scalar DateTime
 
 type Etoland {
@@ -862,6 +1086,214 @@ input EtolandWhereInput {
 }
 
 input EtolandWhereUniqueInput {
+  id: ID
+}
+
+type Gasengi {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type GasengiConnection {
+  pageInfo: PageInfo!
+  edges: [GasengiEdge]!
+  aggregate: AggregateGasengi!
+}
+
+input GasengiCreateInput {
+  id: ID
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+}
+
+type GasengiEdge {
+  node: Gasengi!
+  cursor: String!
+}
+
+enum GasengiOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  author_ASC
+  author_DESC
+  registeredAt_ASC
+  registeredAt_DESC
+  hitCount_ASC
+  hitCount_DESC
+  link_ASC
+  link_DESC
+  from_ASC
+  from_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type GasengiPreviousValues {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type GasengiSubscriptionPayload {
+  mutation: MutationType!
+  node: Gasengi
+  updatedFields: [String!]
+  previousValues: GasengiPreviousValues
+}
+
+input GasengiSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: GasengiWhereInput
+  AND: [GasengiSubscriptionWhereInput!]
+  OR: [GasengiSubscriptionWhereInput!]
+  NOT: [GasengiSubscriptionWhereInput!]
+}
+
+input GasengiUpdateInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input GasengiUpdateManyMutationInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input GasengiWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  author: String
+  author_not: String
+  author_in: [String!]
+  author_not_in: [String!]
+  author_lt: String
+  author_lte: String
+  author_gt: String
+  author_gte: String
+  author_contains: String
+  author_not_contains: String
+  author_starts_with: String
+  author_not_starts_with: String
+  author_ends_with: String
+  author_not_ends_with: String
+  registeredAt: String
+  registeredAt_not: String
+  registeredAt_in: [String!]
+  registeredAt_not_in: [String!]
+  registeredAt_lt: String
+  registeredAt_lte: String
+  registeredAt_gt: String
+  registeredAt_gte: String
+  registeredAt_contains: String
+  registeredAt_not_contains: String
+  registeredAt_starts_with: String
+  registeredAt_not_starts_with: String
+  registeredAt_ends_with: String
+  registeredAt_not_ends_with: String
+  hitCount: Int
+  hitCount_not: Int
+  hitCount_in: [Int!]
+  hitCount_not_in: [Int!]
+  hitCount_lt: Int
+  hitCount_lte: Int
+  hitCount_gt: Int
+  hitCount_gte: Int
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [GasengiWhereInput!]
+  OR: [GasengiWhereInput!]
+  NOT: [GasengiWhereInput!]
+}
+
+input GasengiWhereUniqueInput {
   id: ID
 }
 
@@ -1094,12 +1526,24 @@ type Mutation {
   upsertClien(where: ClienWhereUniqueInput!, create: ClienCreateInput!, update: ClienUpdateInput!): Clien!
   deleteClien(where: ClienWhereUniqueInput!): Clien
   deleteManyCliens(where: ClienWhereInput): BatchPayload!
+  createCook(data: CookCreateInput!): Cook!
+  updateCook(data: CookUpdateInput!, where: CookWhereUniqueInput!): Cook
+  updateManyCooks(data: CookUpdateManyMutationInput!, where: CookWhereInput): BatchPayload!
+  upsertCook(where: CookWhereUniqueInput!, create: CookCreateInput!, update: CookUpdateInput!): Cook!
+  deleteCook(where: CookWhereUniqueInput!): Cook
+  deleteManyCooks(where: CookWhereInput): BatchPayload!
   createEtoland(data: EtolandCreateInput!): Etoland!
   updateEtoland(data: EtolandUpdateInput!, where: EtolandWhereUniqueInput!): Etoland
   updateManyEtolands(data: EtolandUpdateManyMutationInput!, where: EtolandWhereInput): BatchPayload!
   upsertEtoland(where: EtolandWhereUniqueInput!, create: EtolandCreateInput!, update: EtolandUpdateInput!): Etoland!
   deleteEtoland(where: EtolandWhereUniqueInput!): Etoland
   deleteManyEtolands(where: EtolandWhereInput): BatchPayload!
+  createGasengi(data: GasengiCreateInput!): Gasengi!
+  updateGasengi(data: GasengiUpdateInput!, where: GasengiWhereUniqueInput!): Gasengi
+  updateManyGasengis(data: GasengiUpdateManyMutationInput!, where: GasengiWhereInput): BatchPayload!
+  upsertGasengi(where: GasengiWhereUniqueInput!, create: GasengiCreateInput!, update: GasengiUpdateInput!): Gasengi!
+  deleteGasengi(where: GasengiWhereUniqueInput!): Gasengi
+  deleteManyGasengis(where: GasengiWhereInput): BatchPayload!
   createIlbe(data: IlbeCreateInput!): Ilbe!
   updateIlbe(data: IlbeUpdateInput!, where: IlbeWhereUniqueInput!): Ilbe
   updateManyIlbes(data: IlbeUpdateManyMutationInput!, where: IlbeWhereInput): BatchPayload!
@@ -1112,6 +1556,18 @@ type Mutation {
   upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
   deletePost(where: PostWhereUniqueInput!): Post
   deleteManyPosts(where: PostWhereInput): BatchPayload!
+  createSLRClub(data: SLRClubCreateInput!): SLRClub!
+  updateSLRClub(data: SLRClubUpdateInput!, where: SLRClubWhereUniqueInput!): SLRClub
+  updateManySLRClubs(data: SLRClubUpdateManyMutationInput!, where: SLRClubWhereInput): BatchPayload!
+  upsertSLRClub(where: SLRClubWhereUniqueInput!, create: SLRClubCreateInput!, update: SLRClubUpdateInput!): SLRClub!
+  deleteSLRClub(where: SLRClubWhereUniqueInput!): SLRClub
+  deleteManySLRClubs(where: SLRClubWhereInput): BatchPayload!
+  createTodayHumor(data: TodayHumorCreateInput!): TodayHumor!
+  updateTodayHumor(data: TodayHumorUpdateInput!, where: TodayHumorWhereUniqueInput!): TodayHumor
+  updateManyTodayHumors(data: TodayHumorUpdateManyMutationInput!, where: TodayHumorWhereInput): BatchPayload!
+  upsertTodayHumor(where: TodayHumorWhereUniqueInput!, create: TodayHumorCreateInput!, update: TodayHumorUpdateInput!): TodayHumor!
+  deleteTodayHumor(where: TodayHumorWhereUniqueInput!): TodayHumor
+  deleteManyTodayHumors(where: TodayHumorWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -1349,25 +1805,457 @@ type Query {
   clien(where: ClienWhereUniqueInput!): Clien
   cliens(where: ClienWhereInput, orderBy: ClienOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Clien]!
   cliensConnection(where: ClienWhereInput, orderBy: ClienOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ClienConnection!
+  cook(where: CookWhereUniqueInput!): Cook
+  cooks(where: CookWhereInput, orderBy: CookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Cook]!
+  cooksConnection(where: CookWhereInput, orderBy: CookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CookConnection!
   etoland(where: EtolandWhereUniqueInput!): Etoland
   etolands(where: EtolandWhereInput, orderBy: EtolandOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Etoland]!
   etolandsConnection(where: EtolandWhereInput, orderBy: EtolandOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): EtolandConnection!
+  gasengi(where: GasengiWhereUniqueInput!): Gasengi
+  gasengis(where: GasengiWhereInput, orderBy: GasengiOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Gasengi]!
+  gasengisConnection(where: GasengiWhereInput, orderBy: GasengiOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): GasengiConnection!
   ilbe(where: IlbeWhereUniqueInput!): Ilbe
   ilbes(where: IlbeWhereInput, orderBy: IlbeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Ilbe]!
   ilbesConnection(where: IlbeWhereInput, orderBy: IlbeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): IlbeConnection!
   post(where: PostWhereUniqueInput!): Post
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
   postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
+  sLRClub(where: SLRClubWhereUniqueInput!): SLRClub
+  sLRClubs(where: SLRClubWhereInput, orderBy: SLRClubOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SLRClub]!
+  sLRClubsConnection(where: SLRClubWhereInput, orderBy: SLRClubOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SLRClubConnection!
+  todayHumor(where: TodayHumorWhereUniqueInput!): TodayHumor
+  todayHumors(where: TodayHumorWhereInput, orderBy: TodayHumorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TodayHumor]!
+  todayHumorsConnection(where: TodayHumorWhereInput, orderBy: TodayHumorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TodayHumorConnection!
   node(id: ID!): Node
+}
+
+type SLRClub {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type SLRClubConnection {
+  pageInfo: PageInfo!
+  edges: [SLRClubEdge]!
+  aggregate: AggregateSLRClub!
+}
+
+input SLRClubCreateInput {
+  id: ID
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+}
+
+type SLRClubEdge {
+  node: SLRClub!
+  cursor: String!
+}
+
+enum SLRClubOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  author_ASC
+  author_DESC
+  registeredAt_ASC
+  registeredAt_DESC
+  hitCount_ASC
+  hitCount_DESC
+  link_ASC
+  link_DESC
+  from_ASC
+  from_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type SLRClubPreviousValues {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type SLRClubSubscriptionPayload {
+  mutation: MutationType!
+  node: SLRClub
+  updatedFields: [String!]
+  previousValues: SLRClubPreviousValues
+}
+
+input SLRClubSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: SLRClubWhereInput
+  AND: [SLRClubSubscriptionWhereInput!]
+  OR: [SLRClubSubscriptionWhereInput!]
+  NOT: [SLRClubSubscriptionWhereInput!]
+}
+
+input SLRClubUpdateInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input SLRClubUpdateManyMutationInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input SLRClubWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  author: String
+  author_not: String
+  author_in: [String!]
+  author_not_in: [String!]
+  author_lt: String
+  author_lte: String
+  author_gt: String
+  author_gte: String
+  author_contains: String
+  author_not_contains: String
+  author_starts_with: String
+  author_not_starts_with: String
+  author_ends_with: String
+  author_not_ends_with: String
+  registeredAt: String
+  registeredAt_not: String
+  registeredAt_in: [String!]
+  registeredAt_not_in: [String!]
+  registeredAt_lt: String
+  registeredAt_lte: String
+  registeredAt_gt: String
+  registeredAt_gte: String
+  registeredAt_contains: String
+  registeredAt_not_contains: String
+  registeredAt_starts_with: String
+  registeredAt_not_starts_with: String
+  registeredAt_ends_with: String
+  registeredAt_not_ends_with: String
+  hitCount: Int
+  hitCount_not: Int
+  hitCount_in: [Int!]
+  hitCount_not_in: [Int!]
+  hitCount_lt: Int
+  hitCount_lte: Int
+  hitCount_gt: Int
+  hitCount_gte: Int
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [SLRClubWhereInput!]
+  OR: [SLRClubWhereInput!]
+  NOT: [SLRClubWhereInput!]
+}
+
+input SLRClubWhereUniqueInput {
+  id: ID
 }
 
 type Subscription {
   bobae(where: BobaeSubscriptionWhereInput): BobaeSubscriptionPayload
   bullpen(where: BullpenSubscriptionWhereInput): BullpenSubscriptionPayload
   clien(where: ClienSubscriptionWhereInput): ClienSubscriptionPayload
+  cook(where: CookSubscriptionWhereInput): CookSubscriptionPayload
   etoland(where: EtolandSubscriptionWhereInput): EtolandSubscriptionPayload
+  gasengi(where: GasengiSubscriptionWhereInput): GasengiSubscriptionPayload
   ilbe(where: IlbeSubscriptionWhereInput): IlbeSubscriptionPayload
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
+  sLRClub(where: SLRClubSubscriptionWhereInput): SLRClubSubscriptionPayload
+  todayHumor(where: TodayHumorSubscriptionWhereInput): TodayHumorSubscriptionPayload
+}
+
+type TodayHumor {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type TodayHumorConnection {
+  pageInfo: PageInfo!
+  edges: [TodayHumorEdge]!
+  aggregate: AggregateTodayHumor!
+}
+
+input TodayHumorCreateInput {
+  id: ID
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+}
+
+type TodayHumorEdge {
+  node: TodayHumor!
+  cursor: String!
+}
+
+enum TodayHumorOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  author_ASC
+  author_DESC
+  registeredAt_ASC
+  registeredAt_DESC
+  hitCount_ASC
+  hitCount_DESC
+  link_ASC
+  link_DESC
+  from_ASC
+  from_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type TodayHumorPreviousValues {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type TodayHumorSubscriptionPayload {
+  mutation: MutationType!
+  node: TodayHumor
+  updatedFields: [String!]
+  previousValues: TodayHumorPreviousValues
+}
+
+input TodayHumorSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TodayHumorWhereInput
+  AND: [TodayHumorSubscriptionWhereInput!]
+  OR: [TodayHumorSubscriptionWhereInput!]
+  NOT: [TodayHumorSubscriptionWhereInput!]
+}
+
+input TodayHumorUpdateInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input TodayHumorUpdateManyMutationInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input TodayHumorWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  author: String
+  author_not: String
+  author_in: [String!]
+  author_not_in: [String!]
+  author_lt: String
+  author_lte: String
+  author_gt: String
+  author_gte: String
+  author_contains: String
+  author_not_contains: String
+  author_starts_with: String
+  author_not_starts_with: String
+  author_ends_with: String
+  author_not_ends_with: String
+  registeredAt: String
+  registeredAt_not: String
+  registeredAt_in: [String!]
+  registeredAt_not_in: [String!]
+  registeredAt_lt: String
+  registeredAt_lte: String
+  registeredAt_gt: String
+  registeredAt_gte: String
+  registeredAt_contains: String
+  registeredAt_not_contains: String
+  registeredAt_starts_with: String
+  registeredAt_not_starts_with: String
+  registeredAt_ends_with: String
+  registeredAt_not_ends_with: String
+  hitCount: Int
+  hitCount_not: Int
+  hitCount_in: [Int!]
+  hitCount_not_in: [Int!]
+  hitCount_lt: Int
+  hitCount_lte: Int
+  hitCount_gt: Int
+  hitCount_gte: Int
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [TodayHumorWhereInput!]
+  OR: [TodayHumorWhereInput!]
+  NOT: [TodayHumorWhereInput!]
+}
+
+input TodayHumorWhereUniqueInput {
+  id: ID
 }
 `
       }

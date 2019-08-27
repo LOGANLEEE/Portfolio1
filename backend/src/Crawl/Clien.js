@@ -30,14 +30,14 @@ function fetching() {
                 author,
                 hitCount: parseInt(hitCount),
                 registeredAt: time,
-                link: 'https://www.clien.net/service/board/park' + link,
-                from: 'clien',
+                link: 'https://www.clien.net/' + link,
+                from: 'Clien',
             };
 
             await prisma.createPost(data);
             await prisma.createClien(data);
-
         }
+        info("£££ CLIEN Done");
     }
 }
 

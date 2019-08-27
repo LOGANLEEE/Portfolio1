@@ -19,9 +19,13 @@ export interface Exists {
   bobae: (where?: BobaeWhereInput) => Promise<boolean>;
   bullpen: (where?: BullpenWhereInput) => Promise<boolean>;
   clien: (where?: ClienWhereInput) => Promise<boolean>;
+  cook: (where?: CookWhereInput) => Promise<boolean>;
   etoland: (where?: EtolandWhereInput) => Promise<boolean>;
+  gasengi: (where?: GasengiWhereInput) => Promise<boolean>;
   ilbe: (where?: IlbeWhereInput) => Promise<boolean>;
   post: (where?: PostWhereInput) => Promise<boolean>;
+  sLRClub: (where?: SLRClubWhereInput) => Promise<boolean>;
+  todayHumor: (where?: TodayHumorWhereInput) => Promise<boolean>;
 }
 
 export interface Node {}
@@ -100,6 +104,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => ClienConnectionPromise;
+  cook: (where: CookWhereUniqueInput) => CookNullablePromise;
+  cooks: (args?: {
+    where?: CookWhereInput;
+    orderBy?: CookOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Cook>;
+  cooksConnection: (args?: {
+    where?: CookWhereInput;
+    orderBy?: CookOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => CookConnectionPromise;
   etoland: (where: EtolandWhereUniqueInput) => EtolandNullablePromise;
   etolands: (args?: {
     where?: EtolandWhereInput;
@@ -119,6 +142,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => EtolandConnectionPromise;
+  gasengi: (where: GasengiWhereUniqueInput) => GasengiNullablePromise;
+  gasengis: (args?: {
+    where?: GasengiWhereInput;
+    orderBy?: GasengiOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Gasengi>;
+  gasengisConnection: (args?: {
+    where?: GasengiWhereInput;
+    orderBy?: GasengiOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => GasengiConnectionPromise;
   ilbe: (where: IlbeWhereUniqueInput) => IlbeNullablePromise;
   ilbes: (args?: {
     where?: IlbeWhereInput;
@@ -157,6 +199,44 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => PostConnectionPromise;
+  sLRClub: (where: SLRClubWhereUniqueInput) => SLRClubNullablePromise;
+  sLRClubs: (args?: {
+    where?: SLRClubWhereInput;
+    orderBy?: SLRClubOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<SLRClub>;
+  sLRClubsConnection: (args?: {
+    where?: SLRClubWhereInput;
+    orderBy?: SLRClubOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => SLRClubConnectionPromise;
+  todayHumor: (where: TodayHumorWhereUniqueInput) => TodayHumorNullablePromise;
+  todayHumors: (args?: {
+    where?: TodayHumorWhereInput;
+    orderBy?: TodayHumorOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<TodayHumor>;
+  todayHumorsConnection: (args?: {
+    where?: TodayHumorWhereInput;
+    orderBy?: TodayHumorOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => TodayHumorConnectionPromise;
   node: (args: { id: ID_Output }) => Node;
 
   /**
@@ -211,6 +291,22 @@ export interface Prisma {
   }) => ClienPromise;
   deleteClien: (where: ClienWhereUniqueInput) => ClienPromise;
   deleteManyCliens: (where?: ClienWhereInput) => BatchPayloadPromise;
+  createCook: (data: CookCreateInput) => CookPromise;
+  updateCook: (args: {
+    data: CookUpdateInput;
+    where: CookWhereUniqueInput;
+  }) => CookPromise;
+  updateManyCooks: (args: {
+    data: CookUpdateManyMutationInput;
+    where?: CookWhereInput;
+  }) => BatchPayloadPromise;
+  upsertCook: (args: {
+    where: CookWhereUniqueInput;
+    create: CookCreateInput;
+    update: CookUpdateInput;
+  }) => CookPromise;
+  deleteCook: (where: CookWhereUniqueInput) => CookPromise;
+  deleteManyCooks: (where?: CookWhereInput) => BatchPayloadPromise;
   createEtoland: (data: EtolandCreateInput) => EtolandPromise;
   updateEtoland: (args: {
     data: EtolandUpdateInput;
@@ -227,6 +323,22 @@ export interface Prisma {
   }) => EtolandPromise;
   deleteEtoland: (where: EtolandWhereUniqueInput) => EtolandPromise;
   deleteManyEtolands: (where?: EtolandWhereInput) => BatchPayloadPromise;
+  createGasengi: (data: GasengiCreateInput) => GasengiPromise;
+  updateGasengi: (args: {
+    data: GasengiUpdateInput;
+    where: GasengiWhereUniqueInput;
+  }) => GasengiPromise;
+  updateManyGasengis: (args: {
+    data: GasengiUpdateManyMutationInput;
+    where?: GasengiWhereInput;
+  }) => BatchPayloadPromise;
+  upsertGasengi: (args: {
+    where: GasengiWhereUniqueInput;
+    create: GasengiCreateInput;
+    update: GasengiUpdateInput;
+  }) => GasengiPromise;
+  deleteGasengi: (where: GasengiWhereUniqueInput) => GasengiPromise;
+  deleteManyGasengis: (where?: GasengiWhereInput) => BatchPayloadPromise;
   createIlbe: (data: IlbeCreateInput) => IlbePromise;
   updateIlbe: (args: {
     data: IlbeUpdateInput;
@@ -259,6 +371,38 @@ export interface Prisma {
   }) => PostPromise;
   deletePost: (where: PostWhereUniqueInput) => PostPromise;
   deleteManyPosts: (where?: PostWhereInput) => BatchPayloadPromise;
+  createSLRClub: (data: SLRClubCreateInput) => SLRClubPromise;
+  updateSLRClub: (args: {
+    data: SLRClubUpdateInput;
+    where: SLRClubWhereUniqueInput;
+  }) => SLRClubPromise;
+  updateManySLRClubs: (args: {
+    data: SLRClubUpdateManyMutationInput;
+    where?: SLRClubWhereInput;
+  }) => BatchPayloadPromise;
+  upsertSLRClub: (args: {
+    where: SLRClubWhereUniqueInput;
+    create: SLRClubCreateInput;
+    update: SLRClubUpdateInput;
+  }) => SLRClubPromise;
+  deleteSLRClub: (where: SLRClubWhereUniqueInput) => SLRClubPromise;
+  deleteManySLRClubs: (where?: SLRClubWhereInput) => BatchPayloadPromise;
+  createTodayHumor: (data: TodayHumorCreateInput) => TodayHumorPromise;
+  updateTodayHumor: (args: {
+    data: TodayHumorUpdateInput;
+    where: TodayHumorWhereUniqueInput;
+  }) => TodayHumorPromise;
+  updateManyTodayHumors: (args: {
+    data: TodayHumorUpdateManyMutationInput;
+    where?: TodayHumorWhereInput;
+  }) => BatchPayloadPromise;
+  upsertTodayHumor: (args: {
+    where: TodayHumorWhereUniqueInput;
+    create: TodayHumorCreateInput;
+    update: TodayHumorUpdateInput;
+  }) => TodayHumorPromise;
+  deleteTodayHumor: (where: TodayHumorWhereUniqueInput) => TodayHumorPromise;
+  deleteManyTodayHumors: (where?: TodayHumorWhereInput) => BatchPayloadPromise;
 
   /**
    * Subscriptions
@@ -277,15 +421,27 @@ export interface Subscription {
   clien: (
     where?: ClienSubscriptionWhereInput
   ) => ClienSubscriptionPayloadSubscription;
+  cook: (
+    where?: CookSubscriptionWhereInput
+  ) => CookSubscriptionPayloadSubscription;
   etoland: (
     where?: EtolandSubscriptionWhereInput
   ) => EtolandSubscriptionPayloadSubscription;
+  gasengi: (
+    where?: GasengiSubscriptionWhereInput
+  ) => GasengiSubscriptionPayloadSubscription;
   ilbe: (
     where?: IlbeSubscriptionWhereInput
   ) => IlbeSubscriptionPayloadSubscription;
   post: (
     where?: PostSubscriptionWhereInput
   ) => PostSubscriptionPayloadSubscription;
+  sLRClub: (
+    where?: SLRClubSubscriptionWhereInput
+  ) => SLRClubSubscriptionPayloadSubscription;
+  todayHumor: (
+    where?: TodayHumorSubscriptionWhereInput
+  ) => TodayHumorSubscriptionPayloadSubscription;
 }
 
 export interface ClientConstructor<T> {
@@ -350,7 +506,43 @@ export type ClienOrderByInput =
   | "createdAt_ASC"
   | "createdAt_DESC";
 
+export type CookOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "author_ASC"
+  | "author_DESC"
+  | "registeredAt_ASC"
+  | "registeredAt_DESC"
+  | "hitCount_ASC"
+  | "hitCount_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC";
+
 export type EtolandOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "author_ASC"
+  | "author_DESC"
+  | "registeredAt_ASC"
+  | "registeredAt_DESC"
+  | "hitCount_ASC"
+  | "hitCount_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC";
+
+export type GasengiOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "title_ASC"
@@ -387,6 +579,42 @@ export type IlbeOrderByInput =
   | "createdAt_DESC";
 
 export type PostOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "author_ASC"
+  | "author_DESC"
+  | "registeredAt_ASC"
+  | "registeredAt_DESC"
+  | "hitCount_ASC"
+  | "hitCount_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC";
+
+export type SLRClubOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "author_ASC"
+  | "author_DESC"
+  | "registeredAt_ASC"
+  | "registeredAt_DESC"
+  | "hitCount_ASC"
+  | "hitCount_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC";
+
+export type TodayHumorOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "title_ASC"
@@ -736,6 +964,116 @@ export interface ClienWhereInput {
   NOT?: Maybe<ClienWhereInput[] | ClienWhereInput>;
 }
 
+export type CookWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface CookWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  author?: Maybe<String>;
+  author_not?: Maybe<String>;
+  author_in?: Maybe<String[] | String>;
+  author_not_in?: Maybe<String[] | String>;
+  author_lt?: Maybe<String>;
+  author_lte?: Maybe<String>;
+  author_gt?: Maybe<String>;
+  author_gte?: Maybe<String>;
+  author_contains?: Maybe<String>;
+  author_not_contains?: Maybe<String>;
+  author_starts_with?: Maybe<String>;
+  author_not_starts_with?: Maybe<String>;
+  author_ends_with?: Maybe<String>;
+  author_not_ends_with?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  registeredAt_not?: Maybe<String>;
+  registeredAt_in?: Maybe<String[] | String>;
+  registeredAt_not_in?: Maybe<String[] | String>;
+  registeredAt_lt?: Maybe<String>;
+  registeredAt_lte?: Maybe<String>;
+  registeredAt_gt?: Maybe<String>;
+  registeredAt_gte?: Maybe<String>;
+  registeredAt_contains?: Maybe<String>;
+  registeredAt_not_contains?: Maybe<String>;
+  registeredAt_starts_with?: Maybe<String>;
+  registeredAt_not_starts_with?: Maybe<String>;
+  registeredAt_ends_with?: Maybe<String>;
+  registeredAt_not_ends_with?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  hitCount_not?: Maybe<Int>;
+  hitCount_in?: Maybe<Int[] | Int>;
+  hitCount_not_in?: Maybe<Int[] | Int>;
+  hitCount_lt?: Maybe<Int>;
+  hitCount_lte?: Maybe<Int>;
+  hitCount_gt?: Maybe<Int>;
+  hitCount_gte?: Maybe<Int>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<CookWhereInput[] | CookWhereInput>;
+  OR?: Maybe<CookWhereInput[] | CookWhereInput>;
+  NOT?: Maybe<CookWhereInput[] | CookWhereInput>;
+}
+
 export type EtolandWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
@@ -844,6 +1182,116 @@ export interface EtolandWhereInput {
   AND?: Maybe<EtolandWhereInput[] | EtolandWhereInput>;
   OR?: Maybe<EtolandWhereInput[] | EtolandWhereInput>;
   NOT?: Maybe<EtolandWhereInput[] | EtolandWhereInput>;
+}
+
+export type GasengiWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface GasengiWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  author?: Maybe<String>;
+  author_not?: Maybe<String>;
+  author_in?: Maybe<String[] | String>;
+  author_not_in?: Maybe<String[] | String>;
+  author_lt?: Maybe<String>;
+  author_lte?: Maybe<String>;
+  author_gt?: Maybe<String>;
+  author_gte?: Maybe<String>;
+  author_contains?: Maybe<String>;
+  author_not_contains?: Maybe<String>;
+  author_starts_with?: Maybe<String>;
+  author_not_starts_with?: Maybe<String>;
+  author_ends_with?: Maybe<String>;
+  author_not_ends_with?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  registeredAt_not?: Maybe<String>;
+  registeredAt_in?: Maybe<String[] | String>;
+  registeredAt_not_in?: Maybe<String[] | String>;
+  registeredAt_lt?: Maybe<String>;
+  registeredAt_lte?: Maybe<String>;
+  registeredAt_gt?: Maybe<String>;
+  registeredAt_gte?: Maybe<String>;
+  registeredAt_contains?: Maybe<String>;
+  registeredAt_not_contains?: Maybe<String>;
+  registeredAt_starts_with?: Maybe<String>;
+  registeredAt_not_starts_with?: Maybe<String>;
+  registeredAt_ends_with?: Maybe<String>;
+  registeredAt_not_ends_with?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  hitCount_not?: Maybe<Int>;
+  hitCount_in?: Maybe<Int[] | Int>;
+  hitCount_not_in?: Maybe<Int[] | Int>;
+  hitCount_lt?: Maybe<Int>;
+  hitCount_lte?: Maybe<Int>;
+  hitCount_gt?: Maybe<Int>;
+  hitCount_gte?: Maybe<Int>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<GasengiWhereInput[] | GasengiWhereInput>;
+  OR?: Maybe<GasengiWhereInput[] | GasengiWhereInput>;
+  NOT?: Maybe<GasengiWhereInput[] | GasengiWhereInput>;
 }
 
 export type IlbeWhereUniqueInput = AtLeastOne<{
@@ -1066,6 +1514,226 @@ export interface PostWhereInput {
   NOT?: Maybe<PostWhereInput[] | PostWhereInput>;
 }
 
+export type SLRClubWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface SLRClubWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  author?: Maybe<String>;
+  author_not?: Maybe<String>;
+  author_in?: Maybe<String[] | String>;
+  author_not_in?: Maybe<String[] | String>;
+  author_lt?: Maybe<String>;
+  author_lte?: Maybe<String>;
+  author_gt?: Maybe<String>;
+  author_gte?: Maybe<String>;
+  author_contains?: Maybe<String>;
+  author_not_contains?: Maybe<String>;
+  author_starts_with?: Maybe<String>;
+  author_not_starts_with?: Maybe<String>;
+  author_ends_with?: Maybe<String>;
+  author_not_ends_with?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  registeredAt_not?: Maybe<String>;
+  registeredAt_in?: Maybe<String[] | String>;
+  registeredAt_not_in?: Maybe<String[] | String>;
+  registeredAt_lt?: Maybe<String>;
+  registeredAt_lte?: Maybe<String>;
+  registeredAt_gt?: Maybe<String>;
+  registeredAt_gte?: Maybe<String>;
+  registeredAt_contains?: Maybe<String>;
+  registeredAt_not_contains?: Maybe<String>;
+  registeredAt_starts_with?: Maybe<String>;
+  registeredAt_not_starts_with?: Maybe<String>;
+  registeredAt_ends_with?: Maybe<String>;
+  registeredAt_not_ends_with?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  hitCount_not?: Maybe<Int>;
+  hitCount_in?: Maybe<Int[] | Int>;
+  hitCount_not_in?: Maybe<Int[] | Int>;
+  hitCount_lt?: Maybe<Int>;
+  hitCount_lte?: Maybe<Int>;
+  hitCount_gt?: Maybe<Int>;
+  hitCount_gte?: Maybe<Int>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<SLRClubWhereInput[] | SLRClubWhereInput>;
+  OR?: Maybe<SLRClubWhereInput[] | SLRClubWhereInput>;
+  NOT?: Maybe<SLRClubWhereInput[] | SLRClubWhereInput>;
+}
+
+export type TodayHumorWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface TodayHumorWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  author?: Maybe<String>;
+  author_not?: Maybe<String>;
+  author_in?: Maybe<String[] | String>;
+  author_not_in?: Maybe<String[] | String>;
+  author_lt?: Maybe<String>;
+  author_lte?: Maybe<String>;
+  author_gt?: Maybe<String>;
+  author_gte?: Maybe<String>;
+  author_contains?: Maybe<String>;
+  author_not_contains?: Maybe<String>;
+  author_starts_with?: Maybe<String>;
+  author_not_starts_with?: Maybe<String>;
+  author_ends_with?: Maybe<String>;
+  author_not_ends_with?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  registeredAt_not?: Maybe<String>;
+  registeredAt_in?: Maybe<String[] | String>;
+  registeredAt_not_in?: Maybe<String[] | String>;
+  registeredAt_lt?: Maybe<String>;
+  registeredAt_lte?: Maybe<String>;
+  registeredAt_gt?: Maybe<String>;
+  registeredAt_gte?: Maybe<String>;
+  registeredAt_contains?: Maybe<String>;
+  registeredAt_not_contains?: Maybe<String>;
+  registeredAt_starts_with?: Maybe<String>;
+  registeredAt_not_starts_with?: Maybe<String>;
+  registeredAt_ends_with?: Maybe<String>;
+  registeredAt_not_ends_with?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  hitCount_not?: Maybe<Int>;
+  hitCount_in?: Maybe<Int[] | Int>;
+  hitCount_not_in?: Maybe<Int[] | Int>;
+  hitCount_lt?: Maybe<Int>;
+  hitCount_lte?: Maybe<Int>;
+  hitCount_gt?: Maybe<Int>;
+  hitCount_gte?: Maybe<Int>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<TodayHumorWhereInput[] | TodayHumorWhereInput>;
+  OR?: Maybe<TodayHumorWhereInput[] | TodayHumorWhereInput>;
+  NOT?: Maybe<TodayHumorWhereInput[] | TodayHumorWhereInput>;
+}
+
 export interface BobaeCreateInput {
   id?: Maybe<ID_Input>;
   title: String;
@@ -1150,6 +1818,34 @@ export interface ClienUpdateManyMutationInput {
   from?: Maybe<String>;
 }
 
+export interface CookCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link: String;
+  from: String;
+}
+
+export interface CookUpdateInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface CookUpdateManyMutationInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
 export interface EtolandCreateInput {
   id?: Maybe<ID_Input>;
   title: String;
@@ -1170,6 +1866,34 @@ export interface EtolandUpdateInput {
 }
 
 export interface EtolandUpdateManyMutationInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface GasengiCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link: String;
+  from: String;
+}
+
+export interface GasengiUpdateInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface GasengiUpdateManyMutationInput {
   title?: Maybe<String>;
   author?: Maybe<String>;
   registeredAt?: Maybe<String>;
@@ -1234,6 +1958,62 @@ export interface PostUpdateManyMutationInput {
   from?: Maybe<String>;
 }
 
+export interface SLRClubCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link: String;
+  from: String;
+}
+
+export interface SLRClubUpdateInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface SLRClubUpdateManyMutationInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface TodayHumorCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link: String;
+  from: String;
+}
+
+export interface TodayHumorUpdateInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface TodayHumorUpdateManyMutationInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
 export interface BobaeSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
@@ -1267,6 +2047,17 @@ export interface ClienSubscriptionWhereInput {
   NOT?: Maybe<ClienSubscriptionWhereInput[] | ClienSubscriptionWhereInput>;
 }
 
+export interface CookSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CookWhereInput>;
+  AND?: Maybe<CookSubscriptionWhereInput[] | CookSubscriptionWhereInput>;
+  OR?: Maybe<CookSubscriptionWhereInput[] | CookSubscriptionWhereInput>;
+  NOT?: Maybe<CookSubscriptionWhereInput[] | CookSubscriptionWhereInput>;
+}
+
 export interface EtolandSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
@@ -1276,6 +2067,17 @@ export interface EtolandSubscriptionWhereInput {
   AND?: Maybe<EtolandSubscriptionWhereInput[] | EtolandSubscriptionWhereInput>;
   OR?: Maybe<EtolandSubscriptionWhereInput[] | EtolandSubscriptionWhereInput>;
   NOT?: Maybe<EtolandSubscriptionWhereInput[] | EtolandSubscriptionWhereInput>;
+}
+
+export interface GasengiSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<GasengiWhereInput>;
+  AND?: Maybe<GasengiSubscriptionWhereInput[] | GasengiSubscriptionWhereInput>;
+  OR?: Maybe<GasengiSubscriptionWhereInput[] | GasengiSubscriptionWhereInput>;
+  NOT?: Maybe<GasengiSubscriptionWhereInput[] | GasengiSubscriptionWhereInput>;
 }
 
 export interface IlbeSubscriptionWhereInput {
@@ -1298,6 +2100,34 @@ export interface PostSubscriptionWhereInput {
   AND?: Maybe<PostSubscriptionWhereInput[] | PostSubscriptionWhereInput>;
   OR?: Maybe<PostSubscriptionWhereInput[] | PostSubscriptionWhereInput>;
   NOT?: Maybe<PostSubscriptionWhereInput[] | PostSubscriptionWhereInput>;
+}
+
+export interface SLRClubSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<SLRClubWhereInput>;
+  AND?: Maybe<SLRClubSubscriptionWhereInput[] | SLRClubSubscriptionWhereInput>;
+  OR?: Maybe<SLRClubSubscriptionWhereInput[] | SLRClubSubscriptionWhereInput>;
+  NOT?: Maybe<SLRClubSubscriptionWhereInput[] | SLRClubSubscriptionWhereInput>;
+}
+
+export interface TodayHumorSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TodayHumorWhereInput>;
+  AND?: Maybe<
+    TodayHumorSubscriptionWhereInput[] | TodayHumorSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    TodayHumorSubscriptionWhereInput[] | TodayHumorSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    TodayHumorSubscriptionWhereInput[] | TodayHumorSubscriptionWhereInput
+  >;
 }
 
 export interface NodeNode {
@@ -1633,6 +2463,108 @@ export interface AggregateClienSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface Cook {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface CookPromise extends Promise<Cook>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CookSubscription
+  extends Promise<AsyncIterator<Cook>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface CookNullablePromise
+  extends Promise<Cook | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CookConnection {
+  pageInfo: PageInfo;
+  edges: CookEdge[];
+}
+
+export interface CookConnectionPromise
+  extends Promise<CookConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CookEdge>>() => T;
+  aggregate: <T = AggregateCookPromise>() => T;
+}
+
+export interface CookConnectionSubscription
+  extends Promise<AsyncIterator<CookConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CookEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCookSubscription>() => T;
+}
+
+export interface CookEdge {
+  node: Cook;
+  cursor: String;
+}
+
+export interface CookEdgePromise extends Promise<CookEdge>, Fragmentable {
+  node: <T = CookPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface CookEdgeSubscription
+  extends Promise<AsyncIterator<CookEdge>>,
+    Fragmentable {
+  node: <T = CookSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateCook {
+  count: Int;
+}
+
+export interface AggregateCookPromise
+  extends Promise<AggregateCook>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCookSubscription
+  extends Promise<AsyncIterator<AggregateCook>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface Etoland {
   id: ID_Output;
   title: String;
@@ -1731,6 +2663,108 @@ export interface AggregateEtolandPromise
 
 export interface AggregateEtolandSubscription
   extends Promise<AsyncIterator<AggregateEtoland>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface Gasengi {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface GasengiPromise extends Promise<Gasengi>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface GasengiSubscription
+  extends Promise<AsyncIterator<Gasengi>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface GasengiNullablePromise
+  extends Promise<Gasengi | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface GasengiConnection {
+  pageInfo: PageInfo;
+  edges: GasengiEdge[];
+}
+
+export interface GasengiConnectionPromise
+  extends Promise<GasengiConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<GasengiEdge>>() => T;
+  aggregate: <T = AggregateGasengiPromise>() => T;
+}
+
+export interface GasengiConnectionSubscription
+  extends Promise<AsyncIterator<GasengiConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<GasengiEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateGasengiSubscription>() => T;
+}
+
+export interface GasengiEdge {
+  node: Gasengi;
+  cursor: String;
+}
+
+export interface GasengiEdgePromise extends Promise<GasengiEdge>, Fragmentable {
+  node: <T = GasengiPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface GasengiEdgeSubscription
+  extends Promise<AsyncIterator<GasengiEdge>>,
+    Fragmentable {
+  node: <T = GasengiSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateGasengi {
+  count: Int;
+}
+
+export interface AggregateGasengiPromise
+  extends Promise<AggregateGasengi>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateGasengiSubscription
+  extends Promise<AsyncIterator<AggregateGasengi>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -1939,6 +2973,212 @@ export interface AggregatePostSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface SLRClub {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface SLRClubPromise extends Promise<SLRClub>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface SLRClubSubscription
+  extends Promise<AsyncIterator<SLRClub>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface SLRClubNullablePromise
+  extends Promise<SLRClub | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface SLRClubConnection {
+  pageInfo: PageInfo;
+  edges: SLRClubEdge[];
+}
+
+export interface SLRClubConnectionPromise
+  extends Promise<SLRClubConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<SLRClubEdge>>() => T;
+  aggregate: <T = AggregateSLRClubPromise>() => T;
+}
+
+export interface SLRClubConnectionSubscription
+  extends Promise<AsyncIterator<SLRClubConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<SLRClubEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateSLRClubSubscription>() => T;
+}
+
+export interface SLRClubEdge {
+  node: SLRClub;
+  cursor: String;
+}
+
+export interface SLRClubEdgePromise extends Promise<SLRClubEdge>, Fragmentable {
+  node: <T = SLRClubPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface SLRClubEdgeSubscription
+  extends Promise<AsyncIterator<SLRClubEdge>>,
+    Fragmentable {
+  node: <T = SLRClubSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateSLRClub {
+  count: Int;
+}
+
+export interface AggregateSLRClubPromise
+  extends Promise<AggregateSLRClub>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateSLRClubSubscription
+  extends Promise<AsyncIterator<AggregateSLRClub>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TodayHumor {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface TodayHumorPromise extends Promise<TodayHumor>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface TodayHumorSubscription
+  extends Promise<AsyncIterator<TodayHumor>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface TodayHumorNullablePromise
+  extends Promise<TodayHumor | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface TodayHumorConnection {
+  pageInfo: PageInfo;
+  edges: TodayHumorEdge[];
+}
+
+export interface TodayHumorConnectionPromise
+  extends Promise<TodayHumorConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TodayHumorEdge>>() => T;
+  aggregate: <T = AggregateTodayHumorPromise>() => T;
+}
+
+export interface TodayHumorConnectionSubscription
+  extends Promise<AsyncIterator<TodayHumorConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TodayHumorEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTodayHumorSubscription>() => T;
+}
+
+export interface TodayHumorEdge {
+  node: TodayHumor;
+  cursor: String;
+}
+
+export interface TodayHumorEdgePromise
+  extends Promise<TodayHumorEdge>,
+    Fragmentable {
+  node: <T = TodayHumorPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface TodayHumorEdgeSubscription
+  extends Promise<AsyncIterator<TodayHumorEdge>>,
+    Fragmentable {
+  node: <T = TodayHumorSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateTodayHumor {
+  count: Int;
+}
+
+export interface AggregateTodayHumorPromise
+  extends Promise<AggregateTodayHumor>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTodayHumorSubscription
+  extends Promise<AsyncIterator<AggregateTodayHumor>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface BatchPayload {
   count: Long;
 }
@@ -2141,6 +3381,68 @@ export interface ClienPreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
+export interface CookSubscriptionPayload {
+  mutation: MutationType;
+  node: Cook;
+  updatedFields: String[];
+  previousValues: CookPreviousValues;
+}
+
+export interface CookSubscriptionPayloadPromise
+  extends Promise<CookSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CookPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CookPreviousValuesPromise>() => T;
+}
+
+export interface CookSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CookSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CookSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CookPreviousValuesSubscription>() => T;
+}
+
+export interface CookPreviousValues {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface CookPreviousValuesPromise
+  extends Promise<CookPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CookPreviousValuesSubscription
+  extends Promise<AsyncIterator<CookPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
 export interface EtolandSubscriptionPayload {
   mutation: MutationType;
   node: Etoland;
@@ -2192,6 +3494,68 @@ export interface EtolandPreviousValuesPromise
 
 export interface EtolandPreviousValuesSubscription
   extends Promise<AsyncIterator<EtolandPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface GasengiSubscriptionPayload {
+  mutation: MutationType;
+  node: Gasengi;
+  updatedFields: String[];
+  previousValues: GasengiPreviousValues;
+}
+
+export interface GasengiSubscriptionPayloadPromise
+  extends Promise<GasengiSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = GasengiPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = GasengiPreviousValuesPromise>() => T;
+}
+
+export interface GasengiSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<GasengiSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = GasengiSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = GasengiPreviousValuesSubscription>() => T;
+}
+
+export interface GasengiPreviousValues {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface GasengiPreviousValuesPromise
+  extends Promise<GasengiPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface GasengiPreviousValuesSubscription
+  extends Promise<AsyncIterator<GasengiPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   title: () => Promise<AsyncIterator<String>>;
@@ -2327,6 +3691,130 @@ export interface PostPreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
+export interface SLRClubSubscriptionPayload {
+  mutation: MutationType;
+  node: SLRClub;
+  updatedFields: String[];
+  previousValues: SLRClubPreviousValues;
+}
+
+export interface SLRClubSubscriptionPayloadPromise
+  extends Promise<SLRClubSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = SLRClubPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = SLRClubPreviousValuesPromise>() => T;
+}
+
+export interface SLRClubSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<SLRClubSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = SLRClubSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = SLRClubPreviousValuesSubscription>() => T;
+}
+
+export interface SLRClubPreviousValues {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface SLRClubPreviousValuesPromise
+  extends Promise<SLRClubPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface SLRClubPreviousValuesSubscription
+  extends Promise<AsyncIterator<SLRClubPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface TodayHumorSubscriptionPayload {
+  mutation: MutationType;
+  node: TodayHumor;
+  updatedFields: String[];
+  previousValues: TodayHumorPreviousValues;
+}
+
+export interface TodayHumorSubscriptionPayloadPromise
+  extends Promise<TodayHumorSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TodayHumorPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TodayHumorPreviousValuesPromise>() => T;
+}
+
+export interface TodayHumorSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TodayHumorSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TodayHumorSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TodayHumorPreviousValuesSubscription>() => T;
+}
+
+export interface TodayHumorPreviousValues {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface TodayHumorPreviousValuesPromise
+  extends Promise<TodayHumorPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface TodayHumorPreviousValuesSubscription
+  extends Promise<AsyncIterator<TodayHumorPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
 */
@@ -2387,6 +3875,22 @@ export const models: Model[] = [
   },
   {
     name: "Etoland",
+    embedded: false
+  },
+  {
+    name: "SLRClub",
+    embedded: false
+  },
+  {
+    name: "TodayHumor",
+    embedded: false
+  },
+  {
+    name: "Cook",
+    embedded: false
+  },
+  {
+    name: "Gasengi",
     embedded: false
   }
 ];

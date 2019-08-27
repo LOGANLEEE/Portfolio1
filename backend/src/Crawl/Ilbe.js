@@ -34,6 +34,7 @@ function fetching() {
             await prisma.createPost(data);
             await prisma.createIlbe(data);
         }
+        info("£££ ILBE Done");
     }
 }
 

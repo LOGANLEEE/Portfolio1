@@ -8,7 +8,7 @@ const info = console.info;
 export default async function DogDrip() {
     const titleList = [];
     const linkList = [];
-    const url = 'https://www.dogdrip.net/index.php?mid=dogdrip&page=1';
+    const url = 'https://www.dogdrip.net/dogdrip';
 
     await axios
         .get(url)

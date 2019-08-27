@@ -66,3 +66,46 @@ type Etoland {
     createdAt: DateTime! @createdAt
 }
 
+type SLRClub {
+    id: ID! @id
+    title: String!
+    author: String
+    registeredAt: String
+    hitCount: Int
+    link: String!
+    from: String!
+    createdAt: DateTime! @createdAt
+}
+
+type TodayHumor {
+    id: ID! @id
+    title: String!
+    author: String
+    registeredAt: String
+    hitCount: Int
+    link: String!
+    from: String!
+    createdAt: DateTime! @createdAt
+}
+
+type Cook {
+    id: ID! @id
+    title: String!
+    author: String
+    registeredAt: String
+    hitCount: Int
+    link: String!
+    from: String!
+    createdAt: DateTime! @createdAt
+}
+
+type Gasengi {
+    id: ID! @id
+    title: String!
+    author: String
+    registeredAt: String
+    hitCount: Int
+    link: String!
+    from: String!
+    createdAt: DateTime! @createdAt
+}

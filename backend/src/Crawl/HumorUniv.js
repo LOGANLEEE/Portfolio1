@@ -20,12 +20,6 @@ export default async function fetching() {
             }
         })
         .catch((err) => info(err));
-    // #cnts_list_new > div:nth-child(1) > table:nth-child(3) > tbody > tr:nth-child(20)
-    // #cnts_list_new > div:nth-child(1) > table:nth-child(3) > tbody > tr:nth-child(1) > td.li_sbj > a
-    // #cnts_list_new > div:nth-child(1) > table:nth-child(3) > tbody > tr:nth-child(1) > td.li_date > span.w_time
-    // #cnts_list_new > div:nth-child(1) > table:nth-child(3) > tbody > tr:nth-child(1) > td.li_icn > table > tbody > tr > td.g6 > span > span
-    // #cnts_list_new > div:nth-child(1) > table:nth-child(3) > tbody > tr:nth-child(1) > td:nth-child(5)
-    // #li_chk_pds-886726 > td:nth-child(5)
 
     function Processor(html) {
         // 1~20
@@ -37,7 +31,7 @@ export default async function fetching() {
             const time = $(target + ' > td.li_date > span.w_time').text();
             const writer = $(
                 target +
-                    ' > td.li_icn > table > tbody > tr > td.g6 > span > span',
+                ' > td.li_icn > table > tbody > tr > td.g6 > span > span',
             ).text();
             const count = $(target + ' > td:nth-child(5)').text();
 

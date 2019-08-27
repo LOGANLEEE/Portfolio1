@@ -14,7 +14,9 @@ function fetching() {
 
     async function Processor(html) {
         // 6 ~ 35.
-        for (let i = 7; i < 37; i++) {
+        // #container > div.contents > div.left_cont > div.tbl_box > table > tbody > tr:nth-child(6)
+        // #container > div.contents > div.left_cont > div.tbl_box > table > tbody > tr:nth-child(35)
+        for (let i = 6; i < 36; i++) {
             const target = `#container > div.contents > div.left_cont > div.tbl_box > table > tbody > tr:nth-child(${i})`;
             const $ = cheerio.load(html);
             const link = $(target + ' > td.t_left > a.bullpenbox').attr('href');
@@ -35,9 +37,8 @@ function fetching() {
 
             await prisma.createPost(data);
             await prisma.createBullpen(data);
-
-
         }
+        info("£££ MLB Done");
     }
     return true;
 }
