@@ -19,7 +19,19 @@ type AggregateCook {
   count: Int!
 }
 
+type AggregateDogDrip {
+  count: Int!
+}
+
+type AggregateErrorLog {
+  count: Int!
+}
+
 type AggregateEtoland {
+  count: Int!
+}
+
+type AggregateFmKorea {
   count: Int!
 }
 
@@ -31,11 +43,31 @@ type AggregateIlbe {
   count: Int!
 }
 
+type AggregateInstiz {
+  count: Int!
+}
+
 type AggregatePost {
   count: Int!
 }
 
+type AggregatePpompPu {
+  count: Int!
+}
+
+type AggregatePrePost {
+  count: Int!
+}
+
+type AggregateRuliWeb {
+  count: Int!
+}
+
 type AggregateSLRClub {
+  count: Int!
+}
+
+type AggregateTheQoo {
   count: Int!
 }
 
@@ -881,6 +913,374 @@ input CookWhereUniqueInput {
 
 scalar DateTime
 
+type DogDrip {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type DogDripConnection {
+  pageInfo: PageInfo!
+  edges: [DogDripEdge]!
+  aggregate: AggregateDogDrip!
+}
+
+input DogDripCreateInput {
+  id: ID
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+}
+
+type DogDripEdge {
+  node: DogDrip!
+  cursor: String!
+}
+
+enum DogDripOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  author_ASC
+  author_DESC
+  registeredAt_ASC
+  registeredAt_DESC
+  hitCount_ASC
+  hitCount_DESC
+  link_ASC
+  link_DESC
+  from_ASC
+  from_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type DogDripPreviousValues {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type DogDripSubscriptionPayload {
+  mutation: MutationType!
+  node: DogDrip
+  updatedFields: [String!]
+  previousValues: DogDripPreviousValues
+}
+
+input DogDripSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: DogDripWhereInput
+  AND: [DogDripSubscriptionWhereInput!]
+  OR: [DogDripSubscriptionWhereInput!]
+  NOT: [DogDripSubscriptionWhereInput!]
+}
+
+input DogDripUpdateInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input DogDripUpdateManyMutationInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input DogDripWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  author: String
+  author_not: String
+  author_in: [String!]
+  author_not_in: [String!]
+  author_lt: String
+  author_lte: String
+  author_gt: String
+  author_gte: String
+  author_contains: String
+  author_not_contains: String
+  author_starts_with: String
+  author_not_starts_with: String
+  author_ends_with: String
+  author_not_ends_with: String
+  registeredAt: String
+  registeredAt_not: String
+  registeredAt_in: [String!]
+  registeredAt_not_in: [String!]
+  registeredAt_lt: String
+  registeredAt_lte: String
+  registeredAt_gt: String
+  registeredAt_gte: String
+  registeredAt_contains: String
+  registeredAt_not_contains: String
+  registeredAt_starts_with: String
+  registeredAt_not_starts_with: String
+  registeredAt_ends_with: String
+  registeredAt_not_ends_with: String
+  hitCount: Int
+  hitCount_not: Int
+  hitCount_in: [Int!]
+  hitCount_not_in: [Int!]
+  hitCount_lt: Int
+  hitCount_lte: Int
+  hitCount_gt: Int
+  hitCount_gte: Int
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [DogDripWhereInput!]
+  OR: [DogDripWhereInput!]
+  NOT: [DogDripWhereInput!]
+}
+
+input DogDripWhereUniqueInput {
+  id: ID
+}
+
+type ErrorLog {
+  id: ID!
+  createdAt: DateTime!
+  reason: String!
+  from: String!
+  isRead: Boolean!
+  type: String!
+}
+
+type ErrorLogConnection {
+  pageInfo: PageInfo!
+  edges: [ErrorLogEdge]!
+  aggregate: AggregateErrorLog!
+}
+
+input ErrorLogCreateInput {
+  id: ID
+  reason: String!
+  from: String!
+  isRead: Boolean!
+  type: String!
+}
+
+type ErrorLogEdge {
+  node: ErrorLog!
+  cursor: String!
+}
+
+enum ErrorLogOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  reason_ASC
+  reason_DESC
+  from_ASC
+  from_DESC
+  isRead_ASC
+  isRead_DESC
+  type_ASC
+  type_DESC
+}
+
+type ErrorLogPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  reason: String!
+  from: String!
+  isRead: Boolean!
+  type: String!
+}
+
+type ErrorLogSubscriptionPayload {
+  mutation: MutationType!
+  node: ErrorLog
+  updatedFields: [String!]
+  previousValues: ErrorLogPreviousValues
+}
+
+input ErrorLogSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ErrorLogWhereInput
+  AND: [ErrorLogSubscriptionWhereInput!]
+  OR: [ErrorLogSubscriptionWhereInput!]
+  NOT: [ErrorLogSubscriptionWhereInput!]
+}
+
+input ErrorLogUpdateInput {
+  reason: String
+  from: String
+  isRead: Boolean
+  type: String
+}
+
+input ErrorLogUpdateManyMutationInput {
+  reason: String
+  from: String
+  isRead: Boolean
+  type: String
+}
+
+input ErrorLogWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  reason: String
+  reason_not: String
+  reason_in: [String!]
+  reason_not_in: [String!]
+  reason_lt: String
+  reason_lte: String
+  reason_gt: String
+  reason_gte: String
+  reason_contains: String
+  reason_not_contains: String
+  reason_starts_with: String
+  reason_not_starts_with: String
+  reason_ends_with: String
+  reason_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  isRead: Boolean
+  isRead_not: Boolean
+  type: String
+  type_not: String
+  type_in: [String!]
+  type_not_in: [String!]
+  type_lt: String
+  type_lte: String
+  type_gt: String
+  type_gte: String
+  type_contains: String
+  type_not_contains: String
+  type_starts_with: String
+  type_not_starts_with: String
+  type_ends_with: String
+  type_not_ends_with: String
+  AND: [ErrorLogWhereInput!]
+  OR: [ErrorLogWhereInput!]
+  NOT: [ErrorLogWhereInput!]
+}
+
+input ErrorLogWhereUniqueInput {
+  id: ID
+}
+
 type Etoland {
   id: ID!
   title: String!
@@ -1086,6 +1486,214 @@ input EtolandWhereInput {
 }
 
 input EtolandWhereUniqueInput {
+  id: ID
+}
+
+type FmKorea {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type FmKoreaConnection {
+  pageInfo: PageInfo!
+  edges: [FmKoreaEdge]!
+  aggregate: AggregateFmKorea!
+}
+
+input FmKoreaCreateInput {
+  id: ID
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+}
+
+type FmKoreaEdge {
+  node: FmKorea!
+  cursor: String!
+}
+
+enum FmKoreaOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  author_ASC
+  author_DESC
+  registeredAt_ASC
+  registeredAt_DESC
+  hitCount_ASC
+  hitCount_DESC
+  link_ASC
+  link_DESC
+  from_ASC
+  from_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type FmKoreaPreviousValues {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type FmKoreaSubscriptionPayload {
+  mutation: MutationType!
+  node: FmKorea
+  updatedFields: [String!]
+  previousValues: FmKoreaPreviousValues
+}
+
+input FmKoreaSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: FmKoreaWhereInput
+  AND: [FmKoreaSubscriptionWhereInput!]
+  OR: [FmKoreaSubscriptionWhereInput!]
+  NOT: [FmKoreaSubscriptionWhereInput!]
+}
+
+input FmKoreaUpdateInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input FmKoreaUpdateManyMutationInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input FmKoreaWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  author: String
+  author_not: String
+  author_in: [String!]
+  author_not_in: [String!]
+  author_lt: String
+  author_lte: String
+  author_gt: String
+  author_gte: String
+  author_contains: String
+  author_not_contains: String
+  author_starts_with: String
+  author_not_starts_with: String
+  author_ends_with: String
+  author_not_ends_with: String
+  registeredAt: String
+  registeredAt_not: String
+  registeredAt_in: [String!]
+  registeredAt_not_in: [String!]
+  registeredAt_lt: String
+  registeredAt_lte: String
+  registeredAt_gt: String
+  registeredAt_gte: String
+  registeredAt_contains: String
+  registeredAt_not_contains: String
+  registeredAt_starts_with: String
+  registeredAt_not_starts_with: String
+  registeredAt_ends_with: String
+  registeredAt_not_ends_with: String
+  hitCount: Int
+  hitCount_not: Int
+  hitCount_in: [Int!]
+  hitCount_not_in: [Int!]
+  hitCount_lt: Int
+  hitCount_lte: Int
+  hitCount_gt: Int
+  hitCount_gte: Int
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [FmKoreaWhereInput!]
+  OR: [FmKoreaWhereInput!]
+  NOT: [FmKoreaWhereInput!]
+}
+
+input FmKoreaWhereUniqueInput {
   id: ID
 }
 
@@ -1505,6 +2113,214 @@ input IlbeWhereUniqueInput {
   id: ID
 }
 
+type Instiz {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type InstizConnection {
+  pageInfo: PageInfo!
+  edges: [InstizEdge]!
+  aggregate: AggregateInstiz!
+}
+
+input InstizCreateInput {
+  id: ID
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+}
+
+type InstizEdge {
+  node: Instiz!
+  cursor: String!
+}
+
+enum InstizOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  author_ASC
+  author_DESC
+  registeredAt_ASC
+  registeredAt_DESC
+  hitCount_ASC
+  hitCount_DESC
+  link_ASC
+  link_DESC
+  from_ASC
+  from_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type InstizPreviousValues {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type InstizSubscriptionPayload {
+  mutation: MutationType!
+  node: Instiz
+  updatedFields: [String!]
+  previousValues: InstizPreviousValues
+}
+
+input InstizSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: InstizWhereInput
+  AND: [InstizSubscriptionWhereInput!]
+  OR: [InstizSubscriptionWhereInput!]
+  NOT: [InstizSubscriptionWhereInput!]
+}
+
+input InstizUpdateInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input InstizUpdateManyMutationInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input InstizWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  author: String
+  author_not: String
+  author_in: [String!]
+  author_not_in: [String!]
+  author_lt: String
+  author_lte: String
+  author_gt: String
+  author_gte: String
+  author_contains: String
+  author_not_contains: String
+  author_starts_with: String
+  author_not_starts_with: String
+  author_ends_with: String
+  author_not_ends_with: String
+  registeredAt: String
+  registeredAt_not: String
+  registeredAt_in: [String!]
+  registeredAt_not_in: [String!]
+  registeredAt_lt: String
+  registeredAt_lte: String
+  registeredAt_gt: String
+  registeredAt_gte: String
+  registeredAt_contains: String
+  registeredAt_not_contains: String
+  registeredAt_starts_with: String
+  registeredAt_not_starts_with: String
+  registeredAt_ends_with: String
+  registeredAt_not_ends_with: String
+  hitCount: Int
+  hitCount_not: Int
+  hitCount_in: [Int!]
+  hitCount_not_in: [Int!]
+  hitCount_lt: Int
+  hitCount_lte: Int
+  hitCount_gt: Int
+  hitCount_gte: Int
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [InstizWhereInput!]
+  OR: [InstizWhereInput!]
+  NOT: [InstizWhereInput!]
+}
+
+input InstizWhereUniqueInput {
+  id: ID
+}
+
 scalar Long
 
 type Mutation {
@@ -1532,12 +2348,30 @@ type Mutation {
   upsertCook(where: CookWhereUniqueInput!, create: CookCreateInput!, update: CookUpdateInput!): Cook!
   deleteCook(where: CookWhereUniqueInput!): Cook
   deleteManyCooks(where: CookWhereInput): BatchPayload!
+  createDogDrip(data: DogDripCreateInput!): DogDrip!
+  updateDogDrip(data: DogDripUpdateInput!, where: DogDripWhereUniqueInput!): DogDrip
+  updateManyDogDrips(data: DogDripUpdateManyMutationInput!, where: DogDripWhereInput): BatchPayload!
+  upsertDogDrip(where: DogDripWhereUniqueInput!, create: DogDripCreateInput!, update: DogDripUpdateInput!): DogDrip!
+  deleteDogDrip(where: DogDripWhereUniqueInput!): DogDrip
+  deleteManyDogDrips(where: DogDripWhereInput): BatchPayload!
+  createErrorLog(data: ErrorLogCreateInput!): ErrorLog!
+  updateErrorLog(data: ErrorLogUpdateInput!, where: ErrorLogWhereUniqueInput!): ErrorLog
+  updateManyErrorLogs(data: ErrorLogUpdateManyMutationInput!, where: ErrorLogWhereInput): BatchPayload!
+  upsertErrorLog(where: ErrorLogWhereUniqueInput!, create: ErrorLogCreateInput!, update: ErrorLogUpdateInput!): ErrorLog!
+  deleteErrorLog(where: ErrorLogWhereUniqueInput!): ErrorLog
+  deleteManyErrorLogs(where: ErrorLogWhereInput): BatchPayload!
   createEtoland(data: EtolandCreateInput!): Etoland!
   updateEtoland(data: EtolandUpdateInput!, where: EtolandWhereUniqueInput!): Etoland
   updateManyEtolands(data: EtolandUpdateManyMutationInput!, where: EtolandWhereInput): BatchPayload!
   upsertEtoland(where: EtolandWhereUniqueInput!, create: EtolandCreateInput!, update: EtolandUpdateInput!): Etoland!
   deleteEtoland(where: EtolandWhereUniqueInput!): Etoland
   deleteManyEtolands(where: EtolandWhereInput): BatchPayload!
+  createFmKorea(data: FmKoreaCreateInput!): FmKorea!
+  updateFmKorea(data: FmKoreaUpdateInput!, where: FmKoreaWhereUniqueInput!): FmKorea
+  updateManyFmKoreas(data: FmKoreaUpdateManyMutationInput!, where: FmKoreaWhereInput): BatchPayload!
+  upsertFmKorea(where: FmKoreaWhereUniqueInput!, create: FmKoreaCreateInput!, update: FmKoreaUpdateInput!): FmKorea!
+  deleteFmKorea(where: FmKoreaWhereUniqueInput!): FmKorea
+  deleteManyFmKoreas(where: FmKoreaWhereInput): BatchPayload!
   createGasengi(data: GasengiCreateInput!): Gasengi!
   updateGasengi(data: GasengiUpdateInput!, where: GasengiWhereUniqueInput!): Gasengi
   updateManyGasengis(data: GasengiUpdateManyMutationInput!, where: GasengiWhereInput): BatchPayload!
@@ -1550,18 +2384,48 @@ type Mutation {
   upsertIlbe(where: IlbeWhereUniqueInput!, create: IlbeCreateInput!, update: IlbeUpdateInput!): Ilbe!
   deleteIlbe(where: IlbeWhereUniqueInput!): Ilbe
   deleteManyIlbes(where: IlbeWhereInput): BatchPayload!
+  createInstiz(data: InstizCreateInput!): Instiz!
+  updateInstiz(data: InstizUpdateInput!, where: InstizWhereUniqueInput!): Instiz
+  updateManyInstizes(data: InstizUpdateManyMutationInput!, where: InstizWhereInput): BatchPayload!
+  upsertInstiz(where: InstizWhereUniqueInput!, create: InstizCreateInput!, update: InstizUpdateInput!): Instiz!
+  deleteInstiz(where: InstizWhereUniqueInput!): Instiz
+  deleteManyInstizes(where: InstizWhereInput): BatchPayload!
   createPost(data: PostCreateInput!): Post!
   updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateManyPosts(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
   upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
   deletePost(where: PostWhereUniqueInput!): Post
   deleteManyPosts(where: PostWhereInput): BatchPayload!
+  createPpompPu(data: PpompPuCreateInput!): PpompPu!
+  updatePpompPu(data: PpompPuUpdateInput!, where: PpompPuWhereUniqueInput!): PpompPu
+  updateManyPpompPus(data: PpompPuUpdateManyMutationInput!, where: PpompPuWhereInput): BatchPayload!
+  upsertPpompPu(where: PpompPuWhereUniqueInput!, create: PpompPuCreateInput!, update: PpompPuUpdateInput!): PpompPu!
+  deletePpompPu(where: PpompPuWhereUniqueInput!): PpompPu
+  deleteManyPpompPus(where: PpompPuWhereInput): BatchPayload!
+  createPrePost(data: PrePostCreateInput!): PrePost!
+  updatePrePost(data: PrePostUpdateInput!, where: PrePostWhereUniqueInput!): PrePost
+  updateManyPrePosts(data: PrePostUpdateManyMutationInput!, where: PrePostWhereInput): BatchPayload!
+  upsertPrePost(where: PrePostWhereUniqueInput!, create: PrePostCreateInput!, update: PrePostUpdateInput!): PrePost!
+  deletePrePost(where: PrePostWhereUniqueInput!): PrePost
+  deleteManyPrePosts(where: PrePostWhereInput): BatchPayload!
+  createRuliWeb(data: RuliWebCreateInput!): RuliWeb!
+  updateRuliWeb(data: RuliWebUpdateInput!, where: RuliWebWhereUniqueInput!): RuliWeb
+  updateManyRuliWebs(data: RuliWebUpdateManyMutationInput!, where: RuliWebWhereInput): BatchPayload!
+  upsertRuliWeb(where: RuliWebWhereUniqueInput!, create: RuliWebCreateInput!, update: RuliWebUpdateInput!): RuliWeb!
+  deleteRuliWeb(where: RuliWebWhereUniqueInput!): RuliWeb
+  deleteManyRuliWebs(where: RuliWebWhereInput): BatchPayload!
   createSLRClub(data: SLRClubCreateInput!): SLRClub!
   updateSLRClub(data: SLRClubUpdateInput!, where: SLRClubWhereUniqueInput!): SLRClub
   updateManySLRClubs(data: SLRClubUpdateManyMutationInput!, where: SLRClubWhereInput): BatchPayload!
   upsertSLRClub(where: SLRClubWhereUniqueInput!, create: SLRClubCreateInput!, update: SLRClubUpdateInput!): SLRClub!
   deleteSLRClub(where: SLRClubWhereUniqueInput!): SLRClub
   deleteManySLRClubs(where: SLRClubWhereInput): BatchPayload!
+  createTheQoo(data: TheQooCreateInput!): TheQoo!
+  updateTheQoo(data: TheQooUpdateInput!, where: TheQooWhereUniqueInput!): TheQoo
+  updateManyTheQoos(data: TheQooUpdateManyMutationInput!, where: TheQooWhereInput): BatchPayload!
+  upsertTheQoo(where: TheQooWhereUniqueInput!, create: TheQooCreateInput!, update: TheQooUpdateInput!): TheQoo!
+  deleteTheQoo(where: TheQooWhereUniqueInput!): TheQoo
+  deleteManyTheQoos(where: TheQooWhereInput): BatchPayload!
   createTodayHumor(data: TodayHumorCreateInput!): TodayHumor!
   updateTodayHumor(data: TodayHumorUpdateInput!, where: TodayHumorWhereUniqueInput!): TodayHumor
   updateManyTodayHumors(data: TodayHumorUpdateManyMutationInput!, where: TodayHumorWhereInput): BatchPayload!
@@ -1795,6 +2659,422 @@ input PostWhereUniqueInput {
   id: ID
 }
 
+type PpompPu {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type PpompPuConnection {
+  pageInfo: PageInfo!
+  edges: [PpompPuEdge]!
+  aggregate: AggregatePpompPu!
+}
+
+input PpompPuCreateInput {
+  id: ID
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+}
+
+type PpompPuEdge {
+  node: PpompPu!
+  cursor: String!
+}
+
+enum PpompPuOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  author_ASC
+  author_DESC
+  registeredAt_ASC
+  registeredAt_DESC
+  hitCount_ASC
+  hitCount_DESC
+  link_ASC
+  link_DESC
+  from_ASC
+  from_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type PpompPuPreviousValues {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type PpompPuSubscriptionPayload {
+  mutation: MutationType!
+  node: PpompPu
+  updatedFields: [String!]
+  previousValues: PpompPuPreviousValues
+}
+
+input PpompPuSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: PpompPuWhereInput
+  AND: [PpompPuSubscriptionWhereInput!]
+  OR: [PpompPuSubscriptionWhereInput!]
+  NOT: [PpompPuSubscriptionWhereInput!]
+}
+
+input PpompPuUpdateInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input PpompPuUpdateManyMutationInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input PpompPuWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  author: String
+  author_not: String
+  author_in: [String!]
+  author_not_in: [String!]
+  author_lt: String
+  author_lte: String
+  author_gt: String
+  author_gte: String
+  author_contains: String
+  author_not_contains: String
+  author_starts_with: String
+  author_not_starts_with: String
+  author_ends_with: String
+  author_not_ends_with: String
+  registeredAt: String
+  registeredAt_not: String
+  registeredAt_in: [String!]
+  registeredAt_not_in: [String!]
+  registeredAt_lt: String
+  registeredAt_lte: String
+  registeredAt_gt: String
+  registeredAt_gte: String
+  registeredAt_contains: String
+  registeredAt_not_contains: String
+  registeredAt_starts_with: String
+  registeredAt_not_starts_with: String
+  registeredAt_ends_with: String
+  registeredAt_not_ends_with: String
+  hitCount: Int
+  hitCount_not: Int
+  hitCount_in: [Int!]
+  hitCount_not_in: [Int!]
+  hitCount_lt: Int
+  hitCount_lte: Int
+  hitCount_gt: Int
+  hitCount_gte: Int
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [PpompPuWhereInput!]
+  OR: [PpompPuWhereInput!]
+  NOT: [PpompPuWhereInput!]
+}
+
+input PpompPuWhereUniqueInput {
+  id: ID
+}
+
+type PrePost {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type PrePostConnection {
+  pageInfo: PageInfo!
+  edges: [PrePostEdge]!
+  aggregate: AggregatePrePost!
+}
+
+input PrePostCreateInput {
+  id: ID
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+}
+
+type PrePostEdge {
+  node: PrePost!
+  cursor: String!
+}
+
+enum PrePostOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  author_ASC
+  author_DESC
+  registeredAt_ASC
+  registeredAt_DESC
+  hitCount_ASC
+  hitCount_DESC
+  link_ASC
+  link_DESC
+  from_ASC
+  from_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type PrePostPreviousValues {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type PrePostSubscriptionPayload {
+  mutation: MutationType!
+  node: PrePost
+  updatedFields: [String!]
+  previousValues: PrePostPreviousValues
+}
+
+input PrePostSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: PrePostWhereInput
+  AND: [PrePostSubscriptionWhereInput!]
+  OR: [PrePostSubscriptionWhereInput!]
+  NOT: [PrePostSubscriptionWhereInput!]
+}
+
+input PrePostUpdateInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input PrePostUpdateManyMutationInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input PrePostWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  author: String
+  author_not: String
+  author_in: [String!]
+  author_not_in: [String!]
+  author_lt: String
+  author_lte: String
+  author_gt: String
+  author_gte: String
+  author_contains: String
+  author_not_contains: String
+  author_starts_with: String
+  author_not_starts_with: String
+  author_ends_with: String
+  author_not_ends_with: String
+  registeredAt: String
+  registeredAt_not: String
+  registeredAt_in: [String!]
+  registeredAt_not_in: [String!]
+  registeredAt_lt: String
+  registeredAt_lte: String
+  registeredAt_gt: String
+  registeredAt_gte: String
+  registeredAt_contains: String
+  registeredAt_not_contains: String
+  registeredAt_starts_with: String
+  registeredAt_not_starts_with: String
+  registeredAt_ends_with: String
+  registeredAt_not_ends_with: String
+  hitCount: Int
+  hitCount_not: Int
+  hitCount_in: [Int!]
+  hitCount_not_in: [Int!]
+  hitCount_lt: Int
+  hitCount_lte: Int
+  hitCount_gt: Int
+  hitCount_gte: Int
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [PrePostWhereInput!]
+  OR: [PrePostWhereInput!]
+  NOT: [PrePostWhereInput!]
+}
+
+input PrePostWhereUniqueInput {
+  id: ID
+}
+
 type Query {
   bobae(where: BobaeWhereUniqueInput!): Bobae
   bobaes(where: BobaeWhereInput, orderBy: BobaeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bobae]!
@@ -1808,25 +3088,257 @@ type Query {
   cook(where: CookWhereUniqueInput!): Cook
   cooks(where: CookWhereInput, orderBy: CookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Cook]!
   cooksConnection(where: CookWhereInput, orderBy: CookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CookConnection!
+  dogDrip(where: DogDripWhereUniqueInput!): DogDrip
+  dogDrips(where: DogDripWhereInput, orderBy: DogDripOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [DogDrip]!
+  dogDripsConnection(where: DogDripWhereInput, orderBy: DogDripOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): DogDripConnection!
+  errorLog(where: ErrorLogWhereUniqueInput!): ErrorLog
+  errorLogs(where: ErrorLogWhereInput, orderBy: ErrorLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ErrorLog]!
+  errorLogsConnection(where: ErrorLogWhereInput, orderBy: ErrorLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ErrorLogConnection!
   etoland(where: EtolandWhereUniqueInput!): Etoland
   etolands(where: EtolandWhereInput, orderBy: EtolandOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Etoland]!
   etolandsConnection(where: EtolandWhereInput, orderBy: EtolandOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): EtolandConnection!
+  fmKorea(where: FmKoreaWhereUniqueInput!): FmKorea
+  fmKoreas(where: FmKoreaWhereInput, orderBy: FmKoreaOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [FmKorea]!
+  fmKoreasConnection(where: FmKoreaWhereInput, orderBy: FmKoreaOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): FmKoreaConnection!
   gasengi(where: GasengiWhereUniqueInput!): Gasengi
   gasengis(where: GasengiWhereInput, orderBy: GasengiOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Gasengi]!
   gasengisConnection(where: GasengiWhereInput, orderBy: GasengiOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): GasengiConnection!
   ilbe(where: IlbeWhereUniqueInput!): Ilbe
   ilbes(where: IlbeWhereInput, orderBy: IlbeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Ilbe]!
   ilbesConnection(where: IlbeWhereInput, orderBy: IlbeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): IlbeConnection!
+  instiz(where: InstizWhereUniqueInput!): Instiz
+  instizes(where: InstizWhereInput, orderBy: InstizOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Instiz]!
+  instizesConnection(where: InstizWhereInput, orderBy: InstizOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): InstizConnection!
   post(where: PostWhereUniqueInput!): Post
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
   postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
+  ppompPu(where: PpompPuWhereUniqueInput!): PpompPu
+  ppompPus(where: PpompPuWhereInput, orderBy: PpompPuOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PpompPu]!
+  ppompPusConnection(where: PpompPuWhereInput, orderBy: PpompPuOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PpompPuConnection!
+  prePost(where: PrePostWhereUniqueInput!): PrePost
+  prePosts(where: PrePostWhereInput, orderBy: PrePostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PrePost]!
+  prePostsConnection(where: PrePostWhereInput, orderBy: PrePostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PrePostConnection!
+  ruliWeb(where: RuliWebWhereUniqueInput!): RuliWeb
+  ruliWebs(where: RuliWebWhereInput, orderBy: RuliWebOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [RuliWeb]!
+  ruliWebsConnection(where: RuliWebWhereInput, orderBy: RuliWebOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RuliWebConnection!
   sLRClub(where: SLRClubWhereUniqueInput!): SLRClub
   sLRClubs(where: SLRClubWhereInput, orderBy: SLRClubOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SLRClub]!
   sLRClubsConnection(where: SLRClubWhereInput, orderBy: SLRClubOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SLRClubConnection!
+  theQoo(where: TheQooWhereUniqueInput!): TheQoo
+  theQoos(where: TheQooWhereInput, orderBy: TheQooOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TheQoo]!
+  theQoosConnection(where: TheQooWhereInput, orderBy: TheQooOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TheQooConnection!
   todayHumor(where: TodayHumorWhereUniqueInput!): TodayHumor
   todayHumors(where: TodayHumorWhereInput, orderBy: TodayHumorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TodayHumor]!
   todayHumorsConnection(where: TodayHumorWhereInput, orderBy: TodayHumorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TodayHumorConnection!
   node(id: ID!): Node
+}
+
+type RuliWeb {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type RuliWebConnection {
+  pageInfo: PageInfo!
+  edges: [RuliWebEdge]!
+  aggregate: AggregateRuliWeb!
+}
+
+input RuliWebCreateInput {
+  id: ID
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+}
+
+type RuliWebEdge {
+  node: RuliWeb!
+  cursor: String!
+}
+
+enum RuliWebOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  author_ASC
+  author_DESC
+  registeredAt_ASC
+  registeredAt_DESC
+  hitCount_ASC
+  hitCount_DESC
+  link_ASC
+  link_DESC
+  from_ASC
+  from_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type RuliWebPreviousValues {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type RuliWebSubscriptionPayload {
+  mutation: MutationType!
+  node: RuliWeb
+  updatedFields: [String!]
+  previousValues: RuliWebPreviousValues
+}
+
+input RuliWebSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: RuliWebWhereInput
+  AND: [RuliWebSubscriptionWhereInput!]
+  OR: [RuliWebSubscriptionWhereInput!]
+  NOT: [RuliWebSubscriptionWhereInput!]
+}
+
+input RuliWebUpdateInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input RuliWebUpdateManyMutationInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input RuliWebWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  author: String
+  author_not: String
+  author_in: [String!]
+  author_not_in: [String!]
+  author_lt: String
+  author_lte: String
+  author_gt: String
+  author_gte: String
+  author_contains: String
+  author_not_contains: String
+  author_starts_with: String
+  author_not_starts_with: String
+  author_ends_with: String
+  author_not_ends_with: String
+  registeredAt: String
+  registeredAt_not: String
+  registeredAt_in: [String!]
+  registeredAt_not_in: [String!]
+  registeredAt_lt: String
+  registeredAt_lte: String
+  registeredAt_gt: String
+  registeredAt_gte: String
+  registeredAt_contains: String
+  registeredAt_not_contains: String
+  registeredAt_starts_with: String
+  registeredAt_not_starts_with: String
+  registeredAt_ends_with: String
+  registeredAt_not_ends_with: String
+  hitCount: Int
+  hitCount_not: Int
+  hitCount_in: [Int!]
+  hitCount_not_in: [Int!]
+  hitCount_lt: Int
+  hitCount_lte: Int
+  hitCount_gt: Int
+  hitCount_gte: Int
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [RuliWebWhereInput!]
+  OR: [RuliWebWhereInput!]
+  NOT: [RuliWebWhereInput!]
+}
+
+input RuliWebWhereUniqueInput {
+  id: ID
 }
 
 type SLRClub {
@@ -2042,12 +3554,228 @@ type Subscription {
   bullpen(where: BullpenSubscriptionWhereInput): BullpenSubscriptionPayload
   clien(where: ClienSubscriptionWhereInput): ClienSubscriptionPayload
   cook(where: CookSubscriptionWhereInput): CookSubscriptionPayload
+  dogDrip(where: DogDripSubscriptionWhereInput): DogDripSubscriptionPayload
+  errorLog(where: ErrorLogSubscriptionWhereInput): ErrorLogSubscriptionPayload
   etoland(where: EtolandSubscriptionWhereInput): EtolandSubscriptionPayload
+  fmKorea(where: FmKoreaSubscriptionWhereInput): FmKoreaSubscriptionPayload
   gasengi(where: GasengiSubscriptionWhereInput): GasengiSubscriptionPayload
   ilbe(where: IlbeSubscriptionWhereInput): IlbeSubscriptionPayload
+  instiz(where: InstizSubscriptionWhereInput): InstizSubscriptionPayload
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
+  ppompPu(where: PpompPuSubscriptionWhereInput): PpompPuSubscriptionPayload
+  prePost(where: PrePostSubscriptionWhereInput): PrePostSubscriptionPayload
+  ruliWeb(where: RuliWebSubscriptionWhereInput): RuliWebSubscriptionPayload
   sLRClub(where: SLRClubSubscriptionWhereInput): SLRClubSubscriptionPayload
+  theQoo(where: TheQooSubscriptionWhereInput): TheQooSubscriptionPayload
   todayHumor(where: TodayHumorSubscriptionWhereInput): TodayHumorSubscriptionPayload
+}
+
+type TheQoo {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type TheQooConnection {
+  pageInfo: PageInfo!
+  edges: [TheQooEdge]!
+  aggregate: AggregateTheQoo!
+}
+
+input TheQooCreateInput {
+  id: ID
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+}
+
+type TheQooEdge {
+  node: TheQoo!
+  cursor: String!
+}
+
+enum TheQooOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  author_ASC
+  author_DESC
+  registeredAt_ASC
+  registeredAt_DESC
+  hitCount_ASC
+  hitCount_DESC
+  link_ASC
+  link_DESC
+  from_ASC
+  from_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type TheQooPreviousValues {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type TheQooSubscriptionPayload {
+  mutation: MutationType!
+  node: TheQoo
+  updatedFields: [String!]
+  previousValues: TheQooPreviousValues
+}
+
+input TheQooSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TheQooWhereInput
+  AND: [TheQooSubscriptionWhereInput!]
+  OR: [TheQooSubscriptionWhereInput!]
+  NOT: [TheQooSubscriptionWhereInput!]
+}
+
+input TheQooUpdateInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input TheQooUpdateManyMutationInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input TheQooWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  author: String
+  author_not: String
+  author_in: [String!]
+  author_not_in: [String!]
+  author_lt: String
+  author_lte: String
+  author_gt: String
+  author_gte: String
+  author_contains: String
+  author_not_contains: String
+  author_starts_with: String
+  author_not_starts_with: String
+  author_ends_with: String
+  author_not_ends_with: String
+  registeredAt: String
+  registeredAt_not: String
+  registeredAt_in: [String!]
+  registeredAt_not_in: [String!]
+  registeredAt_lt: String
+  registeredAt_lte: String
+  registeredAt_gt: String
+  registeredAt_gte: String
+  registeredAt_contains: String
+  registeredAt_not_contains: String
+  registeredAt_starts_with: String
+  registeredAt_not_starts_with: String
+  registeredAt_ends_with: String
+  registeredAt_not_ends_with: String
+  hitCount: Int
+  hitCount_not: Int
+  hitCount_in: [Int!]
+  hitCount_not_in: [Int!]
+  hitCount_lt: Int
+  hitCount_lte: Int
+  hitCount_gt: Int
+  hitCount_gte: Int
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [TheQooWhereInput!]
+  OR: [TheQooWhereInput!]
+  NOT: [TheQooWhereInput!]
+}
+
+input TheQooWhereUniqueInput {
+  id: ID
 }
 
 type TodayHumor {

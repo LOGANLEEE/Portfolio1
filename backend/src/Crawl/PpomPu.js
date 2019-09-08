@@ -1,11 +1,12 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
+const iconv = require('iconv-lite');
 
-const { info } = console;
+const info = console.info;
 
 async function fetching() {
-    const url = 'https://www.clien.net/service/board/park';
+    const url = 'http://www.ppomppu.co.kr/hot.php';
     let isErrorOccured = false;
 
     await axios.get(url).then((res) => {
@@ -15,7 +16,7 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: 'Clien',
+            from: 'PpompPu',
             isRead: false,
             type: 'F',
         });
@@ -24,38 +25,35 @@ async function fetching() {
 
     async function Processor(html) {
         try {
-            for (let i = 7; i < 37; i++) {
-                const target = `#div_content > div:nth-child(${i})`;
+            for (let i = 4; i < 24; i++) {
+                const target = `body > div.wrapper > div.contents > div.container > div:nth-child(3) > div.board_box > table.board_table > tbody > tr:nth-child(${i})`;
                 const $ = cheerio.load(html);
-                const link = $(target + ' > div.list_title > a').attr('href');
-                const title = $(target + ' > div.list_title > a.list_subject > span').text();
-                const time = $(target + ' > div.list_time > span > span').text();
-                const writer = $(target + ' > div.list_author > span.nickname > span').text();
-                const imgWriter = $(target + ' > div.list_author > span.nickname > img').attr('alt');
-                const hitCount = $(target + ' > div.list_hit > span').text();
-                const author = writer !== '' ? writer : imgWriter;
-
+                const title = $(target + '> td:nth-child(4) > a').text();
+                const link = $(target + '> td:nth-child(4) > a').attr('href');
+                const time = $(target + '> td:nth-child(4) > a').text().trim();
+                const author = $(target + '> td:nth-child(2)').text().trim();
+                const hitCount = $(target + '> td:nth-child(7)').text();
                 const data = {
                     title,
                     author,
+                    link: 'http://www.ppomppu.co.kr' + link,
                     hitCount: parseInt(hitCount),
                     registeredAt: time,
-                    link: 'https://www.clien.net/' + link,
-                    from: 'Clien',
+                    from: 'PpompPu',
                 };
                 await prisma.createPrePost(data);
-                // await prisma.createClien(data);
+                // await prisma.createPpompPu(data);
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: 'Clien',
+                from: 'PpompPu',
                 isRead: false,
                 type: 'Q',
             });
             isErrorOccured = true;
         }
-        info("£££ CLIEN Done");
+        info("£££ PpompPu Done");
     }
     return isErrorOccured;
 }

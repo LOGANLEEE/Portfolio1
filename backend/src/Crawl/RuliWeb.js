@@ -2,10 +2,10 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
 
-const { info } = console;
+const info = console.info;
 
 async function fetching() {
-    const url = 'https://www.clien.net/service/board/park';
+    const url = 'https://bbs.ruliweb.com/best/humor';
     let isErrorOccured = false;
 
     await axios.get(url).then((res) => {
@@ -15,7 +15,7 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: 'Clien',
+            from: 'RuliWeb',
             isRead: false,
             type: 'F',
         });
@@ -23,39 +23,38 @@ async function fetching() {
     });
 
     async function Processor(html) {
+        // 8~126 even numbers.
         try {
-            for (let i = 7; i < 37; i++) {
-                const target = `#div_content > div:nth-child(${i})`;
+            for (let i = 1; i < 31; i++) {
+                const target = `#best_body > table > tbody > tr:nth-child(${i})`;
                 const $ = cheerio.load(html);
-                const link = $(target + ' > div.list_title > a').attr('href');
-                const title = $(target + ' > div.list_title > a.list_subject > span').text();
-                const time = $(target + ' > div.list_time > span > span').text();
-                const writer = $(target + ' > div.list_author > span.nickname > span').text();
-                const imgWriter = $(target + ' > div.list_author > span.nickname > img').attr('alt');
-                const hitCount = $(target + ' > div.list_hit > span').text();
-                const author = writer !== '' ? writer : imgWriter;
-
+                const title = $(target + '> td.subject > a').text();
+                const link = $(target + '> td.subject > a').attr('href');
+                const time = $(target + '> td.time').text().trim();
+                const author = $(target + '> td.writer.text_over').text().trim();
+                const hitCount = $(target + '> td.hit').text();
                 const data = {
                     title,
                     author,
+                    link,
                     hitCount: parseInt(hitCount),
                     registeredAt: time,
-                    link: 'https://www.clien.net/' + link,
-                    from: 'Clien',
+                    from: 'RuliWeb',
                 };
+
                 await prisma.createPrePost(data);
-                // await prisma.createClien(data);
+                // await prisma.createRuliWeb(data);
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: 'Clien',
+                from: 'RuliWeb',
                 isRead: false,
                 type: 'Q',
             });
             isErrorOccured = true;
         }
-        info("£££ CLIEN Done");
+        info("£££ RuliWeb Done");
     }
     return isErrorOccured;
 }

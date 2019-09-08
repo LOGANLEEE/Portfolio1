@@ -2,10 +2,10 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
 
-const { info } = console;
+const info = console.info;
 
 async function fetching() {
-    const url = 'https://www.82cook.com/entiz/enti.php?bn=15';
+    const url = 'https://theqoo.net/hot?filter_mode=normal';
     let isErrorOccured = false;
 
     await axios.get(url).then((res) => {
@@ -15,7 +15,7 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: '82Cook',
+            from: 'TheQoo',
             isRead: false,
             type: 'F',
         });
@@ -24,32 +24,36 @@ async function fetching() {
 
     async function Processor(html) {
         try {
-            for (let i = 1; i < 11; i++) {
-                const target = `#column1 > div.leftbox.Best > ul > li:nth-child(${i})`;
+            for (let i = 5; i < 34; i++) {
+                const target = `#bd_801402415_0 > div > table > tbody > tr:nth-child(${i})`;
                 const $ = cheerio.load(html);
-                const link = $(target + '> a').attr('href');
-                const title = $(target + '> a').text();
+                const title = $(target + '> td.title > a:nth-child(1) > span').text();
+                const link = $(target + '> td.title > a:nth-child(1)').attr('href');
+                const time = $(target + '> td.time').text().replace('.', '-').trim();
+                const hitCount = $(target + '> td.m_no').text().replace('만', '0000').replace('.', '');
                 const data = {
                     title,
-                    link: 'https://www.82cook.com/' + link,
-                    from: '82Cook',
+                    link: 'https://theqoo.net/' + link,
+                    hitCount: parseInt(hitCount),
+                    registeredAt: time,
+                    from: 'TheQoo',
                 };
-
                 await prisma.createPrePost(data);
-                // await prisma.createCook(data);
+                // await prisma.createTheQoo(data);
+
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: '82Cook',
+                from: 'TheQoo',
                 isRead: false,
                 type: 'Q',
             });
             isErrorOccured = true;
-        }
-        info("£££ COOK Done");
+        };
+        info('£££ TheQoo Done');
     }
-    return isErrorOccured;
+    return true;
 }
 
 module.exports = {

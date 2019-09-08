@@ -5,11 +5,19 @@ var typeDefs = require("./prisma-schema").typeDefs;
 
 var models = [
   {
+    name: "PrePost",
+    embedded: false
+  },
+  {
     name: "Post",
     embedded: false
   },
   {
     name: "Bobae",
+    embedded: false
+  },
+  {
+    name: "RuliWeb",
     embedded: false
   },
   {
@@ -42,6 +50,30 @@ var models = [
   },
   {
     name: "Gasengi",
+    embedded: false
+  },
+  {
+    name: "PpompPu",
+    embedded: false
+  },
+  {
+    name: "Instiz",
+    embedded: false
+  },
+  {
+    name: "TheQoo",
+    embedded: false
+  },
+  {
+    name: "FmKorea",
+    embedded: false
+  },
+  {
+    name: "DogDrip",
+    embedded: false
+  },
+  {
+    name: "ErrorLog",
     embedded: false
   }
 ];

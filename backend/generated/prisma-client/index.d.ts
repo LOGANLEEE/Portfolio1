@@ -20,11 +20,19 @@ export interface Exists {
   bullpen: (where?: BullpenWhereInput) => Promise<boolean>;
   clien: (where?: ClienWhereInput) => Promise<boolean>;
   cook: (where?: CookWhereInput) => Promise<boolean>;
+  dogDrip: (where?: DogDripWhereInput) => Promise<boolean>;
+  errorLog: (where?: ErrorLogWhereInput) => Promise<boolean>;
   etoland: (where?: EtolandWhereInput) => Promise<boolean>;
+  fmKorea: (where?: FmKoreaWhereInput) => Promise<boolean>;
   gasengi: (where?: GasengiWhereInput) => Promise<boolean>;
   ilbe: (where?: IlbeWhereInput) => Promise<boolean>;
+  instiz: (where?: InstizWhereInput) => Promise<boolean>;
   post: (where?: PostWhereInput) => Promise<boolean>;
+  ppompPu: (where?: PpompPuWhereInput) => Promise<boolean>;
+  prePost: (where?: PrePostWhereInput) => Promise<boolean>;
+  ruliWeb: (where?: RuliWebWhereInput) => Promise<boolean>;
   sLRClub: (where?: SLRClubWhereInput) => Promise<boolean>;
+  theQoo: (where?: TheQooWhereInput) => Promise<boolean>;
   todayHumor: (where?: TodayHumorWhereInput) => Promise<boolean>;
 }
 
@@ -123,6 +131,44 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => CookConnectionPromise;
+  dogDrip: (where: DogDripWhereUniqueInput) => DogDripNullablePromise;
+  dogDrips: (args?: {
+    where?: DogDripWhereInput;
+    orderBy?: DogDripOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<DogDrip>;
+  dogDripsConnection: (args?: {
+    where?: DogDripWhereInput;
+    orderBy?: DogDripOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => DogDripConnectionPromise;
+  errorLog: (where: ErrorLogWhereUniqueInput) => ErrorLogNullablePromise;
+  errorLogs: (args?: {
+    where?: ErrorLogWhereInput;
+    orderBy?: ErrorLogOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<ErrorLog>;
+  errorLogsConnection: (args?: {
+    where?: ErrorLogWhereInput;
+    orderBy?: ErrorLogOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => ErrorLogConnectionPromise;
   etoland: (where: EtolandWhereUniqueInput) => EtolandNullablePromise;
   etolands: (args?: {
     where?: EtolandWhereInput;
@@ -142,6 +188,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => EtolandConnectionPromise;
+  fmKorea: (where: FmKoreaWhereUniqueInput) => FmKoreaNullablePromise;
+  fmKoreas: (args?: {
+    where?: FmKoreaWhereInput;
+    orderBy?: FmKoreaOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<FmKorea>;
+  fmKoreasConnection: (args?: {
+    where?: FmKoreaWhereInput;
+    orderBy?: FmKoreaOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FmKoreaConnectionPromise;
   gasengi: (where: GasengiWhereUniqueInput) => GasengiNullablePromise;
   gasengis: (args?: {
     where?: GasengiWhereInput;
@@ -180,6 +245,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => IlbeConnectionPromise;
+  instiz: (where: InstizWhereUniqueInput) => InstizNullablePromise;
+  instizes: (args?: {
+    where?: InstizWhereInput;
+    orderBy?: InstizOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Instiz>;
+  instizesConnection: (args?: {
+    where?: InstizWhereInput;
+    orderBy?: InstizOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => InstizConnectionPromise;
   post: (where: PostWhereUniqueInput) => PostNullablePromise;
   posts: (args?: {
     where?: PostWhereInput;
@@ -199,6 +283,63 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => PostConnectionPromise;
+  ppompPu: (where: PpompPuWhereUniqueInput) => PpompPuNullablePromise;
+  ppompPus: (args?: {
+    where?: PpompPuWhereInput;
+    orderBy?: PpompPuOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<PpompPu>;
+  ppompPusConnection: (args?: {
+    where?: PpompPuWhereInput;
+    orderBy?: PpompPuOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => PpompPuConnectionPromise;
+  prePost: (where: PrePostWhereUniqueInput) => PrePostNullablePromise;
+  prePosts: (args?: {
+    where?: PrePostWhereInput;
+    orderBy?: PrePostOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<PrePost>;
+  prePostsConnection: (args?: {
+    where?: PrePostWhereInput;
+    orderBy?: PrePostOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => PrePostConnectionPromise;
+  ruliWeb: (where: RuliWebWhereUniqueInput) => RuliWebNullablePromise;
+  ruliWebs: (args?: {
+    where?: RuliWebWhereInput;
+    orderBy?: RuliWebOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<RuliWeb>;
+  ruliWebsConnection: (args?: {
+    where?: RuliWebWhereInput;
+    orderBy?: RuliWebOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => RuliWebConnectionPromise;
   sLRClub: (where: SLRClubWhereUniqueInput) => SLRClubNullablePromise;
   sLRClubs: (args?: {
     where?: SLRClubWhereInput;
@@ -218,6 +359,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => SLRClubConnectionPromise;
+  theQoo: (where: TheQooWhereUniqueInput) => TheQooNullablePromise;
+  theQoos: (args?: {
+    where?: TheQooWhereInput;
+    orderBy?: TheQooOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<TheQoo>;
+  theQoosConnection: (args?: {
+    where?: TheQooWhereInput;
+    orderBy?: TheQooOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => TheQooConnectionPromise;
   todayHumor: (where: TodayHumorWhereUniqueInput) => TodayHumorNullablePromise;
   todayHumors: (args?: {
     where?: TodayHumorWhereInput;
@@ -307,6 +467,38 @@ export interface Prisma {
   }) => CookPromise;
   deleteCook: (where: CookWhereUniqueInput) => CookPromise;
   deleteManyCooks: (where?: CookWhereInput) => BatchPayloadPromise;
+  createDogDrip: (data: DogDripCreateInput) => DogDripPromise;
+  updateDogDrip: (args: {
+    data: DogDripUpdateInput;
+    where: DogDripWhereUniqueInput;
+  }) => DogDripPromise;
+  updateManyDogDrips: (args: {
+    data: DogDripUpdateManyMutationInput;
+    where?: DogDripWhereInput;
+  }) => BatchPayloadPromise;
+  upsertDogDrip: (args: {
+    where: DogDripWhereUniqueInput;
+    create: DogDripCreateInput;
+    update: DogDripUpdateInput;
+  }) => DogDripPromise;
+  deleteDogDrip: (where: DogDripWhereUniqueInput) => DogDripPromise;
+  deleteManyDogDrips: (where?: DogDripWhereInput) => BatchPayloadPromise;
+  createErrorLog: (data: ErrorLogCreateInput) => ErrorLogPromise;
+  updateErrorLog: (args: {
+    data: ErrorLogUpdateInput;
+    where: ErrorLogWhereUniqueInput;
+  }) => ErrorLogPromise;
+  updateManyErrorLogs: (args: {
+    data: ErrorLogUpdateManyMutationInput;
+    where?: ErrorLogWhereInput;
+  }) => BatchPayloadPromise;
+  upsertErrorLog: (args: {
+    where: ErrorLogWhereUniqueInput;
+    create: ErrorLogCreateInput;
+    update: ErrorLogUpdateInput;
+  }) => ErrorLogPromise;
+  deleteErrorLog: (where: ErrorLogWhereUniqueInput) => ErrorLogPromise;
+  deleteManyErrorLogs: (where?: ErrorLogWhereInput) => BatchPayloadPromise;
   createEtoland: (data: EtolandCreateInput) => EtolandPromise;
   updateEtoland: (args: {
     data: EtolandUpdateInput;
@@ -323,6 +515,22 @@ export interface Prisma {
   }) => EtolandPromise;
   deleteEtoland: (where: EtolandWhereUniqueInput) => EtolandPromise;
   deleteManyEtolands: (where?: EtolandWhereInput) => BatchPayloadPromise;
+  createFmKorea: (data: FmKoreaCreateInput) => FmKoreaPromise;
+  updateFmKorea: (args: {
+    data: FmKoreaUpdateInput;
+    where: FmKoreaWhereUniqueInput;
+  }) => FmKoreaPromise;
+  updateManyFmKoreas: (args: {
+    data: FmKoreaUpdateManyMutationInput;
+    where?: FmKoreaWhereInput;
+  }) => BatchPayloadPromise;
+  upsertFmKorea: (args: {
+    where: FmKoreaWhereUniqueInput;
+    create: FmKoreaCreateInput;
+    update: FmKoreaUpdateInput;
+  }) => FmKoreaPromise;
+  deleteFmKorea: (where: FmKoreaWhereUniqueInput) => FmKoreaPromise;
+  deleteManyFmKoreas: (where?: FmKoreaWhereInput) => BatchPayloadPromise;
   createGasengi: (data: GasengiCreateInput) => GasengiPromise;
   updateGasengi: (args: {
     data: GasengiUpdateInput;
@@ -355,6 +563,22 @@ export interface Prisma {
   }) => IlbePromise;
   deleteIlbe: (where: IlbeWhereUniqueInput) => IlbePromise;
   deleteManyIlbes: (where?: IlbeWhereInput) => BatchPayloadPromise;
+  createInstiz: (data: InstizCreateInput) => InstizPromise;
+  updateInstiz: (args: {
+    data: InstizUpdateInput;
+    where: InstizWhereUniqueInput;
+  }) => InstizPromise;
+  updateManyInstizes: (args: {
+    data: InstizUpdateManyMutationInput;
+    where?: InstizWhereInput;
+  }) => BatchPayloadPromise;
+  upsertInstiz: (args: {
+    where: InstizWhereUniqueInput;
+    create: InstizCreateInput;
+    update: InstizUpdateInput;
+  }) => InstizPromise;
+  deleteInstiz: (where: InstizWhereUniqueInput) => InstizPromise;
+  deleteManyInstizes: (where?: InstizWhereInput) => BatchPayloadPromise;
   createPost: (data: PostCreateInput) => PostPromise;
   updatePost: (args: {
     data: PostUpdateInput;
@@ -371,6 +595,54 @@ export interface Prisma {
   }) => PostPromise;
   deletePost: (where: PostWhereUniqueInput) => PostPromise;
   deleteManyPosts: (where?: PostWhereInput) => BatchPayloadPromise;
+  createPpompPu: (data: PpompPuCreateInput) => PpompPuPromise;
+  updatePpompPu: (args: {
+    data: PpompPuUpdateInput;
+    where: PpompPuWhereUniqueInput;
+  }) => PpompPuPromise;
+  updateManyPpompPus: (args: {
+    data: PpompPuUpdateManyMutationInput;
+    where?: PpompPuWhereInput;
+  }) => BatchPayloadPromise;
+  upsertPpompPu: (args: {
+    where: PpompPuWhereUniqueInput;
+    create: PpompPuCreateInput;
+    update: PpompPuUpdateInput;
+  }) => PpompPuPromise;
+  deletePpompPu: (where: PpompPuWhereUniqueInput) => PpompPuPromise;
+  deleteManyPpompPus: (where?: PpompPuWhereInput) => BatchPayloadPromise;
+  createPrePost: (data: PrePostCreateInput) => PrePostPromise;
+  updatePrePost: (args: {
+    data: PrePostUpdateInput;
+    where: PrePostWhereUniqueInput;
+  }) => PrePostPromise;
+  updateManyPrePosts: (args: {
+    data: PrePostUpdateManyMutationInput;
+    where?: PrePostWhereInput;
+  }) => BatchPayloadPromise;
+  upsertPrePost: (args: {
+    where: PrePostWhereUniqueInput;
+    create: PrePostCreateInput;
+    update: PrePostUpdateInput;
+  }) => PrePostPromise;
+  deletePrePost: (where: PrePostWhereUniqueInput) => PrePostPromise;
+  deleteManyPrePosts: (where?: PrePostWhereInput) => BatchPayloadPromise;
+  createRuliWeb: (data: RuliWebCreateInput) => RuliWebPromise;
+  updateRuliWeb: (args: {
+    data: RuliWebUpdateInput;
+    where: RuliWebWhereUniqueInput;
+  }) => RuliWebPromise;
+  updateManyRuliWebs: (args: {
+    data: RuliWebUpdateManyMutationInput;
+    where?: RuliWebWhereInput;
+  }) => BatchPayloadPromise;
+  upsertRuliWeb: (args: {
+    where: RuliWebWhereUniqueInput;
+    create: RuliWebCreateInput;
+    update: RuliWebUpdateInput;
+  }) => RuliWebPromise;
+  deleteRuliWeb: (where: RuliWebWhereUniqueInput) => RuliWebPromise;
+  deleteManyRuliWebs: (where?: RuliWebWhereInput) => BatchPayloadPromise;
   createSLRClub: (data: SLRClubCreateInput) => SLRClubPromise;
   updateSLRClub: (args: {
     data: SLRClubUpdateInput;
@@ -387,6 +659,22 @@ export interface Prisma {
   }) => SLRClubPromise;
   deleteSLRClub: (where: SLRClubWhereUniqueInput) => SLRClubPromise;
   deleteManySLRClubs: (where?: SLRClubWhereInput) => BatchPayloadPromise;
+  createTheQoo: (data: TheQooCreateInput) => TheQooPromise;
+  updateTheQoo: (args: {
+    data: TheQooUpdateInput;
+    where: TheQooWhereUniqueInput;
+  }) => TheQooPromise;
+  updateManyTheQoos: (args: {
+    data: TheQooUpdateManyMutationInput;
+    where?: TheQooWhereInput;
+  }) => BatchPayloadPromise;
+  upsertTheQoo: (args: {
+    where: TheQooWhereUniqueInput;
+    create: TheQooCreateInput;
+    update: TheQooUpdateInput;
+  }) => TheQooPromise;
+  deleteTheQoo: (where: TheQooWhereUniqueInput) => TheQooPromise;
+  deleteManyTheQoos: (where?: TheQooWhereInput) => BatchPayloadPromise;
   createTodayHumor: (data: TodayHumorCreateInput) => TodayHumorPromise;
   updateTodayHumor: (args: {
     data: TodayHumorUpdateInput;
@@ -424,21 +712,45 @@ export interface Subscription {
   cook: (
     where?: CookSubscriptionWhereInput
   ) => CookSubscriptionPayloadSubscription;
+  dogDrip: (
+    where?: DogDripSubscriptionWhereInput
+  ) => DogDripSubscriptionPayloadSubscription;
+  errorLog: (
+    where?: ErrorLogSubscriptionWhereInput
+  ) => ErrorLogSubscriptionPayloadSubscription;
   etoland: (
     where?: EtolandSubscriptionWhereInput
   ) => EtolandSubscriptionPayloadSubscription;
+  fmKorea: (
+    where?: FmKoreaSubscriptionWhereInput
+  ) => FmKoreaSubscriptionPayloadSubscription;
   gasengi: (
     where?: GasengiSubscriptionWhereInput
   ) => GasengiSubscriptionPayloadSubscription;
   ilbe: (
     where?: IlbeSubscriptionWhereInput
   ) => IlbeSubscriptionPayloadSubscription;
+  instiz: (
+    where?: InstizSubscriptionWhereInput
+  ) => InstizSubscriptionPayloadSubscription;
   post: (
     where?: PostSubscriptionWhereInput
   ) => PostSubscriptionPayloadSubscription;
+  ppompPu: (
+    where?: PpompPuSubscriptionWhereInput
+  ) => PpompPuSubscriptionPayloadSubscription;
+  prePost: (
+    where?: PrePostSubscriptionWhereInput
+  ) => PrePostSubscriptionPayloadSubscription;
+  ruliWeb: (
+    where?: RuliWebSubscriptionWhereInput
+  ) => RuliWebSubscriptionPayloadSubscription;
   sLRClub: (
     where?: SLRClubSubscriptionWhereInput
   ) => SLRClubSubscriptionPayloadSubscription;
+  theQoo: (
+    where?: TheQooSubscriptionWhereInput
+  ) => TheQooSubscriptionPayloadSubscription;
   todayHumor: (
     where?: TodayHumorSubscriptionWhereInput
   ) => TodayHumorSubscriptionPayloadSubscription;
@@ -524,7 +836,57 @@ export type CookOrderByInput =
   | "createdAt_ASC"
   | "createdAt_DESC";
 
+export type DogDripOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "author_ASC"
+  | "author_DESC"
+  | "registeredAt_ASC"
+  | "registeredAt_DESC"
+  | "hitCount_ASC"
+  | "hitCount_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC";
+
+export type ErrorLogOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "reason_ASC"
+  | "reason_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "isRead_ASC"
+  | "isRead_DESC"
+  | "type_ASC"
+  | "type_DESC";
+
 export type EtolandOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "author_ASC"
+  | "author_DESC"
+  | "registeredAt_ASC"
+  | "registeredAt_DESC"
+  | "hitCount_ASC"
+  | "hitCount_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC";
+
+export type FmKoreaOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "title_ASC"
@@ -578,6 +940,24 @@ export type IlbeOrderByInput =
   | "createdAt_ASC"
   | "createdAt_DESC";
 
+export type InstizOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "author_ASC"
+  | "author_DESC"
+  | "registeredAt_ASC"
+  | "registeredAt_DESC"
+  | "hitCount_ASC"
+  | "hitCount_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC";
+
 export type PostOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -596,7 +976,79 @@ export type PostOrderByInput =
   | "createdAt_ASC"
   | "createdAt_DESC";
 
+export type PpompPuOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "author_ASC"
+  | "author_DESC"
+  | "registeredAt_ASC"
+  | "registeredAt_DESC"
+  | "hitCount_ASC"
+  | "hitCount_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC";
+
+export type PrePostOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "author_ASC"
+  | "author_DESC"
+  | "registeredAt_ASC"
+  | "registeredAt_DESC"
+  | "hitCount_ASC"
+  | "hitCount_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC";
+
+export type RuliWebOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "author_ASC"
+  | "author_DESC"
+  | "registeredAt_ASC"
+  | "registeredAt_DESC"
+  | "hitCount_ASC"
+  | "hitCount_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC";
+
 export type SLRClubOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "author_ASC"
+  | "author_DESC"
+  | "registeredAt_ASC"
+  | "registeredAt_DESC"
+  | "hitCount_ASC"
+  | "hitCount_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC";
+
+export type TheQooOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "title_ASC"
@@ -1074,6 +1526,192 @@ export interface CookWhereInput {
   NOT?: Maybe<CookWhereInput[] | CookWhereInput>;
 }
 
+export type DogDripWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface DogDripWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  author?: Maybe<String>;
+  author_not?: Maybe<String>;
+  author_in?: Maybe<String[] | String>;
+  author_not_in?: Maybe<String[] | String>;
+  author_lt?: Maybe<String>;
+  author_lte?: Maybe<String>;
+  author_gt?: Maybe<String>;
+  author_gte?: Maybe<String>;
+  author_contains?: Maybe<String>;
+  author_not_contains?: Maybe<String>;
+  author_starts_with?: Maybe<String>;
+  author_not_starts_with?: Maybe<String>;
+  author_ends_with?: Maybe<String>;
+  author_not_ends_with?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  registeredAt_not?: Maybe<String>;
+  registeredAt_in?: Maybe<String[] | String>;
+  registeredAt_not_in?: Maybe<String[] | String>;
+  registeredAt_lt?: Maybe<String>;
+  registeredAt_lte?: Maybe<String>;
+  registeredAt_gt?: Maybe<String>;
+  registeredAt_gte?: Maybe<String>;
+  registeredAt_contains?: Maybe<String>;
+  registeredAt_not_contains?: Maybe<String>;
+  registeredAt_starts_with?: Maybe<String>;
+  registeredAt_not_starts_with?: Maybe<String>;
+  registeredAt_ends_with?: Maybe<String>;
+  registeredAt_not_ends_with?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  hitCount_not?: Maybe<Int>;
+  hitCount_in?: Maybe<Int[] | Int>;
+  hitCount_not_in?: Maybe<Int[] | Int>;
+  hitCount_lt?: Maybe<Int>;
+  hitCount_lte?: Maybe<Int>;
+  hitCount_gt?: Maybe<Int>;
+  hitCount_gte?: Maybe<Int>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<DogDripWhereInput[] | DogDripWhereInput>;
+  OR?: Maybe<DogDripWhereInput[] | DogDripWhereInput>;
+  NOT?: Maybe<DogDripWhereInput[] | DogDripWhereInput>;
+}
+
+export type ErrorLogWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface ErrorLogWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  reason?: Maybe<String>;
+  reason_not?: Maybe<String>;
+  reason_in?: Maybe<String[] | String>;
+  reason_not_in?: Maybe<String[] | String>;
+  reason_lt?: Maybe<String>;
+  reason_lte?: Maybe<String>;
+  reason_gt?: Maybe<String>;
+  reason_gte?: Maybe<String>;
+  reason_contains?: Maybe<String>;
+  reason_not_contains?: Maybe<String>;
+  reason_starts_with?: Maybe<String>;
+  reason_not_starts_with?: Maybe<String>;
+  reason_ends_with?: Maybe<String>;
+  reason_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  isRead?: Maybe<Boolean>;
+  isRead_not?: Maybe<Boolean>;
+  type?: Maybe<String>;
+  type_not?: Maybe<String>;
+  type_in?: Maybe<String[] | String>;
+  type_not_in?: Maybe<String[] | String>;
+  type_lt?: Maybe<String>;
+  type_lte?: Maybe<String>;
+  type_gt?: Maybe<String>;
+  type_gte?: Maybe<String>;
+  type_contains?: Maybe<String>;
+  type_not_contains?: Maybe<String>;
+  type_starts_with?: Maybe<String>;
+  type_not_starts_with?: Maybe<String>;
+  type_ends_with?: Maybe<String>;
+  type_not_ends_with?: Maybe<String>;
+  AND?: Maybe<ErrorLogWhereInput[] | ErrorLogWhereInput>;
+  OR?: Maybe<ErrorLogWhereInput[] | ErrorLogWhereInput>;
+  NOT?: Maybe<ErrorLogWhereInput[] | ErrorLogWhereInput>;
+}
+
 export type EtolandWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
@@ -1182,6 +1820,116 @@ export interface EtolandWhereInput {
   AND?: Maybe<EtolandWhereInput[] | EtolandWhereInput>;
   OR?: Maybe<EtolandWhereInput[] | EtolandWhereInput>;
   NOT?: Maybe<EtolandWhereInput[] | EtolandWhereInput>;
+}
+
+export type FmKoreaWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface FmKoreaWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  author?: Maybe<String>;
+  author_not?: Maybe<String>;
+  author_in?: Maybe<String[] | String>;
+  author_not_in?: Maybe<String[] | String>;
+  author_lt?: Maybe<String>;
+  author_lte?: Maybe<String>;
+  author_gt?: Maybe<String>;
+  author_gte?: Maybe<String>;
+  author_contains?: Maybe<String>;
+  author_not_contains?: Maybe<String>;
+  author_starts_with?: Maybe<String>;
+  author_not_starts_with?: Maybe<String>;
+  author_ends_with?: Maybe<String>;
+  author_not_ends_with?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  registeredAt_not?: Maybe<String>;
+  registeredAt_in?: Maybe<String[] | String>;
+  registeredAt_not_in?: Maybe<String[] | String>;
+  registeredAt_lt?: Maybe<String>;
+  registeredAt_lte?: Maybe<String>;
+  registeredAt_gt?: Maybe<String>;
+  registeredAt_gte?: Maybe<String>;
+  registeredAt_contains?: Maybe<String>;
+  registeredAt_not_contains?: Maybe<String>;
+  registeredAt_starts_with?: Maybe<String>;
+  registeredAt_not_starts_with?: Maybe<String>;
+  registeredAt_ends_with?: Maybe<String>;
+  registeredAt_not_ends_with?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  hitCount_not?: Maybe<Int>;
+  hitCount_in?: Maybe<Int[] | Int>;
+  hitCount_not_in?: Maybe<Int[] | Int>;
+  hitCount_lt?: Maybe<Int>;
+  hitCount_lte?: Maybe<Int>;
+  hitCount_gt?: Maybe<Int>;
+  hitCount_gte?: Maybe<Int>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<FmKoreaWhereInput[] | FmKoreaWhereInput>;
+  OR?: Maybe<FmKoreaWhereInput[] | FmKoreaWhereInput>;
+  NOT?: Maybe<FmKoreaWhereInput[] | FmKoreaWhereInput>;
 }
 
 export type GasengiWhereUniqueInput = AtLeastOne<{
@@ -1404,6 +2152,116 @@ export interface IlbeWhereInput {
   NOT?: Maybe<IlbeWhereInput[] | IlbeWhereInput>;
 }
 
+export type InstizWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface InstizWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  author?: Maybe<String>;
+  author_not?: Maybe<String>;
+  author_in?: Maybe<String[] | String>;
+  author_not_in?: Maybe<String[] | String>;
+  author_lt?: Maybe<String>;
+  author_lte?: Maybe<String>;
+  author_gt?: Maybe<String>;
+  author_gte?: Maybe<String>;
+  author_contains?: Maybe<String>;
+  author_not_contains?: Maybe<String>;
+  author_starts_with?: Maybe<String>;
+  author_not_starts_with?: Maybe<String>;
+  author_ends_with?: Maybe<String>;
+  author_not_ends_with?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  registeredAt_not?: Maybe<String>;
+  registeredAt_in?: Maybe<String[] | String>;
+  registeredAt_not_in?: Maybe<String[] | String>;
+  registeredAt_lt?: Maybe<String>;
+  registeredAt_lte?: Maybe<String>;
+  registeredAt_gt?: Maybe<String>;
+  registeredAt_gte?: Maybe<String>;
+  registeredAt_contains?: Maybe<String>;
+  registeredAt_not_contains?: Maybe<String>;
+  registeredAt_starts_with?: Maybe<String>;
+  registeredAt_not_starts_with?: Maybe<String>;
+  registeredAt_ends_with?: Maybe<String>;
+  registeredAt_not_ends_with?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  hitCount_not?: Maybe<Int>;
+  hitCount_in?: Maybe<Int[] | Int>;
+  hitCount_not_in?: Maybe<Int[] | Int>;
+  hitCount_lt?: Maybe<Int>;
+  hitCount_lte?: Maybe<Int>;
+  hitCount_gt?: Maybe<Int>;
+  hitCount_gte?: Maybe<Int>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<InstizWhereInput[] | InstizWhereInput>;
+  OR?: Maybe<InstizWhereInput[] | InstizWhereInput>;
+  NOT?: Maybe<InstizWhereInput[] | InstizWhereInput>;
+}
+
 export type PostWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
@@ -1514,6 +2372,336 @@ export interface PostWhereInput {
   NOT?: Maybe<PostWhereInput[] | PostWhereInput>;
 }
 
+export type PpompPuWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface PpompPuWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  author?: Maybe<String>;
+  author_not?: Maybe<String>;
+  author_in?: Maybe<String[] | String>;
+  author_not_in?: Maybe<String[] | String>;
+  author_lt?: Maybe<String>;
+  author_lte?: Maybe<String>;
+  author_gt?: Maybe<String>;
+  author_gte?: Maybe<String>;
+  author_contains?: Maybe<String>;
+  author_not_contains?: Maybe<String>;
+  author_starts_with?: Maybe<String>;
+  author_not_starts_with?: Maybe<String>;
+  author_ends_with?: Maybe<String>;
+  author_not_ends_with?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  registeredAt_not?: Maybe<String>;
+  registeredAt_in?: Maybe<String[] | String>;
+  registeredAt_not_in?: Maybe<String[] | String>;
+  registeredAt_lt?: Maybe<String>;
+  registeredAt_lte?: Maybe<String>;
+  registeredAt_gt?: Maybe<String>;
+  registeredAt_gte?: Maybe<String>;
+  registeredAt_contains?: Maybe<String>;
+  registeredAt_not_contains?: Maybe<String>;
+  registeredAt_starts_with?: Maybe<String>;
+  registeredAt_not_starts_with?: Maybe<String>;
+  registeredAt_ends_with?: Maybe<String>;
+  registeredAt_not_ends_with?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  hitCount_not?: Maybe<Int>;
+  hitCount_in?: Maybe<Int[] | Int>;
+  hitCount_not_in?: Maybe<Int[] | Int>;
+  hitCount_lt?: Maybe<Int>;
+  hitCount_lte?: Maybe<Int>;
+  hitCount_gt?: Maybe<Int>;
+  hitCount_gte?: Maybe<Int>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<PpompPuWhereInput[] | PpompPuWhereInput>;
+  OR?: Maybe<PpompPuWhereInput[] | PpompPuWhereInput>;
+  NOT?: Maybe<PpompPuWhereInput[] | PpompPuWhereInput>;
+}
+
+export type PrePostWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface PrePostWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  author?: Maybe<String>;
+  author_not?: Maybe<String>;
+  author_in?: Maybe<String[] | String>;
+  author_not_in?: Maybe<String[] | String>;
+  author_lt?: Maybe<String>;
+  author_lte?: Maybe<String>;
+  author_gt?: Maybe<String>;
+  author_gte?: Maybe<String>;
+  author_contains?: Maybe<String>;
+  author_not_contains?: Maybe<String>;
+  author_starts_with?: Maybe<String>;
+  author_not_starts_with?: Maybe<String>;
+  author_ends_with?: Maybe<String>;
+  author_not_ends_with?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  registeredAt_not?: Maybe<String>;
+  registeredAt_in?: Maybe<String[] | String>;
+  registeredAt_not_in?: Maybe<String[] | String>;
+  registeredAt_lt?: Maybe<String>;
+  registeredAt_lte?: Maybe<String>;
+  registeredAt_gt?: Maybe<String>;
+  registeredAt_gte?: Maybe<String>;
+  registeredAt_contains?: Maybe<String>;
+  registeredAt_not_contains?: Maybe<String>;
+  registeredAt_starts_with?: Maybe<String>;
+  registeredAt_not_starts_with?: Maybe<String>;
+  registeredAt_ends_with?: Maybe<String>;
+  registeredAt_not_ends_with?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  hitCount_not?: Maybe<Int>;
+  hitCount_in?: Maybe<Int[] | Int>;
+  hitCount_not_in?: Maybe<Int[] | Int>;
+  hitCount_lt?: Maybe<Int>;
+  hitCount_lte?: Maybe<Int>;
+  hitCount_gt?: Maybe<Int>;
+  hitCount_gte?: Maybe<Int>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<PrePostWhereInput[] | PrePostWhereInput>;
+  OR?: Maybe<PrePostWhereInput[] | PrePostWhereInput>;
+  NOT?: Maybe<PrePostWhereInput[] | PrePostWhereInput>;
+}
+
+export type RuliWebWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface RuliWebWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  author?: Maybe<String>;
+  author_not?: Maybe<String>;
+  author_in?: Maybe<String[] | String>;
+  author_not_in?: Maybe<String[] | String>;
+  author_lt?: Maybe<String>;
+  author_lte?: Maybe<String>;
+  author_gt?: Maybe<String>;
+  author_gte?: Maybe<String>;
+  author_contains?: Maybe<String>;
+  author_not_contains?: Maybe<String>;
+  author_starts_with?: Maybe<String>;
+  author_not_starts_with?: Maybe<String>;
+  author_ends_with?: Maybe<String>;
+  author_not_ends_with?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  registeredAt_not?: Maybe<String>;
+  registeredAt_in?: Maybe<String[] | String>;
+  registeredAt_not_in?: Maybe<String[] | String>;
+  registeredAt_lt?: Maybe<String>;
+  registeredAt_lte?: Maybe<String>;
+  registeredAt_gt?: Maybe<String>;
+  registeredAt_gte?: Maybe<String>;
+  registeredAt_contains?: Maybe<String>;
+  registeredAt_not_contains?: Maybe<String>;
+  registeredAt_starts_with?: Maybe<String>;
+  registeredAt_not_starts_with?: Maybe<String>;
+  registeredAt_ends_with?: Maybe<String>;
+  registeredAt_not_ends_with?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  hitCount_not?: Maybe<Int>;
+  hitCount_in?: Maybe<Int[] | Int>;
+  hitCount_not_in?: Maybe<Int[] | Int>;
+  hitCount_lt?: Maybe<Int>;
+  hitCount_lte?: Maybe<Int>;
+  hitCount_gt?: Maybe<Int>;
+  hitCount_gte?: Maybe<Int>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<RuliWebWhereInput[] | RuliWebWhereInput>;
+  OR?: Maybe<RuliWebWhereInput[] | RuliWebWhereInput>;
+  NOT?: Maybe<RuliWebWhereInput[] | RuliWebWhereInput>;
+}
+
 export type SLRClubWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
@@ -1622,6 +2810,116 @@ export interface SLRClubWhereInput {
   AND?: Maybe<SLRClubWhereInput[] | SLRClubWhereInput>;
   OR?: Maybe<SLRClubWhereInput[] | SLRClubWhereInput>;
   NOT?: Maybe<SLRClubWhereInput[] | SLRClubWhereInput>;
+}
+
+export type TheQooWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface TheQooWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  author?: Maybe<String>;
+  author_not?: Maybe<String>;
+  author_in?: Maybe<String[] | String>;
+  author_not_in?: Maybe<String[] | String>;
+  author_lt?: Maybe<String>;
+  author_lte?: Maybe<String>;
+  author_gt?: Maybe<String>;
+  author_gte?: Maybe<String>;
+  author_contains?: Maybe<String>;
+  author_not_contains?: Maybe<String>;
+  author_starts_with?: Maybe<String>;
+  author_not_starts_with?: Maybe<String>;
+  author_ends_with?: Maybe<String>;
+  author_not_ends_with?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  registeredAt_not?: Maybe<String>;
+  registeredAt_in?: Maybe<String[] | String>;
+  registeredAt_not_in?: Maybe<String[] | String>;
+  registeredAt_lt?: Maybe<String>;
+  registeredAt_lte?: Maybe<String>;
+  registeredAt_gt?: Maybe<String>;
+  registeredAt_gte?: Maybe<String>;
+  registeredAt_contains?: Maybe<String>;
+  registeredAt_not_contains?: Maybe<String>;
+  registeredAt_starts_with?: Maybe<String>;
+  registeredAt_not_starts_with?: Maybe<String>;
+  registeredAt_ends_with?: Maybe<String>;
+  registeredAt_not_ends_with?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  hitCount_not?: Maybe<Int>;
+  hitCount_in?: Maybe<Int[] | Int>;
+  hitCount_not_in?: Maybe<Int[] | Int>;
+  hitCount_lt?: Maybe<Int>;
+  hitCount_lte?: Maybe<Int>;
+  hitCount_gt?: Maybe<Int>;
+  hitCount_gte?: Maybe<Int>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<TheQooWhereInput[] | TheQooWhereInput>;
+  OR?: Maybe<TheQooWhereInput[] | TheQooWhereInput>;
+  NOT?: Maybe<TheQooWhereInput[] | TheQooWhereInput>;
 }
 
 export type TodayHumorWhereUniqueInput = AtLeastOne<{
@@ -1846,6 +3144,56 @@ export interface CookUpdateManyMutationInput {
   from?: Maybe<String>;
 }
 
+export interface DogDripCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link: String;
+  from: String;
+}
+
+export interface DogDripUpdateInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface DogDripUpdateManyMutationInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface ErrorLogCreateInput {
+  id?: Maybe<ID_Input>;
+  reason: String;
+  from: String;
+  isRead: Boolean;
+  type: String;
+}
+
+export interface ErrorLogUpdateInput {
+  reason?: Maybe<String>;
+  from?: Maybe<String>;
+  isRead?: Maybe<Boolean>;
+  type?: Maybe<String>;
+}
+
+export interface ErrorLogUpdateManyMutationInput {
+  reason?: Maybe<String>;
+  from?: Maybe<String>;
+  isRead?: Maybe<Boolean>;
+  type?: Maybe<String>;
+}
+
 export interface EtolandCreateInput {
   id?: Maybe<ID_Input>;
   title: String;
@@ -1866,6 +3214,34 @@ export interface EtolandUpdateInput {
 }
 
 export interface EtolandUpdateManyMutationInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface FmKoreaCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link: String;
+  from: String;
+}
+
+export interface FmKoreaUpdateInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface FmKoreaUpdateManyMutationInput {
   title?: Maybe<String>;
   author?: Maybe<String>;
   registeredAt?: Maybe<String>;
@@ -1930,6 +3306,34 @@ export interface IlbeUpdateManyMutationInput {
   from?: Maybe<String>;
 }
 
+export interface InstizCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link: String;
+  from: String;
+}
+
+export interface InstizUpdateInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface InstizUpdateManyMutationInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
 export interface PostCreateInput {
   id?: Maybe<ID_Input>;
   title: String;
@@ -1958,6 +3362,90 @@ export interface PostUpdateManyMutationInput {
   from?: Maybe<String>;
 }
 
+export interface PpompPuCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link: String;
+  from: String;
+}
+
+export interface PpompPuUpdateInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface PpompPuUpdateManyMutationInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface PrePostCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link: String;
+  from: String;
+}
+
+export interface PrePostUpdateInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface PrePostUpdateManyMutationInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface RuliWebCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link: String;
+  from: String;
+}
+
+export interface RuliWebUpdateInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface RuliWebUpdateManyMutationInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
 export interface SLRClubCreateInput {
   id?: Maybe<ID_Input>;
   title: String;
@@ -1978,6 +3466,34 @@ export interface SLRClubUpdateInput {
 }
 
 export interface SLRClubUpdateManyMutationInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface TheQooCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link: String;
+  from: String;
+}
+
+export interface TheQooUpdateInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface TheQooUpdateManyMutationInput {
   title?: Maybe<String>;
   author?: Maybe<String>;
   registeredAt?: Maybe<String>;
@@ -2058,6 +3574,32 @@ export interface CookSubscriptionWhereInput {
   NOT?: Maybe<CookSubscriptionWhereInput[] | CookSubscriptionWhereInput>;
 }
 
+export interface DogDripSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<DogDripWhereInput>;
+  AND?: Maybe<DogDripSubscriptionWhereInput[] | DogDripSubscriptionWhereInput>;
+  OR?: Maybe<DogDripSubscriptionWhereInput[] | DogDripSubscriptionWhereInput>;
+  NOT?: Maybe<DogDripSubscriptionWhereInput[] | DogDripSubscriptionWhereInput>;
+}
+
+export interface ErrorLogSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<ErrorLogWhereInput>;
+  AND?: Maybe<
+    ErrorLogSubscriptionWhereInput[] | ErrorLogSubscriptionWhereInput
+  >;
+  OR?: Maybe<ErrorLogSubscriptionWhereInput[] | ErrorLogSubscriptionWhereInput>;
+  NOT?: Maybe<
+    ErrorLogSubscriptionWhereInput[] | ErrorLogSubscriptionWhereInput
+  >;
+}
+
 export interface EtolandSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
@@ -2067,6 +3609,17 @@ export interface EtolandSubscriptionWhereInput {
   AND?: Maybe<EtolandSubscriptionWhereInput[] | EtolandSubscriptionWhereInput>;
   OR?: Maybe<EtolandSubscriptionWhereInput[] | EtolandSubscriptionWhereInput>;
   NOT?: Maybe<EtolandSubscriptionWhereInput[] | EtolandSubscriptionWhereInput>;
+}
+
+export interface FmKoreaSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<FmKoreaWhereInput>;
+  AND?: Maybe<FmKoreaSubscriptionWhereInput[] | FmKoreaSubscriptionWhereInput>;
+  OR?: Maybe<FmKoreaSubscriptionWhereInput[] | FmKoreaSubscriptionWhereInput>;
+  NOT?: Maybe<FmKoreaSubscriptionWhereInput[] | FmKoreaSubscriptionWhereInput>;
 }
 
 export interface GasengiSubscriptionWhereInput {
@@ -2091,6 +3644,17 @@ export interface IlbeSubscriptionWhereInput {
   NOT?: Maybe<IlbeSubscriptionWhereInput[] | IlbeSubscriptionWhereInput>;
 }
 
+export interface InstizSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<InstizWhereInput>;
+  AND?: Maybe<InstizSubscriptionWhereInput[] | InstizSubscriptionWhereInput>;
+  OR?: Maybe<InstizSubscriptionWhereInput[] | InstizSubscriptionWhereInput>;
+  NOT?: Maybe<InstizSubscriptionWhereInput[] | InstizSubscriptionWhereInput>;
+}
+
 export interface PostSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
@@ -2102,6 +3666,39 @@ export interface PostSubscriptionWhereInput {
   NOT?: Maybe<PostSubscriptionWhereInput[] | PostSubscriptionWhereInput>;
 }
 
+export interface PpompPuSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PpompPuWhereInput>;
+  AND?: Maybe<PpompPuSubscriptionWhereInput[] | PpompPuSubscriptionWhereInput>;
+  OR?: Maybe<PpompPuSubscriptionWhereInput[] | PpompPuSubscriptionWhereInput>;
+  NOT?: Maybe<PpompPuSubscriptionWhereInput[] | PpompPuSubscriptionWhereInput>;
+}
+
+export interface PrePostSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PrePostWhereInput>;
+  AND?: Maybe<PrePostSubscriptionWhereInput[] | PrePostSubscriptionWhereInput>;
+  OR?: Maybe<PrePostSubscriptionWhereInput[] | PrePostSubscriptionWhereInput>;
+  NOT?: Maybe<PrePostSubscriptionWhereInput[] | PrePostSubscriptionWhereInput>;
+}
+
+export interface RuliWebSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<RuliWebWhereInput>;
+  AND?: Maybe<RuliWebSubscriptionWhereInput[] | RuliWebSubscriptionWhereInput>;
+  OR?: Maybe<RuliWebSubscriptionWhereInput[] | RuliWebSubscriptionWhereInput>;
+  NOT?: Maybe<RuliWebSubscriptionWhereInput[] | RuliWebSubscriptionWhereInput>;
+}
+
 export interface SLRClubSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
@@ -2111,6 +3708,17 @@ export interface SLRClubSubscriptionWhereInput {
   AND?: Maybe<SLRClubSubscriptionWhereInput[] | SLRClubSubscriptionWhereInput>;
   OR?: Maybe<SLRClubSubscriptionWhereInput[] | SLRClubSubscriptionWhereInput>;
   NOT?: Maybe<SLRClubSubscriptionWhereInput[] | SLRClubSubscriptionWhereInput>;
+}
+
+export interface TheQooSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TheQooWhereInput>;
+  AND?: Maybe<TheQooSubscriptionWhereInput[] | TheQooSubscriptionWhereInput>;
+  OR?: Maybe<TheQooSubscriptionWhereInput[] | TheQooSubscriptionWhereInput>;
+  NOT?: Maybe<TheQooSubscriptionWhereInput[] | TheQooSubscriptionWhereInput>;
 }
 
 export interface TodayHumorSubscriptionWhereInput {
@@ -2565,6 +4173,204 @@ export interface AggregateCookSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface DogDrip {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface DogDripPromise extends Promise<DogDrip>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface DogDripSubscription
+  extends Promise<AsyncIterator<DogDrip>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface DogDripNullablePromise
+  extends Promise<DogDrip | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface DogDripConnection {
+  pageInfo: PageInfo;
+  edges: DogDripEdge[];
+}
+
+export interface DogDripConnectionPromise
+  extends Promise<DogDripConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<DogDripEdge>>() => T;
+  aggregate: <T = AggregateDogDripPromise>() => T;
+}
+
+export interface DogDripConnectionSubscription
+  extends Promise<AsyncIterator<DogDripConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<DogDripEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateDogDripSubscription>() => T;
+}
+
+export interface DogDripEdge {
+  node: DogDrip;
+  cursor: String;
+}
+
+export interface DogDripEdgePromise extends Promise<DogDripEdge>, Fragmentable {
+  node: <T = DogDripPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface DogDripEdgeSubscription
+  extends Promise<AsyncIterator<DogDripEdge>>,
+    Fragmentable {
+  node: <T = DogDripSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateDogDrip {
+  count: Int;
+}
+
+export interface AggregateDogDripPromise
+  extends Promise<AggregateDogDrip>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateDogDripSubscription
+  extends Promise<AsyncIterator<AggregateDogDrip>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ErrorLog {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  reason: String;
+  from: String;
+  isRead: Boolean;
+  type: String;
+}
+
+export interface ErrorLogPromise extends Promise<ErrorLog>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  reason: () => Promise<String>;
+  from: () => Promise<String>;
+  isRead: () => Promise<Boolean>;
+  type: () => Promise<String>;
+}
+
+export interface ErrorLogSubscription
+  extends Promise<AsyncIterator<ErrorLog>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  reason: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  isRead: () => Promise<AsyncIterator<Boolean>>;
+  type: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ErrorLogNullablePromise
+  extends Promise<ErrorLog | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  reason: () => Promise<String>;
+  from: () => Promise<String>;
+  isRead: () => Promise<Boolean>;
+  type: () => Promise<String>;
+}
+
+export interface ErrorLogConnection {
+  pageInfo: PageInfo;
+  edges: ErrorLogEdge[];
+}
+
+export interface ErrorLogConnectionPromise
+  extends Promise<ErrorLogConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ErrorLogEdge>>() => T;
+  aggregate: <T = AggregateErrorLogPromise>() => T;
+}
+
+export interface ErrorLogConnectionSubscription
+  extends Promise<AsyncIterator<ErrorLogConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ErrorLogEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateErrorLogSubscription>() => T;
+}
+
+export interface ErrorLogEdge {
+  node: ErrorLog;
+  cursor: String;
+}
+
+export interface ErrorLogEdgePromise
+  extends Promise<ErrorLogEdge>,
+    Fragmentable {
+  node: <T = ErrorLogPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ErrorLogEdgeSubscription
+  extends Promise<AsyncIterator<ErrorLogEdge>>,
+    Fragmentable {
+  node: <T = ErrorLogSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateErrorLog {
+  count: Int;
+}
+
+export interface AggregateErrorLogPromise
+  extends Promise<AggregateErrorLog>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateErrorLogSubscription
+  extends Promise<AsyncIterator<AggregateErrorLog>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface Etoland {
   id: ID_Output;
   title: String;
@@ -2663,6 +4469,108 @@ export interface AggregateEtolandPromise
 
 export interface AggregateEtolandSubscription
   extends Promise<AsyncIterator<AggregateEtoland>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface FmKorea {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface FmKoreaPromise extends Promise<FmKorea>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface FmKoreaSubscription
+  extends Promise<AsyncIterator<FmKorea>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface FmKoreaNullablePromise
+  extends Promise<FmKorea | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface FmKoreaConnection {
+  pageInfo: PageInfo;
+  edges: FmKoreaEdge[];
+}
+
+export interface FmKoreaConnectionPromise
+  extends Promise<FmKoreaConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<FmKoreaEdge>>() => T;
+  aggregate: <T = AggregateFmKoreaPromise>() => T;
+}
+
+export interface FmKoreaConnectionSubscription
+  extends Promise<AsyncIterator<FmKoreaConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<FmKoreaEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateFmKoreaSubscription>() => T;
+}
+
+export interface FmKoreaEdge {
+  node: FmKorea;
+  cursor: String;
+}
+
+export interface FmKoreaEdgePromise extends Promise<FmKoreaEdge>, Fragmentable {
+  node: <T = FmKoreaPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface FmKoreaEdgeSubscription
+  extends Promise<AsyncIterator<FmKoreaEdge>>,
+    Fragmentable {
+  node: <T = FmKoreaSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateFmKorea {
+  count: Int;
+}
+
+export interface AggregateFmKoreaPromise
+  extends Promise<AggregateFmKorea>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateFmKoreaSubscription
+  extends Promise<AsyncIterator<AggregateFmKorea>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -2871,6 +4779,108 @@ export interface AggregateIlbeSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface Instiz {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface InstizPromise extends Promise<Instiz>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface InstizSubscription
+  extends Promise<AsyncIterator<Instiz>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface InstizNullablePromise
+  extends Promise<Instiz | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface InstizConnection {
+  pageInfo: PageInfo;
+  edges: InstizEdge[];
+}
+
+export interface InstizConnectionPromise
+  extends Promise<InstizConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<InstizEdge>>() => T;
+  aggregate: <T = AggregateInstizPromise>() => T;
+}
+
+export interface InstizConnectionSubscription
+  extends Promise<AsyncIterator<InstizConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<InstizEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateInstizSubscription>() => T;
+}
+
+export interface InstizEdge {
+  node: Instiz;
+  cursor: String;
+}
+
+export interface InstizEdgePromise extends Promise<InstizEdge>, Fragmentable {
+  node: <T = InstizPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface InstizEdgeSubscription
+  extends Promise<AsyncIterator<InstizEdge>>,
+    Fragmentable {
+  node: <T = InstizSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateInstiz {
+  count: Int;
+}
+
+export interface AggregateInstizPromise
+  extends Promise<AggregateInstiz>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateInstizSubscription
+  extends Promise<AsyncIterator<AggregateInstiz>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface Post {
   id: ID_Output;
   title: String;
@@ -2973,6 +4983,312 @@ export interface AggregatePostSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface PpompPu {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface PpompPuPromise extends Promise<PpompPu>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface PpompPuSubscription
+  extends Promise<AsyncIterator<PpompPu>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface PpompPuNullablePromise
+  extends Promise<PpompPu | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface PpompPuConnection {
+  pageInfo: PageInfo;
+  edges: PpompPuEdge[];
+}
+
+export interface PpompPuConnectionPromise
+  extends Promise<PpompPuConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PpompPuEdge>>() => T;
+  aggregate: <T = AggregatePpompPuPromise>() => T;
+}
+
+export interface PpompPuConnectionSubscription
+  extends Promise<AsyncIterator<PpompPuConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PpompPuEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePpompPuSubscription>() => T;
+}
+
+export interface PpompPuEdge {
+  node: PpompPu;
+  cursor: String;
+}
+
+export interface PpompPuEdgePromise extends Promise<PpompPuEdge>, Fragmentable {
+  node: <T = PpompPuPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PpompPuEdgeSubscription
+  extends Promise<AsyncIterator<PpompPuEdge>>,
+    Fragmentable {
+  node: <T = PpompPuSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregatePpompPu {
+  count: Int;
+}
+
+export interface AggregatePpompPuPromise
+  extends Promise<AggregatePpompPu>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePpompPuSubscription
+  extends Promise<AsyncIterator<AggregatePpompPu>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PrePost {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface PrePostPromise extends Promise<PrePost>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface PrePostSubscription
+  extends Promise<AsyncIterator<PrePost>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface PrePostNullablePromise
+  extends Promise<PrePost | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface PrePostConnection {
+  pageInfo: PageInfo;
+  edges: PrePostEdge[];
+}
+
+export interface PrePostConnectionPromise
+  extends Promise<PrePostConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PrePostEdge>>() => T;
+  aggregate: <T = AggregatePrePostPromise>() => T;
+}
+
+export interface PrePostConnectionSubscription
+  extends Promise<AsyncIterator<PrePostConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PrePostEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePrePostSubscription>() => T;
+}
+
+export interface PrePostEdge {
+  node: PrePost;
+  cursor: String;
+}
+
+export interface PrePostEdgePromise extends Promise<PrePostEdge>, Fragmentable {
+  node: <T = PrePostPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PrePostEdgeSubscription
+  extends Promise<AsyncIterator<PrePostEdge>>,
+    Fragmentable {
+  node: <T = PrePostSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregatePrePost {
+  count: Int;
+}
+
+export interface AggregatePrePostPromise
+  extends Promise<AggregatePrePost>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePrePostSubscription
+  extends Promise<AsyncIterator<AggregatePrePost>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface RuliWeb {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface RuliWebPromise extends Promise<RuliWeb>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface RuliWebSubscription
+  extends Promise<AsyncIterator<RuliWeb>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface RuliWebNullablePromise
+  extends Promise<RuliWeb | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface RuliWebConnection {
+  pageInfo: PageInfo;
+  edges: RuliWebEdge[];
+}
+
+export interface RuliWebConnectionPromise
+  extends Promise<RuliWebConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<RuliWebEdge>>() => T;
+  aggregate: <T = AggregateRuliWebPromise>() => T;
+}
+
+export interface RuliWebConnectionSubscription
+  extends Promise<AsyncIterator<RuliWebConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<RuliWebEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateRuliWebSubscription>() => T;
+}
+
+export interface RuliWebEdge {
+  node: RuliWeb;
+  cursor: String;
+}
+
+export interface RuliWebEdgePromise extends Promise<RuliWebEdge>, Fragmentable {
+  node: <T = RuliWebPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface RuliWebEdgeSubscription
+  extends Promise<AsyncIterator<RuliWebEdge>>,
+    Fragmentable {
+  node: <T = RuliWebSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateRuliWeb {
+  count: Int;
+}
+
+export interface AggregateRuliWebPromise
+  extends Promise<AggregateRuliWeb>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateRuliWebSubscription
+  extends Promise<AsyncIterator<AggregateRuliWeb>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface SLRClub {
   id: ID_Output;
   title: String;
@@ -3071,6 +5387,108 @@ export interface AggregateSLRClubPromise
 
 export interface AggregateSLRClubSubscription
   extends Promise<AsyncIterator<AggregateSLRClub>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TheQoo {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface TheQooPromise extends Promise<TheQoo>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface TheQooSubscription
+  extends Promise<AsyncIterator<TheQoo>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface TheQooNullablePromise
+  extends Promise<TheQoo | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface TheQooConnection {
+  pageInfo: PageInfo;
+  edges: TheQooEdge[];
+}
+
+export interface TheQooConnectionPromise
+  extends Promise<TheQooConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TheQooEdge>>() => T;
+  aggregate: <T = AggregateTheQooPromise>() => T;
+}
+
+export interface TheQooConnectionSubscription
+  extends Promise<AsyncIterator<TheQooConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TheQooEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTheQooSubscription>() => T;
+}
+
+export interface TheQooEdge {
+  node: TheQoo;
+  cursor: String;
+}
+
+export interface TheQooEdgePromise extends Promise<TheQooEdge>, Fragmentable {
+  node: <T = TheQooPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface TheQooEdgeSubscription
+  extends Promise<AsyncIterator<TheQooEdge>>,
+    Fragmentable {
+  node: <T = TheQooSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateTheQoo {
+  count: Int;
+}
+
+export interface AggregateTheQooPromise
+  extends Promise<AggregateTheQoo>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTheQooSubscription
+  extends Promise<AsyncIterator<AggregateTheQoo>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -3443,6 +5861,124 @@ export interface CookPreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
+export interface DogDripSubscriptionPayload {
+  mutation: MutationType;
+  node: DogDrip;
+  updatedFields: String[];
+  previousValues: DogDripPreviousValues;
+}
+
+export interface DogDripSubscriptionPayloadPromise
+  extends Promise<DogDripSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = DogDripPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = DogDripPreviousValuesPromise>() => T;
+}
+
+export interface DogDripSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<DogDripSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = DogDripSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = DogDripPreviousValuesSubscription>() => T;
+}
+
+export interface DogDripPreviousValues {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface DogDripPreviousValuesPromise
+  extends Promise<DogDripPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface DogDripPreviousValuesSubscription
+  extends Promise<AsyncIterator<DogDripPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface ErrorLogSubscriptionPayload {
+  mutation: MutationType;
+  node: ErrorLog;
+  updatedFields: String[];
+  previousValues: ErrorLogPreviousValues;
+}
+
+export interface ErrorLogSubscriptionPayloadPromise
+  extends Promise<ErrorLogSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ErrorLogPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ErrorLogPreviousValuesPromise>() => T;
+}
+
+export interface ErrorLogSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ErrorLogSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ErrorLogSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ErrorLogPreviousValuesSubscription>() => T;
+}
+
+export interface ErrorLogPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  reason: String;
+  from: String;
+  isRead: Boolean;
+  type: String;
+}
+
+export interface ErrorLogPreviousValuesPromise
+  extends Promise<ErrorLogPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  reason: () => Promise<String>;
+  from: () => Promise<String>;
+  isRead: () => Promise<Boolean>;
+  type: () => Promise<String>;
+}
+
+export interface ErrorLogPreviousValuesSubscription
+  extends Promise<AsyncIterator<ErrorLogPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  reason: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  isRead: () => Promise<AsyncIterator<Boolean>>;
+  type: () => Promise<AsyncIterator<String>>;
+}
+
 export interface EtolandSubscriptionPayload {
   mutation: MutationType;
   node: Etoland;
@@ -3494,6 +6030,68 @@ export interface EtolandPreviousValuesPromise
 
 export interface EtolandPreviousValuesSubscription
   extends Promise<AsyncIterator<EtolandPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface FmKoreaSubscriptionPayload {
+  mutation: MutationType;
+  node: FmKorea;
+  updatedFields: String[];
+  previousValues: FmKoreaPreviousValues;
+}
+
+export interface FmKoreaSubscriptionPayloadPromise
+  extends Promise<FmKoreaSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = FmKoreaPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = FmKoreaPreviousValuesPromise>() => T;
+}
+
+export interface FmKoreaSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<FmKoreaSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = FmKoreaSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = FmKoreaPreviousValuesSubscription>() => T;
+}
+
+export interface FmKoreaPreviousValues {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface FmKoreaPreviousValuesPromise
+  extends Promise<FmKoreaPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface FmKoreaPreviousValuesSubscription
+  extends Promise<AsyncIterator<FmKoreaPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   title: () => Promise<AsyncIterator<String>>;
@@ -3629,6 +6227,68 @@ export interface IlbePreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
+export interface InstizSubscriptionPayload {
+  mutation: MutationType;
+  node: Instiz;
+  updatedFields: String[];
+  previousValues: InstizPreviousValues;
+}
+
+export interface InstizSubscriptionPayloadPromise
+  extends Promise<InstizSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = InstizPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = InstizPreviousValuesPromise>() => T;
+}
+
+export interface InstizSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<InstizSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = InstizSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = InstizPreviousValuesSubscription>() => T;
+}
+
+export interface InstizPreviousValues {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface InstizPreviousValuesPromise
+  extends Promise<InstizPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface InstizPreviousValuesSubscription
+  extends Promise<AsyncIterator<InstizPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
 export interface PostSubscriptionPayload {
   mutation: MutationType;
   node: Post;
@@ -3691,6 +6351,192 @@ export interface PostPreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
+export interface PpompPuSubscriptionPayload {
+  mutation: MutationType;
+  node: PpompPu;
+  updatedFields: String[];
+  previousValues: PpompPuPreviousValues;
+}
+
+export interface PpompPuSubscriptionPayloadPromise
+  extends Promise<PpompPuSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PpompPuPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PpompPuPreviousValuesPromise>() => T;
+}
+
+export interface PpompPuSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PpompPuSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PpompPuSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PpompPuPreviousValuesSubscription>() => T;
+}
+
+export interface PpompPuPreviousValues {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface PpompPuPreviousValuesPromise
+  extends Promise<PpompPuPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface PpompPuPreviousValuesSubscription
+  extends Promise<AsyncIterator<PpompPuPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface PrePostSubscriptionPayload {
+  mutation: MutationType;
+  node: PrePost;
+  updatedFields: String[];
+  previousValues: PrePostPreviousValues;
+}
+
+export interface PrePostSubscriptionPayloadPromise
+  extends Promise<PrePostSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PrePostPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PrePostPreviousValuesPromise>() => T;
+}
+
+export interface PrePostSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PrePostSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PrePostSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PrePostPreviousValuesSubscription>() => T;
+}
+
+export interface PrePostPreviousValues {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface PrePostPreviousValuesPromise
+  extends Promise<PrePostPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface PrePostPreviousValuesSubscription
+  extends Promise<AsyncIterator<PrePostPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface RuliWebSubscriptionPayload {
+  mutation: MutationType;
+  node: RuliWeb;
+  updatedFields: String[];
+  previousValues: RuliWebPreviousValues;
+}
+
+export interface RuliWebSubscriptionPayloadPromise
+  extends Promise<RuliWebSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = RuliWebPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = RuliWebPreviousValuesPromise>() => T;
+}
+
+export interface RuliWebSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<RuliWebSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = RuliWebSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = RuliWebPreviousValuesSubscription>() => T;
+}
+
+export interface RuliWebPreviousValues {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface RuliWebPreviousValuesPromise
+  extends Promise<RuliWebPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface RuliWebPreviousValuesSubscription
+  extends Promise<AsyncIterator<RuliWebPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
 export interface SLRClubSubscriptionPayload {
   mutation: MutationType;
   node: SLRClub;
@@ -3742,6 +6588,68 @@ export interface SLRClubPreviousValuesPromise
 
 export interface SLRClubPreviousValuesSubscription
   extends Promise<AsyncIterator<SLRClubPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface TheQooSubscriptionPayload {
+  mutation: MutationType;
+  node: TheQoo;
+  updatedFields: String[];
+  previousValues: TheQooPreviousValues;
+}
+
+export interface TheQooSubscriptionPayloadPromise
+  extends Promise<TheQooSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TheQooPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TheQooPreviousValuesPromise>() => T;
+}
+
+export interface TheQooSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TheQooSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TheQooSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TheQooPreviousValuesSubscription>() => T;
+}
+
+export interface TheQooPreviousValues {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface TheQooPreviousValuesPromise
+  extends Promise<TheQooPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface TheQooPreviousValuesSubscription
+  extends Promise<AsyncIterator<TheQooPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   title: () => Promise<AsyncIterator<String>>;
@@ -3854,11 +6762,19 @@ export type Long = string;
 
 export const models: Model[] = [
   {
+    name: "PrePost",
+    embedded: false
+  },
+  {
     name: "Post",
     embedded: false
   },
   {
     name: "Bobae",
+    embedded: false
+  },
+  {
+    name: "RuliWeb",
     embedded: false
   },
   {
@@ -3891,6 +6807,30 @@ export const models: Model[] = [
   },
   {
     name: "Gasengi",
+    embedded: false
+  },
+  {
+    name: "PpompPu",
+    embedded: false
+  },
+  {
+    name: "Instiz",
+    embedded: false
+  },
+  {
+    name: "TheQoo",
+    embedded: false
+  },
+  {
+    name: "FmKorea",
+    embedded: false
+  },
+  {
+    name: "DogDrip",
+    embedded: false
+  },
+  {
+    name: "ErrorLog",
     embedded: false
   }
 ];

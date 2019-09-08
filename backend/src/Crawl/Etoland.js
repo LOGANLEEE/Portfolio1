@@ -1,36 +1,63 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
+const iconv = require('iconv-lite');
 
-const { info } = console;
+const info = console.info;
 
-function fetching() {
-    const url = '/list?code=best';
+async function fetching() {
+    const url = 'http://www.etoland.co.kr/bbs/board.php?bo_table=hit';
+    let isErrorOccured = false;
 
-    axios.get(url).then((res) => {
+    await axios.get(url, { responseType: 'arraybuffer' }).then((res) => {
         if (res.status === 200) {
-            Processor(res.data);
+            const result = iconv.decode(res.data, 'euc-kr');
+            Processor(result);
         }
-    }).catch((err) => info(err));
+    }).catch((e) => {
+        prisma.createErrorLog({
+            reason: e.toString(),
+            from: 'Etoland',
+            isRead: false,
+            type: 'F',
+        });
+        isErrorOccured = true;
+    });
 
-    function Processor(html) {
-        // 1~30
-        for (let i = 1; i < 31; i++) {
-            const target = `#boardlist > tbody > tr:nth-child(${i})`;
-            const $ = cheerio.load(html);
-            const title = $(target + ' > td.pl14 > a.bsubject').text();
-            const link = $(target + ' > td.pl14 > a.bsubject').attr('href');
-            const time = $(target + ' > td.date').text();
-            const writer = $(target + ' > td.author02 > span.author').text();
-
-            authorist.push(writer);
-            titleList.push(title);
-            linkList.push('http://www.bobaedream.co.kr' + link);
-            timeList.push(time);
+    async function Processor(html) {
+        // 8~126 even numbers.
+        try {
+            for (let i = 8; i < 127; i += 2) {
+                const target = `#fboardlist > table > tbody > tr:nth-child(${i})`;
+                const $ = cheerio.load(html);
+                const title = $(target + '> td.mw_basic_list_subject > a:nth-child(3) > span').text();
+                const link = $(target + '> td.mw_basic_list_subject > a:nth-child(3)').attr('href');
+                const time = $(target + '> td.mw_basic_list_datetime').text();
+                const author = $(target + '> td:nth-child(3) > nobr > a > span').text();
+                const hitCount = $(target + '> td.mw_basic_list_hit').text();
+                const data = {
+                    title,
+                    author,
+                    link: 'http://www.etoland.co.kr/' + link.replace('../', ''),
+                    hitCount: parseInt(hitCount),
+                    registeredAt: time,
+                    from: 'Etloand',
+                };
+                await prisma.createPrePost(data);
+                // await prisma.createEtoland(data);
+            }
+        } catch (e) {
+            await prisma.createErrorLog({
+                reason: e.toString(),
+                from: 'Bobae',
+                isRead: false,
+                type: 'Q',
+            });
+            isErrorOccured = true;
         }
+        info("£££ Etoland Done");
     }
-    store.dispatch(action.getBobae(titleList, linkList, timeList, authorist));
-    return true;
+    return isErrorOccured;
 }
 
 module.exports = {

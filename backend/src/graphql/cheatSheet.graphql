@@ -437,7 +437,7 @@ scalar Json
 scalar Long
 
 type Mutation {
-  createPost(data: PostCreateInput!): Post!
+  createPrePost(data: PostCreateInput!): Post!
   createBobae(data: BobaeCreateInput!): Bobae!
   createClien(data: ClienCreateInput!): Clien!
   updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post

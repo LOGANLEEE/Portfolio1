@@ -58,7 +58,7 @@ const keyPath = 'key.pem';
 const certPath = 'server.crt';
 
 const options = {
-    port: 4000,
+    port: 4001,
     https: {
         key: fs.readFileSync(keyPath, 'utf8'),
         cert: fs.readFileSync(certPath, 'utf8')
