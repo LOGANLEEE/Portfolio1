@@ -7,6 +7,7 @@ const { info } = console;
 async function fetching() {
     const url = 'http://www.slrclub.com/bbs/zboard.php?id=best_article';
     let isErrorOccured = false;
+    const from = 'SLR';
 
     await axios.get(url).then((res) => {
         if (res.status === 200) {
@@ -15,11 +16,12 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: 'SLR',
+            from,
             isRead: false,
             type: 'F',
         });
         isErrorOccured = true;
+        throw e;
     });
 
     async function Processor(html) {
@@ -38,24 +40,24 @@ async function fetching() {
                     link: 'http://www.slrclub.com/' + link,
                     hitCount: parseInt(hitCount),
                     registeredAt: time,
-                    from: 'SLR',
+                    from,
                 };
 
                 await prisma.createPrePost(data);
-                // await prisma.createSLRClub(data);
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: 'SLR',
+                from,
                 isRead: false,
                 type: 'Q',
             });
             isErrorOccured = true;
+            throw e;
         }
-        info("£££ SLR Done");
     }
-    return isErrorOccured;
+    info(`£££ ${from} done`);
+    return { from, isErrorOccured };
 }
 
 module.exports = {

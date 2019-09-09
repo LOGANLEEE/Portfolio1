@@ -195,3 +195,12 @@ type ErrorLog{
     isRead: Boolean!,
     type: String!,
 }
+
+type HumorUniv{
+    id: ID! @id
+    createdAt: DateTime! @createdAt
+    reason: String!
+    from: String!
+    isRead: Boolean!,
+    type: String!,
+}

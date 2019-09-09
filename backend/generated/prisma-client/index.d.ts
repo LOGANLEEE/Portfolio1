@@ -25,6 +25,7 @@ export interface Exists {
   etoland: (where?: EtolandWhereInput) => Promise<boolean>;
   fmKorea: (where?: FmKoreaWhereInput) => Promise<boolean>;
   gasengi: (where?: GasengiWhereInput) => Promise<boolean>;
+  humorUniv: (where?: HumorUnivWhereInput) => Promise<boolean>;
   ilbe: (where?: IlbeWhereInput) => Promise<boolean>;
   instiz: (where?: InstizWhereInput) => Promise<boolean>;
   post: (where?: PostWhereInput) => Promise<boolean>;
@@ -226,6 +227,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => GasengiConnectionPromise;
+  humorUniv: (where: HumorUnivWhereUniqueInput) => HumorUnivNullablePromise;
+  humorUnivs: (args?: {
+    where?: HumorUnivWhereInput;
+    orderBy?: HumorUnivOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<HumorUniv>;
+  humorUnivsConnection: (args?: {
+    where?: HumorUnivWhereInput;
+    orderBy?: HumorUnivOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => HumorUnivConnectionPromise;
   ilbe: (where: IlbeWhereUniqueInput) => IlbeNullablePromise;
   ilbes: (args?: {
     where?: IlbeWhereInput;
@@ -547,6 +567,22 @@ export interface Prisma {
   }) => GasengiPromise;
   deleteGasengi: (where: GasengiWhereUniqueInput) => GasengiPromise;
   deleteManyGasengis: (where?: GasengiWhereInput) => BatchPayloadPromise;
+  createHumorUniv: (data: HumorUnivCreateInput) => HumorUnivPromise;
+  updateHumorUniv: (args: {
+    data: HumorUnivUpdateInput;
+    where: HumorUnivWhereUniqueInput;
+  }) => HumorUnivPromise;
+  updateManyHumorUnivs: (args: {
+    data: HumorUnivUpdateManyMutationInput;
+    where?: HumorUnivWhereInput;
+  }) => BatchPayloadPromise;
+  upsertHumorUniv: (args: {
+    where: HumorUnivWhereUniqueInput;
+    create: HumorUnivCreateInput;
+    update: HumorUnivUpdateInput;
+  }) => HumorUnivPromise;
+  deleteHumorUniv: (where: HumorUnivWhereUniqueInput) => HumorUnivPromise;
+  deleteManyHumorUnivs: (where?: HumorUnivWhereInput) => BatchPayloadPromise;
   createIlbe: (data: IlbeCreateInput) => IlbePromise;
   updateIlbe: (args: {
     data: IlbeUpdateInput;
@@ -727,6 +763,9 @@ export interface Subscription {
   gasengi: (
     where?: GasengiSubscriptionWhereInput
   ) => GasengiSubscriptionPayloadSubscription;
+  humorUniv: (
+    where?: HumorUnivSubscriptionWhereInput
+  ) => HumorUnivSubscriptionPayloadSubscription;
   ilbe: (
     where?: IlbeSubscriptionWhereInput
   ) => IlbeSubscriptionPayloadSubscription;
@@ -921,6 +960,20 @@ export type GasengiOrderByInput =
   | "from_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC";
+
+export type HumorUnivOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "reason_ASC"
+  | "reason_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "isRead_ASC"
+  | "isRead_DESC"
+  | "type_ASC"
+  | "type_DESC";
 
 export type IlbeOrderByInput =
   | "id_ASC"
@@ -2040,6 +2093,82 @@ export interface GasengiWhereInput {
   AND?: Maybe<GasengiWhereInput[] | GasengiWhereInput>;
   OR?: Maybe<GasengiWhereInput[] | GasengiWhereInput>;
   NOT?: Maybe<GasengiWhereInput[] | GasengiWhereInput>;
+}
+
+export type HumorUnivWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface HumorUnivWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  reason?: Maybe<String>;
+  reason_not?: Maybe<String>;
+  reason_in?: Maybe<String[] | String>;
+  reason_not_in?: Maybe<String[] | String>;
+  reason_lt?: Maybe<String>;
+  reason_lte?: Maybe<String>;
+  reason_gt?: Maybe<String>;
+  reason_gte?: Maybe<String>;
+  reason_contains?: Maybe<String>;
+  reason_not_contains?: Maybe<String>;
+  reason_starts_with?: Maybe<String>;
+  reason_not_starts_with?: Maybe<String>;
+  reason_ends_with?: Maybe<String>;
+  reason_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  isRead?: Maybe<Boolean>;
+  isRead_not?: Maybe<Boolean>;
+  type?: Maybe<String>;
+  type_not?: Maybe<String>;
+  type_in?: Maybe<String[] | String>;
+  type_not_in?: Maybe<String[] | String>;
+  type_lt?: Maybe<String>;
+  type_lte?: Maybe<String>;
+  type_gt?: Maybe<String>;
+  type_gte?: Maybe<String>;
+  type_contains?: Maybe<String>;
+  type_not_contains?: Maybe<String>;
+  type_starts_with?: Maybe<String>;
+  type_not_starts_with?: Maybe<String>;
+  type_ends_with?: Maybe<String>;
+  type_not_ends_with?: Maybe<String>;
+  AND?: Maybe<HumorUnivWhereInput[] | HumorUnivWhereInput>;
+  OR?: Maybe<HumorUnivWhereInput[] | HumorUnivWhereInput>;
+  NOT?: Maybe<HumorUnivWhereInput[] | HumorUnivWhereInput>;
 }
 
 export type IlbeWhereUniqueInput = AtLeastOne<{
@@ -3278,6 +3407,28 @@ export interface GasengiUpdateManyMutationInput {
   from?: Maybe<String>;
 }
 
+export interface HumorUnivCreateInput {
+  id?: Maybe<ID_Input>;
+  reason: String;
+  from: String;
+  isRead: Boolean;
+  type: String;
+}
+
+export interface HumorUnivUpdateInput {
+  reason?: Maybe<String>;
+  from?: Maybe<String>;
+  isRead?: Maybe<Boolean>;
+  type?: Maybe<String>;
+}
+
+export interface HumorUnivUpdateManyMutationInput {
+  reason?: Maybe<String>;
+  from?: Maybe<String>;
+  isRead?: Maybe<Boolean>;
+  type?: Maybe<String>;
+}
+
 export interface IlbeCreateInput {
   id?: Maybe<ID_Input>;
   title: String;
@@ -3631,6 +3782,23 @@ export interface GasengiSubscriptionWhereInput {
   AND?: Maybe<GasengiSubscriptionWhereInput[] | GasengiSubscriptionWhereInput>;
   OR?: Maybe<GasengiSubscriptionWhereInput[] | GasengiSubscriptionWhereInput>;
   NOT?: Maybe<GasengiSubscriptionWhereInput[] | GasengiSubscriptionWhereInput>;
+}
+
+export interface HumorUnivSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<HumorUnivWhereInput>;
+  AND?: Maybe<
+    HumorUnivSubscriptionWhereInput[] | HumorUnivSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    HumorUnivSubscriptionWhereInput[] | HumorUnivSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    HumorUnivSubscriptionWhereInput[] | HumorUnivSubscriptionWhereInput
+  >;
 }
 
 export interface IlbeSubscriptionWhereInput {
@@ -4673,6 +4841,102 @@ export interface AggregateGasengiPromise
 
 export interface AggregateGasengiSubscription
   extends Promise<AsyncIterator<AggregateGasengi>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface HumorUniv {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  reason: String;
+  from: String;
+  isRead: Boolean;
+  type: String;
+}
+
+export interface HumorUnivPromise extends Promise<HumorUniv>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  reason: () => Promise<String>;
+  from: () => Promise<String>;
+  isRead: () => Promise<Boolean>;
+  type: () => Promise<String>;
+}
+
+export interface HumorUnivSubscription
+  extends Promise<AsyncIterator<HumorUniv>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  reason: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  isRead: () => Promise<AsyncIterator<Boolean>>;
+  type: () => Promise<AsyncIterator<String>>;
+}
+
+export interface HumorUnivNullablePromise
+  extends Promise<HumorUniv | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  reason: () => Promise<String>;
+  from: () => Promise<String>;
+  isRead: () => Promise<Boolean>;
+  type: () => Promise<String>;
+}
+
+export interface HumorUnivConnection {
+  pageInfo: PageInfo;
+  edges: HumorUnivEdge[];
+}
+
+export interface HumorUnivConnectionPromise
+  extends Promise<HumorUnivConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<HumorUnivEdge>>() => T;
+  aggregate: <T = AggregateHumorUnivPromise>() => T;
+}
+
+export interface HumorUnivConnectionSubscription
+  extends Promise<AsyncIterator<HumorUnivConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<HumorUnivEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateHumorUnivSubscription>() => T;
+}
+
+export interface HumorUnivEdge {
+  node: HumorUniv;
+  cursor: String;
+}
+
+export interface HumorUnivEdgePromise
+  extends Promise<HumorUnivEdge>,
+    Fragmentable {
+  node: <T = HumorUnivPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface HumorUnivEdgeSubscription
+  extends Promise<AsyncIterator<HumorUnivEdge>>,
+    Fragmentable {
+  node: <T = HumorUnivSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateHumorUniv {
+  count: Int;
+}
+
+export interface AggregateHumorUnivPromise
+  extends Promise<AggregateHumorUniv>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateHumorUnivSubscription
+  extends Promise<AsyncIterator<AggregateHumorUniv>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -6165,6 +6429,62 @@ export interface GasengiPreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
+export interface HumorUnivSubscriptionPayload {
+  mutation: MutationType;
+  node: HumorUniv;
+  updatedFields: String[];
+  previousValues: HumorUnivPreviousValues;
+}
+
+export interface HumorUnivSubscriptionPayloadPromise
+  extends Promise<HumorUnivSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = HumorUnivPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = HumorUnivPreviousValuesPromise>() => T;
+}
+
+export interface HumorUnivSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<HumorUnivSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = HumorUnivSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = HumorUnivPreviousValuesSubscription>() => T;
+}
+
+export interface HumorUnivPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  reason: String;
+  from: String;
+  isRead: Boolean;
+  type: String;
+}
+
+export interface HumorUnivPreviousValuesPromise
+  extends Promise<HumorUnivPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  reason: () => Promise<String>;
+  from: () => Promise<String>;
+  isRead: () => Promise<Boolean>;
+  type: () => Promise<String>;
+}
+
+export interface HumorUnivPreviousValuesSubscription
+  extends Promise<AsyncIterator<HumorUnivPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  reason: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  isRead: () => Promise<AsyncIterator<Boolean>>;
+  type: () => Promise<AsyncIterator<String>>;
+}
+
 export interface IlbeSubscriptionPayload {
   mutation: MutationType;
   node: Ilbe;
@@ -6831,6 +7151,10 @@ export const models: Model[] = [
   },
   {
     name: "ErrorLog",
+    embedded: false
+  },
+  {
+    name: "HumorUniv",
     embedded: false
   }
 ];

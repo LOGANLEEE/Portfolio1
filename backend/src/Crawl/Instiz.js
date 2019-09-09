@@ -8,6 +8,7 @@ const info = console.info;
 async function fetching() {
     const url = 'https://www.instiz.net/pt/';
     let isErrorOccured = false;
+    const from = 'Instiz';
 
     await axios.get(url, { responseType: 'arraybuffer' }).then((res) => {
         if (res.status === 200) {
@@ -16,11 +17,12 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: 'Instiz',
+            from,
             isRead: false,
             type: 'F',
         });
         isErrorOccured = true;
+        throw e;
     });
 
     async function Processor(html) {
@@ -33,24 +35,24 @@ async function fetching() {
                     const data = {
                         title,
                         link,
-                        from: 'Instiz',
+                        from,
                     };
                     await prisma.createPrePost(data);
-                    // await prisma.createInstiz(data);
                 }
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: 'Instiz',
+                from,
                 isRead: false,
                 type: 'Q',
             });
             isErrorOccured = true;
+            throw e;
         }
-        info("£££ Instiz Done");
     }
-    return isErrorOccured;
+    info(`£££ ${from} done`);
+    return { from, isErrorOccured };
 }
 
 module.exports = {

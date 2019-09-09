@@ -7,6 +7,7 @@ const { info } = console;
 async function fetching() {
     const url = 'https://www.clien.net/service/board/park';
     let isErrorOccured = false;
+    const from = 'Clien';
 
     await axios.get(url).then((res) => {
         if (res.status === 200) {
@@ -15,11 +16,12 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: 'Clien',
+            from,
             isRead: false,
             type: 'F',
         });
         isErrorOccured = true;
+        throw e;
     });
 
     async function Processor(html) {
@@ -41,23 +43,23 @@ async function fetching() {
                     hitCount: parseInt(hitCount),
                     registeredAt: time,
                     link: 'https://www.clien.net/' + link,
-                    from: 'Clien',
+                    from,
                 };
                 await prisma.createPrePost(data);
-                // await prisma.createClien(data);
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: 'Clien',
+                from,
                 isRead: false,
                 type: 'Q',
             });
             isErrorOccured = true;
+            throw e;
         }
-        info("£££ CLIEN Done");
     }
-    return isErrorOccured;
+    info(`£££ ${from} done`);
+    return { from, isErrorOccured };
 }
 
 module.exports = {

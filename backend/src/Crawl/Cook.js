@@ -7,6 +7,7 @@ const { info } = console;
 async function fetching() {
     const url = 'https://www.82cook.com/entiz/enti.php?bn=15';
     let isErrorOccured = false;
+    const from = '82Cook';
 
     await axios.get(url).then((res) => {
         if (res.status === 200) {
@@ -15,11 +16,12 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: '82Cook',
+            from,
             isRead: false,
             type: 'F',
         });
         isErrorOccured = true;
+        throw e;
     });
 
     async function Processor(html) {
@@ -32,24 +34,24 @@ async function fetching() {
                 const data = {
                     title,
                     link: 'https://www.82cook.com/' + link,
-                    from: '82Cook',
+                    from,
                 };
 
                 await prisma.createPrePost(data);
-                // await prisma.createCook(data);
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: '82Cook',
+                from,
                 isRead: false,
                 type: 'Q',
             });
             isErrorOccured = true;
+            throw e;
         }
-        info("£££ COOK Done");
     }
-    return isErrorOccured;
+    info(`£££ ${from} done`);
+    return { from, isErrorOccured };
 }
 
 module.exports = {

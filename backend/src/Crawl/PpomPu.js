@@ -8,6 +8,7 @@ const info = console.info;
 async function fetching() {
     const url = 'http://www.ppomppu.co.kr/hot.php';
     let isErrorOccured = false;
+    const from = 'PpomPu';
 
     await axios.get(url).then((res) => {
         if (res.status === 200) {
@@ -16,11 +17,12 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: 'PpompPu',
+            from,
             isRead: false,
             type: 'F',
         });
         isErrorOccured = true;
+        throw e;
     });
 
     async function Processor(html) {
@@ -39,23 +41,23 @@ async function fetching() {
                     link: 'http://www.ppomppu.co.kr' + link,
                     hitCount: parseInt(hitCount),
                     registeredAt: time,
-                    from: 'PpompPu',
+                    from,
                 };
                 await prisma.createPrePost(data);
-                // await prisma.createPpompPu(data);
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: 'PpompPu',
+                from,
                 isRead: false,
                 type: 'Q',
             });
             isErrorOccured = true;
+            throw e;
         }
-        info("£££ PpompPu Done");
     }
-    return isErrorOccured;
+    info(`£££ ${from} done`);
+    return { from, isErrorOccured };
 }
 
 module.exports = {

@@ -75,6 +75,10 @@ var models = [
   {
     name: "ErrorLog",
     embedded: false
+  },
+  {
+    name: "HumorUniv",
+    embedded: false
   }
 ];
 exports.Prisma = prisma_lib_1.makePrismaClientClass({

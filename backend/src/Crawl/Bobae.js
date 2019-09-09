@@ -8,6 +8,7 @@ const { info } = console;
 async function fetching() {
     const url = 'https://www.bobaedream.co.kr/list?code=best';
     let isErrorOccured = false;
+    const from = 'Bobae';
 
     const agent = new https.Agent({
         rejectUnauthorized: false
@@ -18,11 +19,12 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: 'Bobae',
+            from,
             isRead: false,
             type: 'F',
         });
-        isErrorOccured = true;
+          isErrorOccured = true;
+ throw e;
     });
 
     async function Processor(html) {
@@ -41,7 +43,7 @@ async function fetching() {
                     author,
                     hitCount: parseInt(hitCount),
                     registeredAt: time,
-                    from: 'Bobae',
+                    from,
                     link: 'https://www.bobaedream.co.kr' + link,
                 };
 
@@ -50,14 +52,15 @@ async function fetching() {
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: 'Bobae',
+                from,
                 isRead: false,
                 type: 'Q',
             });
-            isErrorOccured = true;
+              isErrorOccured = true;
+ throw e;
         }
     }
-    return isErrorOccured;
+    return { from, isErrorOccured };
 }
 
 module.exports = {

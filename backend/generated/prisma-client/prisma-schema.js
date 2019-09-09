@@ -39,6 +39,10 @@ type AggregateGasengi {
   count: Int!
 }
 
+type AggregateHumorUniv {
+  count: Int!
+}
+
 type AggregateIlbe {
   count: Int!
 }
@@ -1905,6 +1909,166 @@ input GasengiWhereUniqueInput {
   id: ID
 }
 
+type HumorUniv {
+  id: ID!
+  createdAt: DateTime!
+  reason: String!
+  from: String!
+  isRead: Boolean!
+  type: String!
+}
+
+type HumorUnivConnection {
+  pageInfo: PageInfo!
+  edges: [HumorUnivEdge]!
+  aggregate: AggregateHumorUniv!
+}
+
+input HumorUnivCreateInput {
+  id: ID
+  reason: String!
+  from: String!
+  isRead: Boolean!
+  type: String!
+}
+
+type HumorUnivEdge {
+  node: HumorUniv!
+  cursor: String!
+}
+
+enum HumorUnivOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  reason_ASC
+  reason_DESC
+  from_ASC
+  from_DESC
+  isRead_ASC
+  isRead_DESC
+  type_ASC
+  type_DESC
+}
+
+type HumorUnivPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  reason: String!
+  from: String!
+  isRead: Boolean!
+  type: String!
+}
+
+type HumorUnivSubscriptionPayload {
+  mutation: MutationType!
+  node: HumorUniv
+  updatedFields: [String!]
+  previousValues: HumorUnivPreviousValues
+}
+
+input HumorUnivSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: HumorUnivWhereInput
+  AND: [HumorUnivSubscriptionWhereInput!]
+  OR: [HumorUnivSubscriptionWhereInput!]
+  NOT: [HumorUnivSubscriptionWhereInput!]
+}
+
+input HumorUnivUpdateInput {
+  reason: String
+  from: String
+  isRead: Boolean
+  type: String
+}
+
+input HumorUnivUpdateManyMutationInput {
+  reason: String
+  from: String
+  isRead: Boolean
+  type: String
+}
+
+input HumorUnivWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  reason: String
+  reason_not: String
+  reason_in: [String!]
+  reason_not_in: [String!]
+  reason_lt: String
+  reason_lte: String
+  reason_gt: String
+  reason_gte: String
+  reason_contains: String
+  reason_not_contains: String
+  reason_starts_with: String
+  reason_not_starts_with: String
+  reason_ends_with: String
+  reason_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  isRead: Boolean
+  isRead_not: Boolean
+  type: String
+  type_not: String
+  type_in: [String!]
+  type_not_in: [String!]
+  type_lt: String
+  type_lte: String
+  type_gt: String
+  type_gte: String
+  type_contains: String
+  type_not_contains: String
+  type_starts_with: String
+  type_not_starts_with: String
+  type_ends_with: String
+  type_not_ends_with: String
+  AND: [HumorUnivWhereInput!]
+  OR: [HumorUnivWhereInput!]
+  NOT: [HumorUnivWhereInput!]
+}
+
+input HumorUnivWhereUniqueInput {
+  id: ID
+}
+
 type Ilbe {
   id: ID!
   title: String!
@@ -2378,6 +2542,12 @@ type Mutation {
   upsertGasengi(where: GasengiWhereUniqueInput!, create: GasengiCreateInput!, update: GasengiUpdateInput!): Gasengi!
   deleteGasengi(where: GasengiWhereUniqueInput!): Gasengi
   deleteManyGasengis(where: GasengiWhereInput): BatchPayload!
+  createHumorUniv(data: HumorUnivCreateInput!): HumorUniv!
+  updateHumorUniv(data: HumorUnivUpdateInput!, where: HumorUnivWhereUniqueInput!): HumorUniv
+  updateManyHumorUnivs(data: HumorUnivUpdateManyMutationInput!, where: HumorUnivWhereInput): BatchPayload!
+  upsertHumorUniv(where: HumorUnivWhereUniqueInput!, create: HumorUnivCreateInput!, update: HumorUnivUpdateInput!): HumorUniv!
+  deleteHumorUniv(where: HumorUnivWhereUniqueInput!): HumorUniv
+  deleteManyHumorUnivs(where: HumorUnivWhereInput): BatchPayload!
   createIlbe(data: IlbeCreateInput!): Ilbe!
   updateIlbe(data: IlbeUpdateInput!, where: IlbeWhereUniqueInput!): Ilbe
   updateManyIlbes(data: IlbeUpdateManyMutationInput!, where: IlbeWhereInput): BatchPayload!
@@ -3103,6 +3273,9 @@ type Query {
   gasengi(where: GasengiWhereUniqueInput!): Gasengi
   gasengis(where: GasengiWhereInput, orderBy: GasengiOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Gasengi]!
   gasengisConnection(where: GasengiWhereInput, orderBy: GasengiOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): GasengiConnection!
+  humorUniv(where: HumorUnivWhereUniqueInput!): HumorUniv
+  humorUnivs(where: HumorUnivWhereInput, orderBy: HumorUnivOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [HumorUniv]!
+  humorUnivsConnection(where: HumorUnivWhereInput, orderBy: HumorUnivOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HumorUnivConnection!
   ilbe(where: IlbeWhereUniqueInput!): Ilbe
   ilbes(where: IlbeWhereInput, orderBy: IlbeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Ilbe]!
   ilbesConnection(where: IlbeWhereInput, orderBy: IlbeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): IlbeConnection!
@@ -3559,6 +3732,7 @@ type Subscription {
   etoland(where: EtolandSubscriptionWhereInput): EtolandSubscriptionPayload
   fmKorea(where: FmKoreaSubscriptionWhereInput): FmKoreaSubscriptionPayload
   gasengi(where: GasengiSubscriptionWhereInput): GasengiSubscriptionPayload
+  humorUniv(where: HumorUnivSubscriptionWhereInput): HumorUnivSubscriptionPayload
   ilbe(where: IlbeSubscriptionWhereInput): IlbeSubscriptionPayload
   instiz(where: InstizSubscriptionWhereInput): InstizSubscriptionPayload
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload

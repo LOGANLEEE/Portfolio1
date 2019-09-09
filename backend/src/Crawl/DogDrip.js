@@ -8,6 +8,7 @@ const info = console.info;
 async function fetching() {
     const url = 'https://www.dogdrip.net/dogdrip';
     let isErrorOccured = false;
+    const from = 'DogDrip';
 
     await axios.get(url).then((res) => {
         if (res.status === 200) {
@@ -16,11 +17,12 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: 'DogDrip',
+            from,
             isRead: false,
             type: 'F',
         });
         isErrorOccured = true;
+        throw e;
     });
 
     async function Processor(html) {
@@ -35,23 +37,23 @@ async function fetching() {
                     title,
                     author,
                     link,
-                    from: 'DogDrip',
+                    from,
                 };
-                info("£££ data : ", data);
                 await prisma.createPrePost(data);
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: 'DogDrip',
+                from,
                 isRead: false,
                 type: 'F',
             });
             isErrorOccured = true;
+            throw e;
         }
-        info('£££ DogDrip Done');
     }
-    return isErrorOccured;
+    info(`£££ ${from} done`);
+    return { from, isErrorOccured };
 }
 
 module.exports = {

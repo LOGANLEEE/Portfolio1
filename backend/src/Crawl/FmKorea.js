@@ -8,6 +8,7 @@ const info = console.info;
 async function fetching() {
     const url = 'https://www.fmkorea.com/index.php?mid=humor&sort_index=pop&order_type=desc&listStyle=webzine';
     let isErrorOccured = false;
+    const from = 'FmKorea';
 
     await axios.get(url).then(res => {
         if (res.status === 200) {
@@ -16,11 +17,12 @@ async function fetching() {
     }).catch(err => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: 'FmKorea',
+            from,
             isRead: false,
             type: 'F',
         });
         isErrorOccured = true;
+        throw e;
     });
 
     async function Processor(html) {
@@ -38,24 +40,24 @@ async function fetching() {
                         author,
                         link: 'https://www.fmkorea.com/' + link,
                         registeredAt: time,
-                        from: 'FmKorea',
+                        from,
                     };
                     await prisma.createPrePost(data);
-                    // await prisma.createFmKorea(data);
                 }
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: 'FmKorea',
+                from,
                 isRead: false,
                 type: 'Q',
             });
             isErrorOccured = true;
+            throw e;
         };
-        info('£££ FmKorea Done');
     };
-    return isErrorOccured;
+    info(`£££ ${from} done`);
+    return { from, isErrorOccured };
 }
 
 module.exports = {

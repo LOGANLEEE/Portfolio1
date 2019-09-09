@@ -2,12 +2,12 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
 
-const info = console.info;
+const { info } = console;
 
 async function fetching() {
-    const url = 'https://theqoo.net/hot?filter_mode=normal';
+    const url = 'https://web.humoruniv.com/board/humor/list.html?table=pick';
     let isErrorOccured = false;
-    const from = 'TheQoo';
+    const from = 'HumorUniv';
 
     await axios.get(url).then((res) => {
         if (res.status === 200) {
@@ -25,21 +25,27 @@ async function fetching() {
     });
 
     async function Processor(html) {
+        info("html", html);
         try {
-            for (let i = 5; i < 34; i++) {
-                const target = `#bd_801402415_0 > div > table > tbody > tr:nth-child(${i})`;
+            for (let i = 1; i < 21; i++) {
+                const target = `#cnts_list_new > div:nth-child(1) > table:nth-child(3) > tbody > tr:nth-child(${i})`;
                 const $ = cheerio.load(html);
-                const title = $(target + '> td.title > a:nth-child(1) > span').text();
-                const link = $(target + '> td.title > a:nth-child(1)').attr('href');
-                const time = $(target + '> td.time').text().replace('.', '-').trim();
-                const hitCount = $(target + '> td.m_no').text().replace('만', '0000').replace('.', '');
+                // #li_chk_pick-898898 > td.li_sbj > a
+                const link = $(target + '> td.li_sbj > a').attr('href');
+                const title = $(target + '> td.li_sbj > a').text();
+                const time = $(target + '> td.li_date > span.w_time').text();
+                const author = $(target + '> td.li_icn > table > tbody > tr > td.g6 > span > span').text();
+                const hitCount = $(target + '> td:nth-child(5)').text();
                 const data = {
                     title,
-                    link: 'https://theqoo.net/' + link,
+                    author,
+                    link: 'http://www.todayhumor.co.kr' + link,
                     hitCount: parseInt(hitCount),
                     registeredAt: time,
                     from,
                 };
+
+                // info('£££', data);
                 await prisma.createPrePost(data);
             }
         } catch (e) {
@@ -51,9 +57,8 @@ async function fetching() {
             });
             isErrorOccured = true;
             throw e;
-        };
+        }
     }
-    info(`£££ ${from} done`);
     return { from, isErrorOccured };
 }
 

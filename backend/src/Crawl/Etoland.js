@@ -8,6 +8,7 @@ const info = console.info;
 async function fetching() {
     const url = 'http://www.etoland.co.kr/bbs/board.php?bo_table=hit';
     let isErrorOccured = false;
+    const from = 'Etoland';
 
     await axios.get(url, { responseType: 'arraybuffer' }).then((res) => {
         if (res.status === 200) {
@@ -17,11 +18,12 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: 'Etoland',
+            from,
             isRead: false,
             type: 'F',
         });
         isErrorOccured = true;
+        throw e;
     });
 
     async function Processor(html) {
@@ -44,7 +46,6 @@ async function fetching() {
                     from: 'Etloand',
                 };
                 await prisma.createPrePost(data);
-                // await prisma.createEtoland(data);
             }
         } catch (e) {
             await prisma.createErrorLog({
@@ -54,10 +55,11 @@ async function fetching() {
                 type: 'Q',
             });
             isErrorOccured = true;
+            throw e;
         }
-        info("£££ Etoland Done");
     }
-    return isErrorOccured;
+    info(`£££ ${from} done`);
+    return { from, isErrorOccured };
 }
 
 module.exports = {

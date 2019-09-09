@@ -7,6 +7,7 @@ const { info } = console;
 async function fetching() {
     const url = 'http://mlbpark.donga.com/mp/b.php?p=1&m=list&b=bullpen&query=&select=&user=';
     let isErrorOccured = false;
+    const from = 'Bullpen';
 
     await axios.get(url).then((res) => {
         if (res.status === 200) {
@@ -15,18 +16,21 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: 'Bullpen',
+            from,
             isRead: false,
             type: 'F',
         });
         isErrorOccured = true;
+        throw e;
 
     });
 
     async function Processor(html) {
         // 6 ~ 35.
         try {
-            for (let i = 6; i < 36; i++) {
+            for (let i = 5; i < 34; i++) {
+                // #container > div.contents > div.left_cont > div.tbl_box > table > tbody > tr:nth-child(5)
+                // #container > div.contents > div.left_cont > div.tbl_box > table > tbody > tr:nth-child(34)
                 const target = `#container > div.contents > div.left_cont > div.tbl_box > table > tbody > tr:nth-child(${i})`;
                 const $ = cheerio.load(html);
                 const link = $(target + ' > td.t_left > a.bullpenbox').attr('href');
@@ -42,24 +46,23 @@ async function fetching() {
                     link,
                     hitCount: parseInt(hitCount),
                     registeredAt: time,
-                    from: 'Bullpen',
+                    from,
                 };
-
                 await prisma.createPrePost(data);
-                // await prisma.createBullpen(data);
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: 'Bullpen',
+                from,
                 isRead: false,
                 type: 'Q',
             });
             isErrorOccured = true;
+            throw e;
         }
-        info("£££ Bullpen Done");
     }
-    return isErrorOccured;
+    info(`£££ ${from} done`);
+    return { from, isErrorOccured };
 }
 
 module.exports = {

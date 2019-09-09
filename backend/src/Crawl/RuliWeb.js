@@ -7,6 +7,7 @@ const info = console.info;
 async function fetching() {
     const url = 'https://bbs.ruliweb.com/best/humor';
     let isErrorOccured = false;
+    const from = 'RuliWeb';
 
     await axios.get(url).then((res) => {
         if (res.status === 200) {
@@ -15,11 +16,12 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: 'RuliWeb',
+            from,
             isRead: false,
             type: 'F',
         });
         isErrorOccured = true;
+        throw e;
     });
 
     async function Processor(html) {
@@ -39,24 +41,24 @@ async function fetching() {
                     link,
                     hitCount: parseInt(hitCount),
                     registeredAt: time,
-                    from: 'RuliWeb',
+                    from,
                 };
 
                 await prisma.createPrePost(data);
-                // await prisma.createRuliWeb(data);
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: 'RuliWeb',
+                from,
                 isRead: false,
                 type: 'Q',
             });
             isErrorOccured = true;
+            throw e;
         }
-        info("£££ RuliWeb Done");
     }
-    return isErrorOccured;
+    info(`£££ ${from} done`);
+    return { from, isErrorOccured };
 }
 
 module.exports = {

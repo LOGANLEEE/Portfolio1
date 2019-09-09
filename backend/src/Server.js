@@ -28,19 +28,21 @@ const server = new GraphQLServer({
     }
 })
 
-server.express.get('/crawl', (req, res) => {
+server.express.get('/crawl', async (req, res) => {
 
-    if (Crawl.start()) {
-
-        res.status(200);
-        res.send('GOOD');
-        return res
-    } else {
-        res.status(404);
-        res.send('failed');
-        return res;
-    };
-
+    try {
+        const result = await Crawl.start();
+        info(result);
+        if (result.length > 0) {
+            res.status(404);
+            res.send(result);
+        } else {
+            res.status(200);
+            res.send('success');
+        }
+    } catch (err) {
+        throw err;
+    }
 });
 
 // server.express.post('/', (req, res) => {

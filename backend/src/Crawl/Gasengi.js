@@ -7,6 +7,7 @@ const { info } = console;
 async function fetching() {
     const url = 'https://www.gasengi.com/main/board.php?bo_table=commu';
     let isErrorOccured = false;
+    const from = 'Gasengi';
 
     await axios.get(url).then((res) => {
         if (res.status === 200) {
@@ -15,11 +16,12 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: 'RuliWeb',
+            from,
             isRead: false,
             type: 'F',
         });
         isErrorOccured = true;
+        throw e;
     });
 
     async function Processor(html) {
@@ -33,25 +35,25 @@ async function fetching() {
                     const data = {
                         title,
                         link: 'https://www.gasengi.com/' + link,
-                        from: 'Gasengi',
+                        from,
                     };
 
                     await prisma.createPrePost(data);
-                    // await prisma.createGasengi(data);
                 }
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: 'Gasengi',
+                from,
                 isRead: false,
                 type: 'Q',
             });
+            isErrorOccured = true;
+            throw e;
         }
-        isErrorOccured = true;
-        info("£££ Gasengi Done")
     }
-    return isErrorOccured;
+    info(`£££ ${from} done`);
+    return { from, isErrorOccured };
 }
 
 module.exports = {

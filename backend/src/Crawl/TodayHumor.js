@@ -7,6 +7,7 @@ const { info } = console;
 async function fetching() {
     const url = 'http://www.todayhumor.co.kr/board/list.php?table=humorbest';
     let isErrorOccured = false;
+    const from = 'TodayHumor';
 
     await axios.get(url).then((res) => {
         if (res.status === 200) {
@@ -15,11 +16,12 @@ async function fetching() {
     }).catch((e) => {
         prisma.createErrorLog({
             reason: e.toString(),
-            from: 'TodayHumor',
+            from,
             isRead: false,
             type: 'F',
         });
         isErrorOccured = true;
+        throw e;
     });
 
     async function Processor(html) {
@@ -38,24 +40,24 @@ async function fetching() {
                     link: 'http://www.todayhumor.co.kr' + link,
                     hitCount: parseInt(hitCount),
                     registeredAt: time,
-                    from: 'TodayHumor',
+                    from,
                 };
 
                 await prisma.createPrePost(data);
-                // await prisma.createTodayHumor(data);
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: 'TodayHumor',
+                from,
                 isRead: false,
                 type: 'Q',
             });
             isErrorOccured = true;
+            throw e;
         }
-        info("£££ TodayHumor Done");
     }
-    return isErrorOccured;
+    info(`£££ ${from} done`);
+    return { from, isErrorOccured };
 }
 
 module.exports = {
