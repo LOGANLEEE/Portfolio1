@@ -10,6 +10,7 @@ const { info } = console;
 const { prisma } = require('../generated/prisma-client');
 const Query = require('./resolvers/Query');
 const Crawl = require('./Crawl');
+const TotalSorter = require('./Crawl/TotalSorter');
 
 
 const resolvers = {
@@ -28,18 +29,11 @@ const server = new GraphQLServer({
     }
 })
 
-server.express.get('/crawl', async (req, res) => {
-
+server.express.get('/crawl', async (req, res, next) => {
     try {
-        const result = await Crawl.start();
-        info(result);
-        if (result.length > 0) {
-            res.status(404);
-            res.send(result);
-        } else {
-            res.status(200);
-            res.send('success');
-        }
+
+        let result = await Crawl.init();
+        res.status(200).send(result);
     } catch (err) {
         throw err;
     }

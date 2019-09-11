@@ -18,98 +18,43 @@ const HumorUniv = require('./HumorUniv');
 const { info } = console;
 
 
-async function start() {
-    const list = [];
-    const errList = [];
+function init() {
 
-    await Clien.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
+    const start = new Promise((resolve, reject) => {
+        try {
+            const siteList = [Clien, Bobae, Bullpen, Ilbe, Etoland, SLR, TodayHumor, Cook, Gasengi, RuliWeb, PpomPu, Instiz, TheQoo, FmKorea, DogDrip];
+            // const siteList = [Clien];
+            const errList = [];
 
-    await Bobae.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
-    await Bullpen.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
-    await Ilbe.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
-    await SLR.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
-    await TodayHumor.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
-    await Cook.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
-    await Gasengi.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
-    await Etoland.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
-    await RuliWeb.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
-    await PpomPu.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
-    await Instiz.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
-    await TheQoo.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
-    await FmKorea.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
-    await DogDrip.fetching().then(e => {
-        if (e.isErrorOccured === true) {
-            errList.push(e.from);
-        }
-    });
+            siteList.map(site => {
+                const result = site.fetching();
+                if (result.isErrorOccured === true) {
+                    errList.push(result);
+                }
+            });
 
-    // DCinside // TODO
-    // NATEPANN // TODO
-    // YGOSU // TODO
-    // DDANZI // TODO
+            resolve(errList);
 
-    // HumorUniv.fetching(); // not working
 
-    return errList;
 
+            // if (siteList.length > 0) {
+            //     siteListExecutor().then((e) => { info('£££ 3 ', e); return errList });
+            // }
+
+
+            // DCinside // TODO
+            // NATEPANN // TODO
+            // YGOSU // TODO
+            // DDANZI // TODO
+
+            // HumorUniv.fetching(); // not working
+        } catch (err) {
+            reject(err);
+        }
+    });
+    return start;
 }
 
 module.exports = {
-    start
+    init
 };

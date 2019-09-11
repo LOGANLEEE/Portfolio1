@@ -29,8 +29,6 @@ async function fetching() {
         // 6 ~ 35.
         try {
             for (let i = 5; i < 34; i++) {
-                // #container > div.contents > div.left_cont > div.tbl_box > table > tbody > tr:nth-child(5)
-                // #container > div.contents > div.left_cont > div.tbl_box > table > tbody > tr:nth-child(34)
                 const target = `#container > div.contents > div.left_cont > div.tbl_box > table > tbody > tr:nth-child(${i})`;
                 const $ = cheerio.load(html);
                 const link = $(target + ' > td.t_left > a.bullpenbox').attr('href');
@@ -61,7 +59,8 @@ async function fetching() {
             throw e;
         }
     }
-    info(`£££ ${from} done`);
+        info(`£££ ${from} is ${isErrorOccured} done`);
+
     return { from, isErrorOccured };
 }
 

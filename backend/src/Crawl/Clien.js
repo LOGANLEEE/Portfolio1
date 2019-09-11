@@ -4,13 +4,14 @@ const { prisma } = require('../../generated/prisma-client');
 
 const { info } = console;
 
-async function fetching() {
+function fetching() {
     const url = 'https://www.clien.net/service/board/park';
     let isErrorOccured = false;
     const from = 'Clien';
 
-    await axios.get(url).then((res) => {
+    axios.get(url).then((res) => {
         if (res.status === 200) {
+            info("1");
             Processor(res.data);
         }
     }).catch((e) => {
@@ -24,8 +25,9 @@ async function fetching() {
         throw e;
     });
 
-    async function Processor(html) {
+    function Processor(html) {
         try {
+            info("2");
             for (let i = 7; i < 37; i++) {
                 const target = `#div_content > div:nth-child(${i})`;
                 const $ = cheerio.load(html);
@@ -45,10 +47,10 @@ async function fetching() {
                     link: 'https://www.clien.net/' + link,
                     from,
                 };
-                await prisma.createPrePost(data);
+                prisma.createPrePost(data);
             }
         } catch (e) {
-            await prisma.createErrorLog({
+            prisma.createErrorLog({
                 reason: e.toString(),
                 from,
                 isRead: false,
@@ -58,7 +60,8 @@ async function fetching() {
             throw e;
         }
     }
-    info(`£££ ${from} done`);
+    info("3");
+    info(`£££ ${from} is ${isErrorOccured} done`);
     return { from, isErrorOccured };
 }
 

@@ -52,7 +52,8 @@ async function fetching() {
             throw e;
         }
     }
-    info(`£££ ${from} done`);
+        info(`£££ ${from} is ${isErrorOccured} done`);
+
     return { from, isErrorOccured };
 }
 
