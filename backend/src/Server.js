@@ -29,11 +29,11 @@ const server = new GraphQLServer({
     }
 })
 
-server.express.get('/crawl', async (req, res, next) => {
+server.express.get('/crawl', (req, res, next) => {
     try {
-
-        let result = await Crawl.init();
-        res.status(200).send(result);
+        Crawl.init().then(result => {
+            res.status(200).send("SERVER RESPONSE" + result);
+        })
     } catch (err) {
         throw err;
     }

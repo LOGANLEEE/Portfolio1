@@ -18,7 +18,7 @@ const HumorUniv = require('./HumorUniv');
 const { info } = console;
 
 
-function init() {
+async function init() {
 
     const start = new Promise((resolve, reject) => {
         try {
@@ -33,7 +33,7 @@ function init() {
                 }
             });
 
-            resolve(errList);
+            return resolve(errList);
 
 
 
@@ -49,10 +49,10 @@ function init() {
 
             // HumorUniv.fetching(); // not working
         } catch (err) {
-            reject(err);
+            return reject(err);
         }
     });
-    return start;
+    return await start;
 }
 
 module.exports = {
