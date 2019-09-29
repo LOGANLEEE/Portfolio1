@@ -33,6 +33,7 @@ export interface Exists {
   prePost: (where?: PrePostWhereInput) => Promise<boolean>;
   ruliWeb: (where?: RuliWebWhereInput) => Promise<boolean>;
   sLRClub: (where?: SLRClubWhereInput) => Promise<boolean>;
+  savedPosts: (where?: SavedPostsWhereInput) => Promise<boolean>;
   theQoo: (where?: TheQooWhereInput) => Promise<boolean>;
   todayHumor: (where?: TodayHumorWhereInput) => Promise<boolean>;
 }
@@ -379,6 +380,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => SLRClubConnectionPromise;
+  savedPosts: (where: SavedPostsWhereUniqueInput) => SavedPostsNullablePromise;
+  savedPostses: (args?: {
+    where?: SavedPostsWhereInput;
+    orderBy?: SavedPostsOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<SavedPosts>;
+  savedPostsesConnection: (args?: {
+    where?: SavedPostsWhereInput;
+    orderBy?: SavedPostsOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => SavedPostsConnectionPromise;
   theQoo: (where: TheQooWhereUniqueInput) => TheQooNullablePromise;
   theQoos: (args?: {
     where?: TheQooWhereInput;
@@ -695,6 +715,22 @@ export interface Prisma {
   }) => SLRClubPromise;
   deleteSLRClub: (where: SLRClubWhereUniqueInput) => SLRClubPromise;
   deleteManySLRClubs: (where?: SLRClubWhereInput) => BatchPayloadPromise;
+  createSavedPosts: (data: SavedPostsCreateInput) => SavedPostsPromise;
+  updateSavedPosts: (args: {
+    data: SavedPostsUpdateInput;
+    where: SavedPostsWhereUniqueInput;
+  }) => SavedPostsPromise;
+  updateManySavedPostses: (args: {
+    data: SavedPostsUpdateManyMutationInput;
+    where?: SavedPostsWhereInput;
+  }) => BatchPayloadPromise;
+  upsertSavedPosts: (args: {
+    where: SavedPostsWhereUniqueInput;
+    create: SavedPostsCreateInput;
+    update: SavedPostsUpdateInput;
+  }) => SavedPostsPromise;
+  deleteSavedPosts: (where: SavedPostsWhereUniqueInput) => SavedPostsPromise;
+  deleteManySavedPostses: (where?: SavedPostsWhereInput) => BatchPayloadPromise;
   createTheQoo: (data: TheQooCreateInput) => TheQooPromise;
   updateTheQoo: (args: {
     data: TheQooUpdateInput;
@@ -787,6 +823,9 @@ export interface Subscription {
   sLRClub: (
     where?: SLRClubSubscriptionWhereInput
   ) => SLRClubSubscriptionPayloadSubscription;
+  savedPosts: (
+    where?: SavedPostsSubscriptionWhereInput
+  ) => SavedPostsSubscriptionPayloadSubscription;
   theQoo: (
     where?: TheQooSubscriptionWhereInput
   ) => TheQooSubscriptionPayloadSubscription;
@@ -1084,6 +1123,24 @@ export type RuliWebOrderByInput =
   | "createdAt_DESC";
 
 export type SLRClubOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "author_ASC"
+  | "author_DESC"
+  | "registeredAt_ASC"
+  | "registeredAt_DESC"
+  | "hitCount_ASC"
+  | "hitCount_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC";
+
+export type SavedPostsOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "title_ASC"
@@ -2941,6 +2998,116 @@ export interface SLRClubWhereInput {
   NOT?: Maybe<SLRClubWhereInput[] | SLRClubWhereInput>;
 }
 
+export type SavedPostsWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface SavedPostsWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  author?: Maybe<String>;
+  author_not?: Maybe<String>;
+  author_in?: Maybe<String[] | String>;
+  author_not_in?: Maybe<String[] | String>;
+  author_lt?: Maybe<String>;
+  author_lte?: Maybe<String>;
+  author_gt?: Maybe<String>;
+  author_gte?: Maybe<String>;
+  author_contains?: Maybe<String>;
+  author_not_contains?: Maybe<String>;
+  author_starts_with?: Maybe<String>;
+  author_not_starts_with?: Maybe<String>;
+  author_ends_with?: Maybe<String>;
+  author_not_ends_with?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  registeredAt_not?: Maybe<String>;
+  registeredAt_in?: Maybe<String[] | String>;
+  registeredAt_not_in?: Maybe<String[] | String>;
+  registeredAt_lt?: Maybe<String>;
+  registeredAt_lte?: Maybe<String>;
+  registeredAt_gt?: Maybe<String>;
+  registeredAt_gte?: Maybe<String>;
+  registeredAt_contains?: Maybe<String>;
+  registeredAt_not_contains?: Maybe<String>;
+  registeredAt_starts_with?: Maybe<String>;
+  registeredAt_not_starts_with?: Maybe<String>;
+  registeredAt_ends_with?: Maybe<String>;
+  registeredAt_not_ends_with?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  hitCount_not?: Maybe<Int>;
+  hitCount_in?: Maybe<Int[] | Int>;
+  hitCount_not_in?: Maybe<Int[] | Int>;
+  hitCount_lt?: Maybe<Int>;
+  hitCount_lte?: Maybe<Int>;
+  hitCount_gt?: Maybe<Int>;
+  hitCount_gte?: Maybe<Int>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<SavedPostsWhereInput[] | SavedPostsWhereInput>;
+  OR?: Maybe<SavedPostsWhereInput[] | SavedPostsWhereInput>;
+  NOT?: Maybe<SavedPostsWhereInput[] | SavedPostsWhereInput>;
+}
+
 export type TheQooWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
@@ -3625,6 +3792,34 @@ export interface SLRClubUpdateManyMutationInput {
   from?: Maybe<String>;
 }
 
+export interface SavedPostsCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link: String;
+  from: String;
+}
+
+export interface SavedPostsUpdateInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface SavedPostsUpdateManyMutationInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
 export interface TheQooCreateInput {
   id?: Maybe<ID_Input>;
   title: String;
@@ -3876,6 +4071,23 @@ export interface SLRClubSubscriptionWhereInput {
   AND?: Maybe<SLRClubSubscriptionWhereInput[] | SLRClubSubscriptionWhereInput>;
   OR?: Maybe<SLRClubSubscriptionWhereInput[] | SLRClubSubscriptionWhereInput>;
   NOT?: Maybe<SLRClubSubscriptionWhereInput[] | SLRClubSubscriptionWhereInput>;
+}
+
+export interface SavedPostsSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<SavedPostsWhereInput>;
+  AND?: Maybe<
+    SavedPostsSubscriptionWhereInput[] | SavedPostsSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    SavedPostsSubscriptionWhereInput[] | SavedPostsSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    SavedPostsSubscriptionWhereInput[] | SavedPostsSubscriptionWhereInput
+  >;
 }
 
 export interface TheQooSubscriptionWhereInput {
@@ -5655,6 +5867,110 @@ export interface AggregateSLRClubSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface SavedPosts {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface SavedPostsPromise extends Promise<SavedPosts>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface SavedPostsSubscription
+  extends Promise<AsyncIterator<SavedPosts>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface SavedPostsNullablePromise
+  extends Promise<SavedPosts | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface SavedPostsConnection {
+  pageInfo: PageInfo;
+  edges: SavedPostsEdge[];
+}
+
+export interface SavedPostsConnectionPromise
+  extends Promise<SavedPostsConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<SavedPostsEdge>>() => T;
+  aggregate: <T = AggregateSavedPostsPromise>() => T;
+}
+
+export interface SavedPostsConnectionSubscription
+  extends Promise<AsyncIterator<SavedPostsConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<SavedPostsEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateSavedPostsSubscription>() => T;
+}
+
+export interface SavedPostsEdge {
+  node: SavedPosts;
+  cursor: String;
+}
+
+export interface SavedPostsEdgePromise
+  extends Promise<SavedPostsEdge>,
+    Fragmentable {
+  node: <T = SavedPostsPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface SavedPostsEdgeSubscription
+  extends Promise<AsyncIterator<SavedPostsEdge>>,
+    Fragmentable {
+  node: <T = SavedPostsSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateSavedPosts {
+  count: Int;
+}
+
+export interface AggregateSavedPostsPromise
+  extends Promise<AggregateSavedPosts>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateSavedPostsSubscription
+  extends Promise<AsyncIterator<AggregateSavedPosts>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface TheQoo {
   id: ID_Output;
   title: String;
@@ -6919,6 +7235,68 @@ export interface SLRClubPreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
+export interface SavedPostsSubscriptionPayload {
+  mutation: MutationType;
+  node: SavedPosts;
+  updatedFields: String[];
+  previousValues: SavedPostsPreviousValues;
+}
+
+export interface SavedPostsSubscriptionPayloadPromise
+  extends Promise<SavedPostsSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = SavedPostsPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = SavedPostsPreviousValuesPromise>() => T;
+}
+
+export interface SavedPostsSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<SavedPostsSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = SavedPostsSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = SavedPostsPreviousValuesSubscription>() => T;
+}
+
+export interface SavedPostsPreviousValues {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface SavedPostsPreviousValuesPromise
+  extends Promise<SavedPostsPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface SavedPostsPreviousValuesSubscription
+  extends Promise<AsyncIterator<SavedPostsPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
 export interface TheQooSubscriptionPayload {
   mutation: MutationType;
   node: TheQoo;
@@ -7083,6 +7461,10 @@ export type Long = string;
 export const models: Model[] = [
   {
     name: "PrePost",
+    embedded: false
+  },
+  {
+    name: "SavedPosts",
     embedded: false
   },
   {

@@ -10,13 +10,13 @@ async function fetching() {
     let isErrorOccured = false;
     const from = 'Etoland';
 
-    await axios.get(url, { responseType: 'arraybuffer' }).then((res) => {
+    return await axios.get(url, { responseType: 'arraybuffer' }).then(res => {
         if (res.status === 200) {
             const result = iconv.decode(res.data, 'euc-kr');
-            Processor(result);
+            return Processor(result);
         }
-    }).catch((e) => {
-        prisma.createErrorLog({
+    }).catch(async (e) => {
+        await prisma.createErrorLog({
             reason: e.toString(),
             from,
             isRead: false,
@@ -57,10 +57,12 @@ async function fetching() {
             isErrorOccured = true;
             throw e;
         }
+        //info(`£££ is ${from}  has Error? :  ${isErrorOccured}`);
+        return new Promise((resolve, reject) => {
+            resolve({ from, isErrorOccured });
+            reject({ from, isErrorOccured });
+        });
     }
-        info(`£££ ${from} is ${isErrorOccured} done`);
-
-    return { from, isErrorOccured };
 }
 
 module.exports = {

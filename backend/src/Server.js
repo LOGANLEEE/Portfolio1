@@ -10,7 +10,6 @@ const { info } = console;
 const { prisma } = require('../generated/prisma-client');
 const Query = require('./resolvers/Query');
 const Crawl = require('./Crawl');
-const TotalSorter = require('./Crawl/TotalSorter');
 
 
 const resolvers = {
@@ -29,14 +28,23 @@ const server = new GraphQLServer({
     }
 })
 
-server.express.get('/crawl', (req, res, next) => {
-    try {
-        Crawl.init().then(result => {
-            res.status(200).send("SERVER RESPONSE" + result);
-        })
-    } catch (err) {
+// setInterval(() => {
+//     info(`=================`);
+//     Crawl.init(),  10000// 10s
+// });
+
+info(`=================`);
+Crawl.init();// 10s
+
+
+server.express.get('/crawl', (req, res) => {
+
+    Crawl.init().then((result) => {
+        res.status(200).send(`SUCCESS:  ${result}`);
+    }).catch(err => {
+        res.status(502).send(`ERROR :  ${err}`);
         throw err;
-    }
+    });
 });
 
 // server.express.post('/', (req, res) => {
@@ -61,4 +69,4 @@ const options = {
     }
 };
 
-server.start(options, () => console.log(`Server is running on ${options.port}`))
+server.start(options, () => info(`Server is running on ${options.port}`))

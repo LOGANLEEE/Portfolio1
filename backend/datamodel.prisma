@@ -11,6 +11,17 @@ type PrePost {
     createdAt: DateTime! @createdAt
 }
 
+type SavedPosts {
+    id: ID! @id
+    title: String!
+    author: String
+    registeredAt: String
+    hitCount: Int
+    link: String!
+    from: String!
+    createdAt: DateTime! @createdAt
+}
+
 type Post {
     id: ID! @id
     title: String!

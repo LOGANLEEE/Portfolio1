@@ -10,12 +10,12 @@ async function fetching() {
     let isErrorOccured = false;
     const from = 'DogDrip';
 
-    await axios.get(url).then((res) => {
+    return await axios.get(url).then( async (res) => {
         if (res.status === 200) {
-            Processor(res.data);
+            return Processor(res.data);
         }
-    }).catch((e) => {
-        prisma.createErrorLog({
+    }).catch(async (e) => {
+        await prisma.createErrorLog({
             reason: e.toString(),
             from,
             isRead: false,
@@ -51,10 +51,12 @@ async function fetching() {
             isErrorOccured = true;
             throw e;
         }
+        //info(`£££ is ${from}  has Error? :  ${isErrorOccured}`);
+        return new Promise((resolve, reject) => {
+            resolve({ from, isErrorOccured });
+            reject({ from, isErrorOccured });
+        });
     }
-        info(`£££ ${from} is ${isErrorOccured} done`);
-
-    return { from, isErrorOccured };
 }
 
 module.exports = {

@@ -14,17 +14,17 @@ async function fetching() {
         rejectUnauthorized: false
     });
 
-    await axios.get(url, { httpsAgent: agent }).then((res) => {
-        if (res.status === 200) { Processor(res.data); }
-    }).catch((e) => {
-        prisma.createErrorLog({
+    return await axios.get(url, { httpsAgent: agent }).then((res) => {
+        if (res.status === 200) { return Processor(res.data); }
+    }).catch(async (e) => {
+        await prisma.createErrorLog({
             reason: e.toString(),
             from,
             isRead: false,
             type: 'F',
         });
-          isErrorOccured = true;
- throw e;
+        isErrorOccured = true;
+        throw e;
     });
 
     async function Processor(html) {
@@ -46,8 +46,7 @@ async function fetching() {
                     from,
                     link: 'https://www.bobaedream.co.kr' + link,
                 };
-
-                await prisma.createPrePost(data);
+                await prisma.createPrePost(data)
             }
         } catch (e) {
             await prisma.createErrorLog({
@@ -56,11 +55,15 @@ async function fetching() {
                 isRead: false,
                 type: 'Q',
             });
-              isErrorOccured = true;
- throw e;
+            isErrorOccured = true;
+            throw e;
         }
+        //info(`£££ is ${from}  has Error? :  ${isErrorOccured}`);
+        return new Promise((resolve, reject) => {
+            resolve({ from, isErrorOccured });
+            reject({ from, isErrorOccured });
+        });
     }
-    return { from, isErrorOccured };
 }
 
 module.exports = {

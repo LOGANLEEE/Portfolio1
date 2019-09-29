@@ -4,18 +4,17 @@ const { prisma } = require('../../generated/prisma-client');
 
 const { info } = console;
 
-function fetching() {
+async function fetching() {
     const url = 'https://www.clien.net/service/board/park';
     let isErrorOccured = false;
     const from = 'Clien';
 
-    axios.get(url).then((res) => {
+    return await axios.get(url).then((res) => {
         if (res.status === 200) {
-            info("1");
-            Processor(res.data);
+            return Processor(res.data);
         }
-    }).catch((e) => {
-        prisma.createErrorLog({
+    }).catch(async (e) => {
+        await prisma.createErrorLog({
             reason: e.toString(),
             from,
             isRead: false,
@@ -25,9 +24,8 @@ function fetching() {
         throw e;
     });
 
-    function Processor(html) {
+    async function Processor(html) {
         try {
-            info("2");
             for (let i = 7; i < 37; i++) {
                 const target = `#div_content > div:nth-child(${i})`;
                 const $ = cheerio.load(html);
@@ -47,10 +45,10 @@ function fetching() {
                     link: 'https://www.clien.net/' + link,
                     from,
                 };
-                prisma.createPrePost(data);
+                await prisma.createPrePost(data);
             }
         } catch (e) {
-            prisma.createErrorLog({
+            await prisma.createErrorLog({
                 reason: e.toString(),
                 from,
                 isRead: false,
@@ -59,10 +57,12 @@ function fetching() {
             isErrorOccured = true;
             throw e;
         }
+        //info(`£££ is ${from}  has Error? :  ${isErrorOccured}`);
+        return new Promise((resolve, reject) => {
+            resolve({ from, isErrorOccured });
+            reject({ from, isErrorOccured });
+        });
     }
-    info("3");
-    info(`£££ ${from} is ${isErrorOccured} done`);
-    return { from, isErrorOccured };
 }
 
 module.exports = {

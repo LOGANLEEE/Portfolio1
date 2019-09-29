@@ -1,3 +1,7 @@
+const axios = require('axios');
+const cheerio = require('cheerio');
+const { prisma } = require('../../generated/prisma-client');
+
 const Clien = require('./Clien');
 const Bobae = require('./Bobae');
 const Bullpen = require('./Bullpen');
@@ -18,43 +22,50 @@ const HumorUniv = require('./HumorUniv');
 const { info } = console;
 
 
-async function init() {
+// DCinside // TODO
+// NATEPANN // TODO
+// YGOSU // TODO
+// DDANZI // TODO
+// HumorUniv.fetching(); // not working
+const siteList = [Clien, Bobae, Bullpen, Etoland, SLR, TodayHumor, Cook, Gasengi, RuliWeb, PpomPu, Instiz, TheQoo, FmKorea, DogDrip];
+// const siteList = [Clien, Bobae, Bullpen, Etoland, SLR, TodayHumor, Cook, Gasengi]
 
-    const start = new Promise((resolve, reject) => {
-        try {
-            const siteList = [Clien, Bobae, Bullpen, Ilbe, Etoland, SLR, TodayHumor, Cook, Gasengi, RuliWeb, PpomPu, Instiz, TheQoo, FmKorea, DogDrip];
-            // const siteList = [Clien];
-            const errList = [];
 
-            siteList.map(site => {
-                const result = site.fetching();
-                if (result.isErrorOccured === true) {
-                    errList.push(result);
+/* TODO 
+    ILBE
+*/
+function init() {
+    info("£££ 111 === ");
+    const resultList = [];
+
+    try {
+        siteList.map((site, idx) => {
+            site.fetching().then(value => {
+                info(`£££ ${idx} Is ${value.from}  has Error? :  ${value.isErrorOccured}`);
+                resultList.push(value);
+                if (resultList.length === siteList.length) {
+                    exec();
                 }
-            });
+            }).catch(err => { throw err });
+        });
+    } catch (e) {
+        throw e;
+    }
 
-            return resolve(errList);
+};
 
+function exec() {
 
-
-            // if (siteList.length > 0) {
-            //     siteListExecutor().then((e) => { info('£££ 3 ', e); return errList });
-            // }
-
-
-            // DCinside // TODO
-            // NATEPANN // TODO
-            // YGOSU // TODO
-            // DDANZI // TODO
-
-            // HumorUniv.fetching(); // not working
-        } catch (err) {
-            return reject(err);
-        }
-    });
-    return await start;
+    const crawledData = prisma.prePosts();
+    crawledData.then(data => {
+        data.map(e => {
+            info("£££ e ", e);
+        })
+    })
 }
 
+
 module.exports = {
-    init
+    init,
+    exec,
 };
