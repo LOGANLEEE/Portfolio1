@@ -1,6 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
+const preProcessor = require('../preProcessor');
 
 const Clien = require('./Clien');
 const Bobae = require('./Bobae');
@@ -27,15 +28,22 @@ const { info } = console;
 // YGOSU // TODO
 // DDANZI // TODO
 // HumorUniv.fetching(); // not working
-const siteList = [Clien, Bobae, Bullpen, Etoland, SLR, TodayHumor, Cook, Gasengi, RuliWeb, PpomPu, Instiz, TheQoo, FmKorea, DogDrip];
-// const siteList = [Clien, Bobae, Bullpen, Etoland, SLR, TodayHumor, Cook, Gasengi]
+// const siteList = [Clien, Bobae, Bullpen, Etoland, SLR, TodayHumor, Cook, Gasengi, RuliWeb, PpomPu, Instiz, TheQoo, FmKorea, DogDrip];
+const siteList = [Etoland]
+
+
+/* DONE
+    Clien
+    Bobae
+    Etoland ( onGoing )
+*/
 
 
 /* TODO 
     ILBE
 */
 function init() {
-    info("£££ 111 === ");
+    info("£££ Crawler Init ");
     const resultList = [];
 
     try {
@@ -44,7 +52,7 @@ function init() {
                 info(`£££ ${idx} Is ${value.from}  has Error? :  ${value.isErrorOccured}`);
                 resultList.push(value);
                 if (resultList.length === siteList.length) {
-                    exec();
+                    preProcessor.exec();
                 }
             }).catch(err => { throw err });
         });
@@ -54,18 +62,7 @@ function init() {
 
 };
 
-function exec() {
-
-    const crawledData = prisma.prePosts();
-    crawledData.then(data => {
-        data.map(e => {
-            info("£££ e ", e);
-        })
-    })
-}
-
 
 module.exports = {
     init,
-    exec,
 };

@@ -9,6 +9,14 @@ var models = [
     embedded: false
   },
   {
+    name: "TempPost",
+    embedded: false
+  },
+  {
+    name: "SortedPosts",
+    embedded: false
+  },
+  {
     name: "SavedPosts",
     embedded: false
   },

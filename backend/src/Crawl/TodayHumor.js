@@ -1,13 +1,14 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
+const Constants = require('../Constants');
 
 const { info } = console;
 
 async function fetching() {
     const url = 'http://www.todayhumor.co.kr/board/list.php?table=humorbest';
     let isErrorOccured = false;
-    const from = 'TodayHumor';
+    const from = Constants.TodayHumor;
 
     return await axios.get(url).then( async (res) => {
         if (res.status === 200) {

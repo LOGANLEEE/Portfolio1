@@ -2,13 +2,14 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
 const iconv = require('iconv-lite');
+const Constants = require('../Constants');
 
 const info = console.info;
 
 async function fetching() {
     const url = 'http://www.etoland.co.kr/bbs/board.php?bo_table=hit';
     let isErrorOccured = false;
-    const from = 'Etoland';
+    const from = Constants.Etoland;
 
     return await axios.get(url, { responseType: 'arraybuffer' }).then(res => {
         if (res.status === 200) {
@@ -43,14 +44,14 @@ async function fetching() {
                     link: 'http://www.etoland.co.kr/' + link.replace('../', ''),
                     hitCount: parseInt(hitCount),
                     registeredAt: time,
-                    from: 'Etloand',
+                    from,
                 };
                 await prisma.createPrePost(data);
             }
         } catch (e) {
             await prisma.createErrorLog({
                 reason: e.toString(),
-                from: 'Bobae',
+                from,
                 isRead: false,
                 type: 'Q',
             });

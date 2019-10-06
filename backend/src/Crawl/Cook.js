@@ -1,13 +1,14 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
+const Constants = require('../Constants');
 
 const { info } = console;
 
 async function fetching() {
     const url = 'https://www.82cook.com/entiz/enti.php?bn=15';
     let isErrorOccured = false;
-    const from = '82Cook';
+    const from = Constants.Cook;
 
     return await axios.get(url).then( async (res) => {
         if (res.status === 200) {

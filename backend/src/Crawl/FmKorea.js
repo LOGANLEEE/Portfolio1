@@ -1,14 +1,13 @@
-
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
-
+const Constants = require('../Constants');
 const info = console.info;
 
 async function fetching() {
     const url = 'https://www.fmkorea.com/index.php?mid=humor&sort_index=pop&order_type=desc&listStyle=webzine';
     let isErrorOccured = false;
-    const from = 'FmKorea';
+    const from = Constants.FmKorea;
 
     return await axios.get(url).then(res => {
         if (res.status === 200) {

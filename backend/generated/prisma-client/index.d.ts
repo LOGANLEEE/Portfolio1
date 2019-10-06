@@ -34,6 +34,8 @@ export interface Exists {
   ruliWeb: (where?: RuliWebWhereInput) => Promise<boolean>;
   sLRClub: (where?: SLRClubWhereInput) => Promise<boolean>;
   savedPosts: (where?: SavedPostsWhereInput) => Promise<boolean>;
+  sortedPosts: (where?: SortedPostsWhereInput) => Promise<boolean>;
+  tempPost: (where?: TempPostWhereInput) => Promise<boolean>;
   theQoo: (where?: TheQooWhereInput) => Promise<boolean>;
   todayHumor: (where?: TodayHumorWhereInput) => Promise<boolean>;
 }
@@ -399,6 +401,46 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => SavedPostsConnectionPromise;
+  sortedPosts: (
+    where: SortedPostsWhereUniqueInput
+  ) => SortedPostsNullablePromise;
+  sortedPostses: (args?: {
+    where?: SortedPostsWhereInput;
+    orderBy?: SortedPostsOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<SortedPosts>;
+  sortedPostsesConnection: (args?: {
+    where?: SortedPostsWhereInput;
+    orderBy?: SortedPostsOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => SortedPostsConnectionPromise;
+  tempPost: (where: TempPostWhereUniqueInput) => TempPostNullablePromise;
+  tempPosts: (args?: {
+    where?: TempPostWhereInput;
+    orderBy?: TempPostOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<TempPost>;
+  tempPostsConnection: (args?: {
+    where?: TempPostWhereInput;
+    orderBy?: TempPostOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => TempPostConnectionPromise;
   theQoo: (where: TheQooWhereUniqueInput) => TheQooNullablePromise;
   theQoos: (args?: {
     where?: TheQooWhereInput;
@@ -731,6 +773,40 @@ export interface Prisma {
   }) => SavedPostsPromise;
   deleteSavedPosts: (where: SavedPostsWhereUniqueInput) => SavedPostsPromise;
   deleteManySavedPostses: (where?: SavedPostsWhereInput) => BatchPayloadPromise;
+  createSortedPosts: (data: SortedPostsCreateInput) => SortedPostsPromise;
+  updateSortedPosts: (args: {
+    data: SortedPostsUpdateInput;
+    where: SortedPostsWhereUniqueInput;
+  }) => SortedPostsPromise;
+  updateManySortedPostses: (args: {
+    data: SortedPostsUpdateManyMutationInput;
+    where?: SortedPostsWhereInput;
+  }) => BatchPayloadPromise;
+  upsertSortedPosts: (args: {
+    where: SortedPostsWhereUniqueInput;
+    create: SortedPostsCreateInput;
+    update: SortedPostsUpdateInput;
+  }) => SortedPostsPromise;
+  deleteSortedPosts: (where: SortedPostsWhereUniqueInput) => SortedPostsPromise;
+  deleteManySortedPostses: (
+    where?: SortedPostsWhereInput
+  ) => BatchPayloadPromise;
+  createTempPost: (data: TempPostCreateInput) => TempPostPromise;
+  updateTempPost: (args: {
+    data: TempPostUpdateInput;
+    where: TempPostWhereUniqueInput;
+  }) => TempPostPromise;
+  updateManyTempPosts: (args: {
+    data: TempPostUpdateManyMutationInput;
+    where?: TempPostWhereInput;
+  }) => BatchPayloadPromise;
+  upsertTempPost: (args: {
+    where: TempPostWhereUniqueInput;
+    create: TempPostCreateInput;
+    update: TempPostUpdateInput;
+  }) => TempPostPromise;
+  deleteTempPost: (where: TempPostWhereUniqueInput) => TempPostPromise;
+  deleteManyTempPosts: (where?: TempPostWhereInput) => BatchPayloadPromise;
   createTheQoo: (data: TheQooCreateInput) => TheQooPromise;
   updateTheQoo: (args: {
     data: TheQooUpdateInput;
@@ -826,6 +902,12 @@ export interface Subscription {
   savedPosts: (
     where?: SavedPostsSubscriptionWhereInput
   ) => SavedPostsSubscriptionPayloadSubscription;
+  sortedPosts: (
+    where?: SortedPostsSubscriptionWhereInput
+  ) => SortedPostsSubscriptionPayloadSubscription;
+  tempPost: (
+    where?: TempPostSubscriptionWhereInput
+  ) => TempPostSubscriptionPayloadSubscription;
   theQoo: (
     where?: TheQooSubscriptionWhereInput
   ) => TheQooSubscriptionPayloadSubscription;
@@ -1141,6 +1223,42 @@ export type SLRClubOrderByInput =
   | "createdAt_DESC";
 
 export type SavedPostsOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "author_ASC"
+  | "author_DESC"
+  | "registeredAt_ASC"
+  | "registeredAt_DESC"
+  | "hitCount_ASC"
+  | "hitCount_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC";
+
+export type SortedPostsOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "author_ASC"
+  | "author_DESC"
+  | "registeredAt_ASC"
+  | "registeredAt_DESC"
+  | "hitCount_ASC"
+  | "hitCount_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "from_ASC"
+  | "from_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC";
+
+export type TempPostOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "title_ASC"
@@ -3108,6 +3226,226 @@ export interface SavedPostsWhereInput {
   NOT?: Maybe<SavedPostsWhereInput[] | SavedPostsWhereInput>;
 }
 
+export type SortedPostsWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface SortedPostsWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  author?: Maybe<String>;
+  author_not?: Maybe<String>;
+  author_in?: Maybe<String[] | String>;
+  author_not_in?: Maybe<String[] | String>;
+  author_lt?: Maybe<String>;
+  author_lte?: Maybe<String>;
+  author_gt?: Maybe<String>;
+  author_gte?: Maybe<String>;
+  author_contains?: Maybe<String>;
+  author_not_contains?: Maybe<String>;
+  author_starts_with?: Maybe<String>;
+  author_not_starts_with?: Maybe<String>;
+  author_ends_with?: Maybe<String>;
+  author_not_ends_with?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  registeredAt_not?: Maybe<String>;
+  registeredAt_in?: Maybe<String[] | String>;
+  registeredAt_not_in?: Maybe<String[] | String>;
+  registeredAt_lt?: Maybe<String>;
+  registeredAt_lte?: Maybe<String>;
+  registeredAt_gt?: Maybe<String>;
+  registeredAt_gte?: Maybe<String>;
+  registeredAt_contains?: Maybe<String>;
+  registeredAt_not_contains?: Maybe<String>;
+  registeredAt_starts_with?: Maybe<String>;
+  registeredAt_not_starts_with?: Maybe<String>;
+  registeredAt_ends_with?: Maybe<String>;
+  registeredAt_not_ends_with?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  hitCount_not?: Maybe<Int>;
+  hitCount_in?: Maybe<Int[] | Int>;
+  hitCount_not_in?: Maybe<Int[] | Int>;
+  hitCount_lt?: Maybe<Int>;
+  hitCount_lte?: Maybe<Int>;
+  hitCount_gt?: Maybe<Int>;
+  hitCount_gte?: Maybe<Int>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<SortedPostsWhereInput[] | SortedPostsWhereInput>;
+  OR?: Maybe<SortedPostsWhereInput[] | SortedPostsWhereInput>;
+  NOT?: Maybe<SortedPostsWhereInput[] | SortedPostsWhereInput>;
+}
+
+export type TempPostWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface TempPostWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  author?: Maybe<String>;
+  author_not?: Maybe<String>;
+  author_in?: Maybe<String[] | String>;
+  author_not_in?: Maybe<String[] | String>;
+  author_lt?: Maybe<String>;
+  author_lte?: Maybe<String>;
+  author_gt?: Maybe<String>;
+  author_gte?: Maybe<String>;
+  author_contains?: Maybe<String>;
+  author_not_contains?: Maybe<String>;
+  author_starts_with?: Maybe<String>;
+  author_not_starts_with?: Maybe<String>;
+  author_ends_with?: Maybe<String>;
+  author_not_ends_with?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  registeredAt_not?: Maybe<String>;
+  registeredAt_in?: Maybe<String[] | String>;
+  registeredAt_not_in?: Maybe<String[] | String>;
+  registeredAt_lt?: Maybe<String>;
+  registeredAt_lte?: Maybe<String>;
+  registeredAt_gt?: Maybe<String>;
+  registeredAt_gte?: Maybe<String>;
+  registeredAt_contains?: Maybe<String>;
+  registeredAt_not_contains?: Maybe<String>;
+  registeredAt_starts_with?: Maybe<String>;
+  registeredAt_not_starts_with?: Maybe<String>;
+  registeredAt_ends_with?: Maybe<String>;
+  registeredAt_not_ends_with?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  hitCount_not?: Maybe<Int>;
+  hitCount_in?: Maybe<Int[] | Int>;
+  hitCount_not_in?: Maybe<Int[] | Int>;
+  hitCount_lt?: Maybe<Int>;
+  hitCount_lte?: Maybe<Int>;
+  hitCount_gt?: Maybe<Int>;
+  hitCount_gte?: Maybe<Int>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  from?: Maybe<String>;
+  from_not?: Maybe<String>;
+  from_in?: Maybe<String[] | String>;
+  from_not_in?: Maybe<String[] | String>;
+  from_lt?: Maybe<String>;
+  from_lte?: Maybe<String>;
+  from_gt?: Maybe<String>;
+  from_gte?: Maybe<String>;
+  from_contains?: Maybe<String>;
+  from_not_contains?: Maybe<String>;
+  from_starts_with?: Maybe<String>;
+  from_not_starts_with?: Maybe<String>;
+  from_ends_with?: Maybe<String>;
+  from_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<TempPostWhereInput[] | TempPostWhereInput>;
+  OR?: Maybe<TempPostWhereInput[] | TempPostWhereInput>;
+  NOT?: Maybe<TempPostWhereInput[] | TempPostWhereInput>;
+}
+
 export type TheQooWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
@@ -3820,6 +4158,62 @@ export interface SavedPostsUpdateManyMutationInput {
   from?: Maybe<String>;
 }
 
+export interface SortedPostsCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link: String;
+  from: String;
+}
+
+export interface SortedPostsUpdateInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface SortedPostsUpdateManyMutationInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface TempPostCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link: String;
+  from: String;
+}
+
+export interface TempPostUpdateInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
+export interface TempPostUpdateManyMutationInput {
+  title?: Maybe<String>;
+  author?: Maybe<String>;
+  registeredAt?: Maybe<String>;
+  hitCount?: Maybe<Int>;
+  link?: Maybe<String>;
+  from?: Maybe<String>;
+}
+
 export interface TheQooCreateInput {
   id?: Maybe<ID_Input>;
   title: String;
@@ -4087,6 +4481,38 @@ export interface SavedPostsSubscriptionWhereInput {
   >;
   NOT?: Maybe<
     SavedPostsSubscriptionWhereInput[] | SavedPostsSubscriptionWhereInput
+  >;
+}
+
+export interface SortedPostsSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<SortedPostsWhereInput>;
+  AND?: Maybe<
+    SortedPostsSubscriptionWhereInput[] | SortedPostsSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    SortedPostsSubscriptionWhereInput[] | SortedPostsSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    SortedPostsSubscriptionWhereInput[] | SortedPostsSubscriptionWhereInput
+  >;
+}
+
+export interface TempPostSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TempPostWhereInput>;
+  AND?: Maybe<
+    TempPostSubscriptionWhereInput[] | TempPostSubscriptionWhereInput
+  >;
+  OR?: Maybe<TempPostSubscriptionWhereInput[] | TempPostSubscriptionWhereInput>;
+  NOT?: Maybe<
+    TempPostSubscriptionWhereInput[] | TempPostSubscriptionWhereInput
   >;
 }
 
@@ -5971,6 +6397,214 @@ export interface AggregateSavedPostsSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface SortedPosts {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface SortedPostsPromise extends Promise<SortedPosts>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface SortedPostsSubscription
+  extends Promise<AsyncIterator<SortedPosts>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface SortedPostsNullablePromise
+  extends Promise<SortedPosts | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface SortedPostsConnection {
+  pageInfo: PageInfo;
+  edges: SortedPostsEdge[];
+}
+
+export interface SortedPostsConnectionPromise
+  extends Promise<SortedPostsConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<SortedPostsEdge>>() => T;
+  aggregate: <T = AggregateSortedPostsPromise>() => T;
+}
+
+export interface SortedPostsConnectionSubscription
+  extends Promise<AsyncIterator<SortedPostsConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<SortedPostsEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateSortedPostsSubscription>() => T;
+}
+
+export interface SortedPostsEdge {
+  node: SortedPosts;
+  cursor: String;
+}
+
+export interface SortedPostsEdgePromise
+  extends Promise<SortedPostsEdge>,
+    Fragmentable {
+  node: <T = SortedPostsPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface SortedPostsEdgeSubscription
+  extends Promise<AsyncIterator<SortedPostsEdge>>,
+    Fragmentable {
+  node: <T = SortedPostsSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateSortedPosts {
+  count: Int;
+}
+
+export interface AggregateSortedPostsPromise
+  extends Promise<AggregateSortedPosts>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateSortedPostsSubscription
+  extends Promise<AsyncIterator<AggregateSortedPosts>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TempPost {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface TempPostPromise extends Promise<TempPost>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface TempPostSubscription
+  extends Promise<AsyncIterator<TempPost>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface TempPostNullablePromise
+  extends Promise<TempPost | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface TempPostConnection {
+  pageInfo: PageInfo;
+  edges: TempPostEdge[];
+}
+
+export interface TempPostConnectionPromise
+  extends Promise<TempPostConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TempPostEdge>>() => T;
+  aggregate: <T = AggregateTempPostPromise>() => T;
+}
+
+export interface TempPostConnectionSubscription
+  extends Promise<AsyncIterator<TempPostConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TempPostEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTempPostSubscription>() => T;
+}
+
+export interface TempPostEdge {
+  node: TempPost;
+  cursor: String;
+}
+
+export interface TempPostEdgePromise
+  extends Promise<TempPostEdge>,
+    Fragmentable {
+  node: <T = TempPostPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface TempPostEdgeSubscription
+  extends Promise<AsyncIterator<TempPostEdge>>,
+    Fragmentable {
+  node: <T = TempPostSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateTempPost {
+  count: Int;
+}
+
+export interface AggregateTempPostPromise
+  extends Promise<AggregateTempPost>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTempPostSubscription
+  extends Promise<AsyncIterator<AggregateTempPost>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface TheQoo {
   id: ID_Output;
   title: String;
@@ -7297,6 +7931,130 @@ export interface SavedPostsPreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
+export interface SortedPostsSubscriptionPayload {
+  mutation: MutationType;
+  node: SortedPosts;
+  updatedFields: String[];
+  previousValues: SortedPostsPreviousValues;
+}
+
+export interface SortedPostsSubscriptionPayloadPromise
+  extends Promise<SortedPostsSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = SortedPostsPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = SortedPostsPreviousValuesPromise>() => T;
+}
+
+export interface SortedPostsSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<SortedPostsSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = SortedPostsSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = SortedPostsPreviousValuesSubscription>() => T;
+}
+
+export interface SortedPostsPreviousValues {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface SortedPostsPreviousValuesPromise
+  extends Promise<SortedPostsPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface SortedPostsPreviousValuesSubscription
+  extends Promise<AsyncIterator<SortedPostsPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface TempPostSubscriptionPayload {
+  mutation: MutationType;
+  node: TempPost;
+  updatedFields: String[];
+  previousValues: TempPostPreviousValues;
+}
+
+export interface TempPostSubscriptionPayloadPromise
+  extends Promise<TempPostSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TempPostPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TempPostPreviousValuesPromise>() => T;
+}
+
+export interface TempPostSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TempPostSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TempPostSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TempPostPreviousValuesSubscription>() => T;
+}
+
+export interface TempPostPreviousValues {
+  id: ID_Output;
+  title: String;
+  author?: String;
+  registeredAt?: String;
+  hitCount?: Int;
+  link: String;
+  from: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface TempPostPreviousValuesPromise
+  extends Promise<TempPostPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  author: () => Promise<String>;
+  registeredAt: () => Promise<String>;
+  hitCount: () => Promise<Int>;
+  link: () => Promise<String>;
+  from: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface TempPostPreviousValuesSubscription
+  extends Promise<AsyncIterator<TempPostPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  author: () => Promise<AsyncIterator<String>>;
+  registeredAt: () => Promise<AsyncIterator<String>>;
+  hitCount: () => Promise<AsyncIterator<Int>>;
+  link: () => Promise<AsyncIterator<String>>;
+  from: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
 export interface TheQooSubscriptionPayload {
   mutation: MutationType;
   node: TheQoo;
@@ -7461,6 +8219,14 @@ export type Long = string;
 export const models: Model[] = [
   {
     name: "PrePost",
+    embedded: false
+  },
+  {
+    name: "TempPost",
+    embedded: false
+  },
+  {
+    name: "SortedPosts",
     embedded: false
   },
   {

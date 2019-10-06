@@ -1,13 +1,14 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
+const Constants = require('../Constants');
 
 const { info } = console;
 
 async function fetching() {
     const url = 'http://mlbpark.donga.com/mp/b.php?p=1&m=list&b=bullpen&query=&select=&user=';
     let isErrorOccured = false;
-    const from = 'Bullpen';
+    const from = Constants.Bullpen;
 
     return await axios.get(url).then( async (res) => {
         if (res.status === 200) {

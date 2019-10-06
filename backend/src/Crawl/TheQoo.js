@@ -1,13 +1,14 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
+const Constants = require('../Constants');
 
 const { info } = console.info;
 
 async function fetching() {
     const url = 'https://theqoo.net/hot?filter_mode=normal';
     let isErrorOccured = false;
-    const from = 'TheQoo';
+    const from = Constants.TheQoo;
 
     return await axios.get(url).then( async (res) => {
         if (res.status === 200) {

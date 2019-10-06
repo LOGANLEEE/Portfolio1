@@ -1,13 +1,14 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
+const Constants = require('../Constants');
 
 const { info } = console;
 
 async function fetching() {
     const url = 'https://web.humoruniv.com/board/humor/list.html?table=pick';
     let isErrorOccured = false;
-    const from = 'HumorUniv';
+    const from = Constants.HumorUniv;
 
     return await axios.get(url).then( async (res) => {
         if (res.status === 200) {
@@ -25,7 +26,6 @@ async function fetching() {
     });
 
     async function Processor(html) {
-        info("html", html);
         try {
             for (let i = 1; i < 21; i++) {
                 const target = `#cnts_list_new > div:nth-child(1) > table:nth-child(3) > tbody > tr:nth-child(${i})`;

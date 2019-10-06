@@ -1,14 +1,14 @@
-
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
+const Constants = require('../Constants');
 
 const info = console.info;
 
 async function fetching() {
     const url = 'https://www.dogdrip.net/dogdrip';
     let isErrorOccured = false;
-    const from = 'DogDrip';
+    const from = Constants.DogDrip;
 
     return await axios.get(url).then( async (res) => {
         if (res.status === 200) {

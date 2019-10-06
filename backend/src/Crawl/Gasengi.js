@@ -1,13 +1,14 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
+const Constants = require('../Constants');
 
 const { info } = console;
 
 async function fetching() {
     const url = 'https://www.gasengi.com/main/board.php?bo_table=commu';
     let isErrorOccured = false;
-    const from = 'Gasengi';
+    const from = Constants.Gasengi;
 
     return await axios.get(url).then( async (res) => {
         if (res.status === 200) {

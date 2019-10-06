@@ -1,13 +1,14 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
+const Constants = require('../Constants');
 
 const info = console.info;
 
 async function fetching() {
     const url = 'https://bbs.ruliweb.com/best/humor';
     let isErrorOccured = false;
-    const from = 'RuliWeb';
+    const from = Constants.RuliWeb;
 
     return await axios.get(url).then( async (res) => {
         if (res.status === 200) {

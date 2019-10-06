@@ -2,13 +2,14 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
 const iconv = require('iconv-lite');
+const Constants = require('../Constants');
 
 const info = console.info;
 
 async function fetching() {
     const url = 'https://www.instiz.net/pt/';
     let isErrorOccured = false;
-    const from = 'Instiz';
+    const from = Constants.Instiz;
 
     return await axios.get(url, { responseType: 'arraybuffer' }).then((res) => {
         if (res.status === 200) {

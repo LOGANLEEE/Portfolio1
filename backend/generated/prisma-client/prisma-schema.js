@@ -75,6 +75,14 @@ type AggregateSLRClub {
   count: Int!
 }
 
+type AggregateSortedPosts {
+  count: Int!
+}
+
+type AggregateTempPost {
+  count: Int!
+}
+
 type AggregateTheQoo {
   count: Int!
 }
@@ -2600,6 +2608,18 @@ type Mutation {
   upsertSavedPosts(where: SavedPostsWhereUniqueInput!, create: SavedPostsCreateInput!, update: SavedPostsUpdateInput!): SavedPosts!
   deleteSavedPosts(where: SavedPostsWhereUniqueInput!): SavedPosts
   deleteManySavedPostses(where: SavedPostsWhereInput): BatchPayload!
+  createSortedPosts(data: SortedPostsCreateInput!): SortedPosts!
+  updateSortedPosts(data: SortedPostsUpdateInput!, where: SortedPostsWhereUniqueInput!): SortedPosts
+  updateManySortedPostses(data: SortedPostsUpdateManyMutationInput!, where: SortedPostsWhereInput): BatchPayload!
+  upsertSortedPosts(where: SortedPostsWhereUniqueInput!, create: SortedPostsCreateInput!, update: SortedPostsUpdateInput!): SortedPosts!
+  deleteSortedPosts(where: SortedPostsWhereUniqueInput!): SortedPosts
+  deleteManySortedPostses(where: SortedPostsWhereInput): BatchPayload!
+  createTempPost(data: TempPostCreateInput!): TempPost!
+  updateTempPost(data: TempPostUpdateInput!, where: TempPostWhereUniqueInput!): TempPost
+  updateManyTempPosts(data: TempPostUpdateManyMutationInput!, where: TempPostWhereInput): BatchPayload!
+  upsertTempPost(where: TempPostWhereUniqueInput!, create: TempPostCreateInput!, update: TempPostUpdateInput!): TempPost!
+  deleteTempPost(where: TempPostWhereUniqueInput!): TempPost
+  deleteManyTempPosts(where: TempPostWhereInput): BatchPayload!
   createTheQoo(data: TheQooCreateInput!): TheQoo!
   updateTheQoo(data: TheQooUpdateInput!, where: TheQooWhereUniqueInput!): TheQoo
   updateManyTheQoos(data: TheQooUpdateManyMutationInput!, where: TheQooWhereInput): BatchPayload!
@@ -3310,6 +3330,12 @@ type Query {
   savedPosts(where: SavedPostsWhereUniqueInput!): SavedPosts
   savedPostses(where: SavedPostsWhereInput, orderBy: SavedPostsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SavedPosts]!
   savedPostsesConnection(where: SavedPostsWhereInput, orderBy: SavedPostsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SavedPostsConnection!
+  sortedPosts(where: SortedPostsWhereUniqueInput!): SortedPosts
+  sortedPostses(where: SortedPostsWhereInput, orderBy: SortedPostsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SortedPosts]!
+  sortedPostsesConnection(where: SortedPostsWhereInput, orderBy: SortedPostsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SortedPostsConnection!
+  tempPost(where: TempPostWhereUniqueInput!): TempPost
+  tempPosts(where: TempPostWhereInput, orderBy: TempPostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TempPost]!
+  tempPostsConnection(where: TempPostWhereInput, orderBy: TempPostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TempPostConnection!
   theQoo(where: TheQooWhereUniqueInput!): TheQoo
   theQoos(where: TheQooWhereInput, orderBy: TheQooOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TheQoo]!
   theQoosConnection(where: TheQooWhereInput, orderBy: TheQooOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TheQooConnection!
@@ -3943,6 +3969,214 @@ input SLRClubWhereUniqueInput {
   id: ID
 }
 
+type SortedPosts {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type SortedPostsConnection {
+  pageInfo: PageInfo!
+  edges: [SortedPostsEdge]!
+  aggregate: AggregateSortedPosts!
+}
+
+input SortedPostsCreateInput {
+  id: ID
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+}
+
+type SortedPostsEdge {
+  node: SortedPosts!
+  cursor: String!
+}
+
+enum SortedPostsOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  author_ASC
+  author_DESC
+  registeredAt_ASC
+  registeredAt_DESC
+  hitCount_ASC
+  hitCount_DESC
+  link_ASC
+  link_DESC
+  from_ASC
+  from_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type SortedPostsPreviousValues {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type SortedPostsSubscriptionPayload {
+  mutation: MutationType!
+  node: SortedPosts
+  updatedFields: [String!]
+  previousValues: SortedPostsPreviousValues
+}
+
+input SortedPostsSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: SortedPostsWhereInput
+  AND: [SortedPostsSubscriptionWhereInput!]
+  OR: [SortedPostsSubscriptionWhereInput!]
+  NOT: [SortedPostsSubscriptionWhereInput!]
+}
+
+input SortedPostsUpdateInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input SortedPostsUpdateManyMutationInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input SortedPostsWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  author: String
+  author_not: String
+  author_in: [String!]
+  author_not_in: [String!]
+  author_lt: String
+  author_lte: String
+  author_gt: String
+  author_gte: String
+  author_contains: String
+  author_not_contains: String
+  author_starts_with: String
+  author_not_starts_with: String
+  author_ends_with: String
+  author_not_ends_with: String
+  registeredAt: String
+  registeredAt_not: String
+  registeredAt_in: [String!]
+  registeredAt_not_in: [String!]
+  registeredAt_lt: String
+  registeredAt_lte: String
+  registeredAt_gt: String
+  registeredAt_gte: String
+  registeredAt_contains: String
+  registeredAt_not_contains: String
+  registeredAt_starts_with: String
+  registeredAt_not_starts_with: String
+  registeredAt_ends_with: String
+  registeredAt_not_ends_with: String
+  hitCount: Int
+  hitCount_not: Int
+  hitCount_in: [Int!]
+  hitCount_not_in: [Int!]
+  hitCount_lt: Int
+  hitCount_lte: Int
+  hitCount_gt: Int
+  hitCount_gte: Int
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [SortedPostsWhereInput!]
+  OR: [SortedPostsWhereInput!]
+  NOT: [SortedPostsWhereInput!]
+}
+
+input SortedPostsWhereUniqueInput {
+  id: ID
+}
+
 type Subscription {
   bobae(where: BobaeSubscriptionWhereInput): BobaeSubscriptionPayload
   bullpen(where: BullpenSubscriptionWhereInput): BullpenSubscriptionPayload
@@ -3962,8 +4196,218 @@ type Subscription {
   ruliWeb(where: RuliWebSubscriptionWhereInput): RuliWebSubscriptionPayload
   sLRClub(where: SLRClubSubscriptionWhereInput): SLRClubSubscriptionPayload
   savedPosts(where: SavedPostsSubscriptionWhereInput): SavedPostsSubscriptionPayload
+  sortedPosts(where: SortedPostsSubscriptionWhereInput): SortedPostsSubscriptionPayload
+  tempPost(where: TempPostSubscriptionWhereInput): TempPostSubscriptionPayload
   theQoo(where: TheQooSubscriptionWhereInput): TheQooSubscriptionPayload
   todayHumor(where: TodayHumorSubscriptionWhereInput): TodayHumorSubscriptionPayload
+}
+
+type TempPost {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type TempPostConnection {
+  pageInfo: PageInfo!
+  edges: [TempPostEdge]!
+  aggregate: AggregateTempPost!
+}
+
+input TempPostCreateInput {
+  id: ID
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+}
+
+type TempPostEdge {
+  node: TempPost!
+  cursor: String!
+}
+
+enum TempPostOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  author_ASC
+  author_DESC
+  registeredAt_ASC
+  registeredAt_DESC
+  hitCount_ASC
+  hitCount_DESC
+  link_ASC
+  link_DESC
+  from_ASC
+  from_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type TempPostPreviousValues {
+  id: ID!
+  title: String!
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String!
+  from: String!
+  createdAt: DateTime!
+}
+
+type TempPostSubscriptionPayload {
+  mutation: MutationType!
+  node: TempPost
+  updatedFields: [String!]
+  previousValues: TempPostPreviousValues
+}
+
+input TempPostSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TempPostWhereInput
+  AND: [TempPostSubscriptionWhereInput!]
+  OR: [TempPostSubscriptionWhereInput!]
+  NOT: [TempPostSubscriptionWhereInput!]
+}
+
+input TempPostUpdateInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input TempPostUpdateManyMutationInput {
+  title: String
+  author: String
+  registeredAt: String
+  hitCount: Int
+  link: String
+  from: String
+}
+
+input TempPostWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  author: String
+  author_not: String
+  author_in: [String!]
+  author_not_in: [String!]
+  author_lt: String
+  author_lte: String
+  author_gt: String
+  author_gte: String
+  author_contains: String
+  author_not_contains: String
+  author_starts_with: String
+  author_not_starts_with: String
+  author_ends_with: String
+  author_not_ends_with: String
+  registeredAt: String
+  registeredAt_not: String
+  registeredAt_in: [String!]
+  registeredAt_not_in: [String!]
+  registeredAt_lt: String
+  registeredAt_lte: String
+  registeredAt_gt: String
+  registeredAt_gte: String
+  registeredAt_contains: String
+  registeredAt_not_contains: String
+  registeredAt_starts_with: String
+  registeredAt_not_starts_with: String
+  registeredAt_ends_with: String
+  registeredAt_not_ends_with: String
+  hitCount: Int
+  hitCount_not: Int
+  hitCount_in: [Int!]
+  hitCount_not_in: [Int!]
+  hitCount_lt: Int
+  hitCount_lte: Int
+  hitCount_gt: Int
+  hitCount_gte: Int
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  from: String
+  from_not: String
+  from_in: [String!]
+  from_not_in: [String!]
+  from_lt: String
+  from_lte: String
+  from_gt: String
+  from_gte: String
+  from_contains: String
+  from_not_contains: String
+  from_starts_with: String
+  from_not_starts_with: String
+  from_ends_with: String
+  from_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [TempPostWhereInput!]
+  OR: [TempPostWhereInput!]
+  NOT: [TempPostWhereInput!]
+}
+
+input TempPostWhereUniqueInput {
+  id: ID
 }
 
 type TheQoo {

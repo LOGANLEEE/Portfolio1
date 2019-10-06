@@ -2,13 +2,14 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
 const https = require('https');
+const Constants = require('../Constants');
 
 const { info } = console;
 
 async function fetching() {
     const url = 'https://www.bobaedream.co.kr/list?code=best';
     let isErrorOccured = false;
-    const from = 'Bobae';
+    const from = Constants.Bobae;
 
     const agent = new https.Agent({
         rejectUnauthorized: false

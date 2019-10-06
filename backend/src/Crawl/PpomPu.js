@@ -2,13 +2,14 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
 const iconv = require('iconv-lite');
+const Constants = require('../Constants');
 
 const info = console.info;
 
 async function fetching() {
     const url = 'http://www.ppomppu.co.kr/hot.php';
     let isErrorOccured = false;
-    const from = 'PpomPu';
+    const from = Constants.PpomPu;
 
     return await axios.get(url).then( async (res) => {
         if (res.status === 200) {
