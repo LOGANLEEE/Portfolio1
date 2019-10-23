@@ -10,7 +10,7 @@ async function fetching() {
     let isErrorOccured = false;
     const from = Constants.TheQoo;
 
-    return await axios.get(url).then( async (res) => {
+    return await axios.get(url).then(async (res) => {
         if (res.status === 200) {
             return Processor(res.data);
         }
@@ -27,21 +27,23 @@ async function fetching() {
 
     async function Processor(html) {
         try {
-            for (let i = 5; i < 34; i++) {
+            for (let i = 6; i < 33; i++) {
                 const target = `#bd_801402415_0 > div > table > tbody > tr:nth-child(${i})`;
                 const $ = cheerio.load(html);
                 const title = $(target + '> td.title > a:nth-child(1) > span').text();
                 const link = $(target + '> td.title > a:nth-child(1)').attr('href');
                 const time = $(target + '> td.time').text().replace('.', '-').trim();
-                const hitCount = $(target + '> td.m_no').text().replace('만', '0000').replace('.', '');
-                const data = {
-                    title,
-                    link: 'https://theqoo.net/' + link,
-                    hitCount: parseInt(hitCount),
-                    registeredAt: time,
-                    from,
-                };
-                await prisma.createPrePost(data);
+                const hitCount = $(target + '> td.m_no').text().replace('만', '000').replace('.', '');
+                if (title !== '') {
+                    const data = {
+                        title,
+                        link: 'https://theqoo.net' + link,
+                        hitCount: parseInt(hitCount),
+                        registeredAt: time,
+                        from,
+                    };
+                    await prisma.createPrePost(data);
+                }
             }
         } catch (e) {
             await prisma.createErrorLog({

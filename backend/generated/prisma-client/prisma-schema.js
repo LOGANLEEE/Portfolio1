@@ -1144,6 +1144,7 @@ type ErrorLog {
   from: String!
   isRead: Boolean!
   type: String!
+  link: String
 }
 
 type ErrorLogConnection {
@@ -1158,6 +1159,7 @@ input ErrorLogCreateInput {
   from: String!
   isRead: Boolean!
   type: String!
+  link: String
 }
 
 type ErrorLogEdge {
@@ -1178,6 +1180,8 @@ enum ErrorLogOrderByInput {
   isRead_DESC
   type_ASC
   type_DESC
+  link_ASC
+  link_DESC
 }
 
 type ErrorLogPreviousValues {
@@ -1187,6 +1191,7 @@ type ErrorLogPreviousValues {
   from: String!
   isRead: Boolean!
   type: String!
+  link: String
 }
 
 type ErrorLogSubscriptionPayload {
@@ -1212,6 +1217,7 @@ input ErrorLogUpdateInput {
   from: String
   isRead: Boolean
   type: String
+  link: String
 }
 
 input ErrorLogUpdateManyMutationInput {
@@ -1219,6 +1225,7 @@ input ErrorLogUpdateManyMutationInput {
   from: String
   isRead: Boolean
   type: String
+  link: String
 }
 
 input ErrorLogWhereInput {
@@ -1288,6 +1295,20 @@ input ErrorLogWhereInput {
   type_not_starts_with: String
   type_ends_with: String
   type_not_ends_with: String
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
   AND: [ErrorLogWhereInput!]
   OR: [ErrorLogWhereInput!]
   NOT: [ErrorLogWhereInput!]
@@ -3558,7 +3579,7 @@ type SavedPosts {
   title: String!
   author: String
   registeredAt: String
-  hitCount: Int
+  hitCount: Int!
   link: String!
   from: String!
   createdAt: DateTime!
@@ -3575,7 +3596,7 @@ input SavedPostsCreateInput {
   title: String!
   author: String
   registeredAt: String
-  hitCount: Int
+  hitCount: Int!
   link: String!
   from: String!
 }
@@ -3609,7 +3630,7 @@ type SavedPostsPreviousValues {
   title: String!
   author: String
   registeredAt: String
-  hitCount: Int
+  hitCount: Int!
   link: String!
   from: String!
   createdAt: DateTime!
@@ -3974,7 +3995,7 @@ type SortedPosts {
   title: String!
   author: String
   registeredAt: String
-  hitCount: Int
+  hitCount: Int!
   link: String!
   from: String!
   createdAt: DateTime!
@@ -3991,7 +4012,7 @@ input SortedPostsCreateInput {
   title: String!
   author: String
   registeredAt: String
-  hitCount: Int
+  hitCount: Int!
   link: String!
   from: String!
 }
@@ -4025,7 +4046,7 @@ type SortedPostsPreviousValues {
   title: String!
   author: String
   registeredAt: String
-  hitCount: Int
+  hitCount: Int!
   link: String!
   from: String!
   createdAt: DateTime!
@@ -4207,7 +4228,7 @@ type TempPost {
   title: String!
   author: String
   registeredAt: String
-  hitCount: Int
+  hitCount: Int!
   link: String!
   from: String!
   createdAt: DateTime!
@@ -4224,7 +4245,7 @@ input TempPostCreateInput {
   title: String!
   author: String
   registeredAt: String
-  hitCount: Int
+  hitCount: Int!
   link: String!
   from: String!
 }
@@ -4258,7 +4279,7 @@ type TempPostPreviousValues {
   title: String!
   author: String
   registeredAt: String
-  hitCount: Int
+  hitCount: Int!
   link: String!
   from: String!
   createdAt: DateTime!

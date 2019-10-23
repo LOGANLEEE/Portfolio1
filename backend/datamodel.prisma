@@ -16,7 +16,7 @@ type TempPost {
     title: String!
     author: String
     registeredAt: String
-    hitCount: Int
+    hitCount: Int!
     link: String!
     from: String!
     createdAt: DateTime! @createdAt
@@ -27,7 +27,7 @@ type SortedPosts {
     title: String!
     author: String
     registeredAt: String
-    hitCount: Int
+    hitCount: Int!
     link: String!
     from: String!
     createdAt: DateTime! @createdAt
@@ -38,7 +38,7 @@ type SavedPosts {
     title: String!
     author: String
     registeredAt: String
-    hitCount: Int
+    hitCount: Int!
     link: String!
     from: String!
     createdAt: DateTime! @createdAt
@@ -227,6 +227,7 @@ type ErrorLog{
     from: String!
     isRead: Boolean!,
     type: String!,
+    link: String,
 }
 
 type HumorUniv{

@@ -58,7 +58,6 @@ async function fetching() {
             isErrorOccured = true;
             throw e;
         }
-        //info(`£££ is ${from}  has Error? :  ${isErrorOccured}`);
         return new Promise((resolve, reject) => {
             resolve({ from, isErrorOccured });
             reject({ from, isErrorOccured });

@@ -37,7 +37,7 @@ async function fetching() {
                     const data = {
                         title,
                         author,
-                        link: 'https://www.fmkorea.com/' + link,
+                        link: 'https://www.fmkorea.com' + link,
                         registeredAt: time,
                         from,
                     };

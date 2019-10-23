@@ -11,9 +11,10 @@ async function fetching() {
     let isErrorOccured = false;
     const from = Constants.PpomPu;
 
-    return await axios.get(url).then( async (res) => {
+    return await axios.get(url, { responseType: 'arraybuffer' }).then(async (res) => {
         if (res.status === 200) {
-            return Processor(res.data);
+            const result = iconv.decode(res.data, 'euc-kr');
+            return Processor(result);
         }
     }).catch(async (e) => {
         await prisma.createErrorLog({
@@ -28,11 +29,13 @@ async function fetching() {
 
     async function Processor(html) {
         try {
-            for (let i = 4; i < 24; i++) {
+            // for (let i = 4; i < 24; i++) {
+            for (let i = 4; i < 5; i++) {
                 const target = `body > div.wrapper > div.contents > div.container > div:nth-child(3) > div.board_box > table.board_table > tbody > tr:nth-child(${i})`;
                 const $ = cheerio.load(html);
                 const title = $(target + '> td:nth-child(4) > a').text();
-                const link = $(target + '> td:nth-child(4) > a').attr('href');
+                // const link = $(target + '> td:nth-child(4) > a').attr('href').replace('/zboard','').trim();
+                const link = $(target + '> td:nth-child(4) > a').attr('href');;
                 const time = $(target + '> td:nth-child(4) > a').text().trim();
                 const author = $(target + '> td:nth-child(2)').text().trim();
                 const hitCount = $(target + '> td:nth-child(7)').text();

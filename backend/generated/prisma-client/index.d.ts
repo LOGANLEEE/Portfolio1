@@ -1026,7 +1026,9 @@ export type ErrorLogOrderByInput =
   | "isRead_ASC"
   | "isRead_DESC"
   | "type_ASC"
-  | "type_DESC";
+  | "type_DESC"
+  | "link_ASC"
+  | "link_DESC";
 
 export type EtolandOrderByInput =
   | "id_ASC"
@@ -1935,6 +1937,20 @@ export interface ErrorLogWhereInput {
   type_not_starts_with?: Maybe<String>;
   type_ends_with?: Maybe<String>;
   type_not_ends_with?: Maybe<String>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
   AND?: Maybe<ErrorLogWhereInput[] | ErrorLogWhereInput>;
   OR?: Maybe<ErrorLogWhereInput[] | ErrorLogWhereInput>;
   NOT?: Maybe<ErrorLogWhereInput[] | ErrorLogWhereInput>;
@@ -3812,6 +3828,7 @@ export interface ErrorLogCreateInput {
   from: String;
   isRead: Boolean;
   type: String;
+  link?: Maybe<String>;
 }
 
 export interface ErrorLogUpdateInput {
@@ -3819,6 +3836,7 @@ export interface ErrorLogUpdateInput {
   from?: Maybe<String>;
   isRead?: Maybe<Boolean>;
   type?: Maybe<String>;
+  link?: Maybe<String>;
 }
 
 export interface ErrorLogUpdateManyMutationInput {
@@ -3826,6 +3844,7 @@ export interface ErrorLogUpdateManyMutationInput {
   from?: Maybe<String>;
   isRead?: Maybe<Boolean>;
   type?: Maybe<String>;
+  link?: Maybe<String>;
 }
 
 export interface EtolandCreateInput {
@@ -4135,7 +4154,7 @@ export interface SavedPostsCreateInput {
   title: String;
   author?: Maybe<String>;
   registeredAt?: Maybe<String>;
-  hitCount?: Maybe<Int>;
+  hitCount: Int;
   link: String;
   from: String;
 }
@@ -4163,7 +4182,7 @@ export interface SortedPostsCreateInput {
   title: String;
   author?: Maybe<String>;
   registeredAt?: Maybe<String>;
-  hitCount?: Maybe<Int>;
+  hitCount: Int;
   link: String;
   from: String;
 }
@@ -4191,7 +4210,7 @@ export interface TempPostCreateInput {
   title: String;
   author?: Maybe<String>;
   registeredAt?: Maybe<String>;
-  hitCount?: Maybe<Int>;
+  hitCount: Int;
   link: String;
   from: String;
 }
@@ -5088,6 +5107,7 @@ export interface ErrorLog {
   from: String;
   isRead: Boolean;
   type: String;
+  link?: String;
 }
 
 export interface ErrorLogPromise extends Promise<ErrorLog>, Fragmentable {
@@ -5097,6 +5117,7 @@ export interface ErrorLogPromise extends Promise<ErrorLog>, Fragmentable {
   from: () => Promise<String>;
   isRead: () => Promise<Boolean>;
   type: () => Promise<String>;
+  link: () => Promise<String>;
 }
 
 export interface ErrorLogSubscription
@@ -5108,6 +5129,7 @@ export interface ErrorLogSubscription
   from: () => Promise<AsyncIterator<String>>;
   isRead: () => Promise<AsyncIterator<Boolean>>;
   type: () => Promise<AsyncIterator<String>>;
+  link: () => Promise<AsyncIterator<String>>;
 }
 
 export interface ErrorLogNullablePromise
@@ -5119,6 +5141,7 @@ export interface ErrorLogNullablePromise
   from: () => Promise<String>;
   isRead: () => Promise<Boolean>;
   type: () => Promise<String>;
+  link: () => Promise<String>;
 }
 
 export interface ErrorLogConnection {
@@ -6298,7 +6321,7 @@ export interface SavedPosts {
   title: String;
   author?: String;
   registeredAt?: String;
-  hitCount?: Int;
+  hitCount: Int;
   link: String;
   from: String;
   createdAt: DateTimeOutput;
@@ -6402,7 +6425,7 @@ export interface SortedPosts {
   title: String;
   author?: String;
   registeredAt?: String;
-  hitCount?: Int;
+  hitCount: Int;
   link: String;
   from: String;
   createdAt: DateTimeOutput;
@@ -6506,7 +6529,7 @@ export interface TempPost {
   title: String;
   author?: String;
   registeredAt?: String;
-  hitCount?: Int;
+  hitCount: Int;
   link: String;
   from: String;
   createdAt: DateTimeOutput;
@@ -7169,6 +7192,7 @@ export interface ErrorLogPreviousValues {
   from: String;
   isRead: Boolean;
   type: String;
+  link?: String;
 }
 
 export interface ErrorLogPreviousValuesPromise
@@ -7180,6 +7204,7 @@ export interface ErrorLogPreviousValuesPromise
   from: () => Promise<String>;
   isRead: () => Promise<Boolean>;
   type: () => Promise<String>;
+  link: () => Promise<String>;
 }
 
 export interface ErrorLogPreviousValuesSubscription
@@ -7191,6 +7216,7 @@ export interface ErrorLogPreviousValuesSubscription
   from: () => Promise<AsyncIterator<String>>;
   isRead: () => Promise<AsyncIterator<Boolean>>;
   type: () => Promise<AsyncIterator<String>>;
+  link: () => Promise<AsyncIterator<String>>;
 }
 
 export interface EtolandSubscriptionPayload {
@@ -7899,7 +7925,7 @@ export interface SavedPostsPreviousValues {
   title: String;
   author?: String;
   registeredAt?: String;
-  hitCount?: Int;
+  hitCount: Int;
   link: String;
   from: String;
   createdAt: DateTimeOutput;
@@ -7961,7 +7987,7 @@ export interface SortedPostsPreviousValues {
   title: String;
   author?: String;
   registeredAt?: String;
-  hitCount?: Int;
+  hitCount: Int;
   link: String;
   from: String;
   createdAt: DateTimeOutput;
@@ -8023,7 +8049,7 @@ export interface TempPostPreviousValues {
   title: String;
   author?: String;
   registeredAt?: String;
-  hitCount?: Int;
+  hitCount: Int;
   link: String;
   from: String;
   createdAt: DateTimeOutput;

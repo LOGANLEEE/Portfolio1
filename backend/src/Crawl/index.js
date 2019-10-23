@@ -29,19 +29,17 @@ const { info } = console;
 // DDANZI // TODO
 // HumorUniv.fetching(); // not working
 // const siteList = [Clien, Bobae, Bullpen, Etoland, SLR, TodayHumor, Cook, Gasengi, RuliWeb, PpomPu, Instiz, TheQoo, FmKorea, DogDrip];
-const siteList = [Etoland]
+const siteList = [Instiz];
 
 
-/* DONE
-    Clien
-    Bobae
-    Etoland ( onGoing )
-*/
+// DONE
+// const siteList = [Etoland, Clien, Bobae, SLR, Bullpen, TodayHumor, Cook, Gasengi, RuliWeb, TheQoo, FmKorea];
 
 
-/* TODO 
-    ILBE
-*/
+
+// TODO 
+// ILBE, DogDrip, HumorUniv, PpomPu
+
 function init() {
     info("£££ Crawler Init ");
     const resultList = [];
