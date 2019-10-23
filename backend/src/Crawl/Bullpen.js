@@ -6,11 +6,11 @@ const Constants = require('../Constants');
 const { info } = console;
 
 async function fetching() {
-    const url = 'http://mlbpark.donga.com/mp/b.php?p=1&m=list&b=bullpen&query=&select=&user=';
+    const url = 'http://mlbpark.donga.com/mp/best.php?b=bullpen&m=view';
     let isErrorOccured = false;
     const from = Constants.Bullpen;
 
-    return await axios.get(url).then( async (res) => {
+    return await axios.get(url).then(async (res) => {
         if (res.status === 200) {
             return Processor(res.data);
         }
@@ -27,27 +27,27 @@ async function fetching() {
     });
 
     async function Processor(html) {
-        // 6 ~ 35.
+        //5 ~ 35.
         try {
-            for (let i = 5; i < 34; i++) {
-                const target = `#container > div.contents > div.left_cont > div.tbl_box > table > tbody > tr:nth-child(${i})`;
+            for (let i = 1; i < 25; i++) {
+                const target = `#container > div.contents > div.left_cont > div.tbl_box > table > tbody > tr:nth-child(${i}) `;
                 const $ = cheerio.load(html);
-                const link = $(target + ' > td.t_left > a.bullpenbox').attr('href');
-                const title = $(target + ' > td.t_left > a.bullpenbox').attr(
-                    'title',
-                );
-                const time = $(target + ' > td > span.date').text();
-                const author = $(target + '> td > span.nick').text();
-                const hitCount = $(target + '> td.t_right > span').text();
-                const data = {
-                    title,
-                    author,
-                    link,
-                    hitCount: parseInt(hitCount),
-                    registeredAt: time,
-                    from,
-                };
-                await prisma.createPrePost(data);
+                const link = $(target + '> td:nth-child(2) > a').attr('href');
+                const title = $(target + '> td:nth-child(2) > a').text();
+                const time = $(target + '> td:nth-child(4) > span').text();
+                const author = $(target + '> td:nth-child(3) > span').text();
+
+                if (author !== '엠팍제휴팀' && author !== '담당자') {
+                    const data = {
+                        title,
+                        author,
+                        link,
+                        hitCount: 0,
+                        registeredAt: time,
+                        from,
+                    };
+                    await prisma.createPrePost(data);
+                }
             }
         } catch (e) {
             await prisma.createErrorLog({

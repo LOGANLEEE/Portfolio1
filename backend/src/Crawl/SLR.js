@@ -38,7 +38,7 @@ async function fetching() {
                 const data = {
                     title,
                     author,
-                    link: 'http://www.slrclub.com/' + link,
+                    link: 'http://www.slrclub.com' + link,
                     hitCount: parseInt(hitCount),
                     registeredAt: time,
                     from,

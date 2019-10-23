@@ -1,17 +1,24 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { prisma } = require('../../generated/prisma-client');
+const iconv = require('iconv-lite');
 const Constants = require('../Constants');
 
 const { info } = console;
 
 async function fetching() {
-    const url = 'https://web.humoruniv.com/board/humor/list.html?table=pick';
+    const url = 'http://web.humoruniv.com/board/humor/list.html?table=pds';
     let isErrorOccured = false;
     const from = Constants.HumorUniv;
 
-    return await axios.get(url).then( async (res) => {
+
+    // EUC-KR encoding need.
+    return await axios.get(url).then(async res => {
         if (res.status === 200) {
+            info("============");
+            info("£££ dataa : ", res)
+            info("============");
+            // const result = iconv.decode(res.data, 'euc-kr');
             return Processor(res.data);
         }
     }).catch(async (e) => {
@@ -27,11 +34,10 @@ async function fetching() {
 
     async function Processor(html) {
         try {
-            for (let i = 1; i < 21; i++) {
+            for (let i = 1; i < 39; i += 2) {
                 const target = `#cnts_list_new > div:nth-child(1) > table:nth-child(3) > tbody > tr:nth-child(${i})`;
                 const $ = cheerio.load(html);
-                // #li_chk_pick-898898 > td.li_sbj > a
-                const link = $(target + '> td.li_sbj > a').attr('href');
+                const link = $(target + ' > td.li_sbj > a').attr('href');
                 const title = $(target + '> td.li_sbj > a').text();
                 const time = $(target + '> td.li_date > span.w_time').text();
                 const author = $(target + '> td.li_icn > table > tbody > tr > td.g6 > span > span').text();
@@ -39,7 +45,7 @@ async function fetching() {
                 const data = {
                     title,
                     author,
-                    link: 'http://www.todayhumor.co.kr' + link,
+                    link: 'http://web.humoruniv.com' + link,
                     hitCount: parseInt(hitCount),
                     registeredAt: time,
                     from,

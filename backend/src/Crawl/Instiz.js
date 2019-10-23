@@ -30,12 +30,14 @@ async function fetching() {
         try {
             for (let i = 10; i < 21; i += 10) {
                 for (let j = 1; j < 11; j++) {
+                // for (let i = 10; i < 11; i += 10) {
+                    // for (let j = 1; j < 2; j++) {
                     const $ = cheerio.load(html);
                     const title = $(`#focus${j}`).text();
                     const link = $(`#focus${j}`).attr('href');
                     const data = {
                         title,
-                        link,
+                        link: 'https:' + link,
                         from,
                     };
                     await prisma.createPrePost(data);

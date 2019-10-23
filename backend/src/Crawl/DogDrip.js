@@ -6,11 +6,11 @@ const Constants = require('../Constants');
 const info = console.info;
 
 async function fetching() {
-    const url = 'https://www.dogdrip.net/dogdrip';
+    const url = 'https://www.dogdrip.net/index.php?mid=dogdrip&sort_index=popular';
     let isErrorOccured = false;
     const from = Constants.DogDrip;
 
-    return await axios.get(url).then( async (res) => {
+    return await axios.get(url).then(res => {
         if (res.status === 200) {
             return Processor(res.data);
         }
@@ -36,7 +36,7 @@ async function fetching() {
                 const data = {
                     title,
                     author,
-                    link,
+                    link: 'https://www.dogdrip.net' + link,
                     from,
                 };
                 await prisma.createPrePost(data);

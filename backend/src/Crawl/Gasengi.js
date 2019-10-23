@@ -31,7 +31,7 @@ async function fetching() {
                 for (let j = 1; j < 6; j++) {
                     const target = `#rightcolumn > div.rank_div > div.rank_dbox > ol > span:nth-child(${i}) > li:nth-child(${j})`;
                     const $ = cheerio.load(html);
-                    const link = $(target + '> a').attr('href');
+                    const link = $(target + '> a').attr('href').replace('../main','main');
                     const title = $(target + '> a').text();
                     const data = {
                         title,
